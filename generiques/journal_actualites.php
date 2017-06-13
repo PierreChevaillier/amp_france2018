@@ -45,10 +45,10 @@ class Journal_Actualites extends Element_Page {
   }
   
   protected function afficher_corps() {
-    echo '<ul class="media-list">';
+    echo '<div class="panel panel-default"><div class="panel-body"><ul class="media-list">';
     foreach ($this->actualites as $actu)
       $this->afficher_item($actu);
-    echo '</ul>';
+    echo '</ul></div></div>';
   }
   
   protected function afficher_fin() {
@@ -56,8 +56,10 @@ class Journal_Actualites extends Element_Page {
   }
   
   private function afficher_item($actu) {
-    echo '<li class="media"><div class="media-left"><a href="#"><img class="media-object" src="..." alt="..."></a></div><div class="media-body">';
-    echo '<h4 class="media-heading">' . $actu->titre() . '</h4>';
+    $source = $this->chemin_photos . '/' . $actu->nom_fichier_vignette;
+    $lien = "#";
+    echo '<li class="media"><div class="media-left"><a href="' . $lien . '"><img class="media-object" src="' . $source . '" alt="alt"></a></div><div class="media-body">';
+    echo '<h4 class="media-heading">' . $actu->titre() . '<small> - ' . $actu->date . '</small></h4>';
     echo '<p>' . $actu->contenu . '</p></div></li>';
   }
   

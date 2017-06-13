@@ -55,7 +55,7 @@ class Bandeau_Reseaux extends Element_Page {
     if ($this->facebook())
       echo '<a href="' . $this->lien_facebook . '"><img src="' . $this->chemin_dossier . '/icone_facebook_64x64.png" align="middle" /></a>';
     if ($this->twitter())
-      echo '<a href="' . $this->lien_facebook . '"><img src="' . $this->chemin_dossier . '/icone_twitter_64x64.png" align="middle" /></a>';
+      echo '<a href="' . $this->lien_twitter . '"><img src="' . $this->chemin_dossier . '/icone_twitter_64x64.png" align="middle" /></a>';
   }
   
   protected function afficher_fin() {

@@ -24,11 +24,13 @@
     private $titre = "";
     public function titre() { return $this->titre; }
 
-    public $date_publication;
+    
+    public $date = "";
   
     public $contenu = "";
   
-    public $chemin_fichier_image = "";
+    public $nom_fichier_images = "";
+    public $nom_fichier_vignette = "";
     
     public $lien_media = "";
     

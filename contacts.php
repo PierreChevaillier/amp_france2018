@@ -1,6 +1,6 @@
 <!doctype html>
   <html lang="fr">
-    <script language="php">
+    <?php
 
     // --- Informations relatives au site web
     require_once 'generiques/site.php';
@@ -21,5 +21,5 @@
   	$page->initialiser();
   	$page->afficher();
 
-	</script>
+	?>
 </html>
