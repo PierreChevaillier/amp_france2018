@@ -10,12 +10,10 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation : 04-juin-2017 pchevaillier@gmail.com
-// revision :
+// revision : 15-juin-2017 pchevaillier@gmail.com, liens vers les bonnes pages
 // ------------------------------------------------------------------------
 // commentaires :
-// - en chantier
 // attention :
-// -
 // a faire :
 // - modifier les liens au fur et a mesure de la creation des pages
 // ------------------------------------------------------------------------
@@ -38,10 +36,10 @@ class Menu_Principal extends Menu_Navigation {
   protected function afficher_corps() {
     echo "<li><a href=\"index.php\">Accueil</a></li>";
     echo "<li><a href=\"actualites.php\">Actualités</a></li>";
-    echo "<li><a href=\"index.php\">Courses</a></li>";
-    echo "<li><a href=\"index.php\">Transports</a></li>";
-    echo "<li><a href=\"index.php\">Hébergements</a></li>";
-    echo "<li><a href=\"index.php\">Partenaires</a></li>";
+    echo "<li><a href=\"courses.php\">Courses</a></li>";
+    echo "<li><a href=\"transports.php\">Transports</a></li>";
+    echo "<li><a href=\"hebergements.php\">Hébergements</a></li>";
+    //echo "<li><a href=\"partenaires.php\">Partenaires</a></li>";
     echo "<li><a href=\"contacts.php\">Contacts</a></li>";
   }
   
