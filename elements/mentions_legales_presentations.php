@@ -7,7 +7,7 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 05-juin-2017 pchevaillier@gmail.com
-// revision:
+// revision: 22-juin-2017 pchevaillier@gmail.com, id="mentions-legales" pour css
 // ------------------------------------------------------------------------
 // commentaires :
 // - en chantier
@@ -32,7 +32,7 @@ class Vue_Mentions_Legales extends Element_Page {
   }
   
   protected function afficher_debut() {
-    echo "<div class=\"panel panel-default\"><div class=\"panel-body\">\n";
+    echo "<div class=\"panel panel-default\" id=\"mentions-legales\" ><div class=\"panel-body\">\n";
     echo "<p class=\"lead\">" . $this->titre . "</p>";
       }
   

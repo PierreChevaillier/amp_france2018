@@ -1,0 +1,48 @@
+/*
+ ================================================================================
+ 
+ --------------------------------------------------------------------------------
+ creation: 22-juin-2017 pchevaillier@gmail.com
+ ================================================================================
+*/
+
+h1, h2, h3, h4 {
+	color: rgb(63,177,208);
+}
+      
+th {
+	color: white;
+  background-color: rgb(242,203,0);
+  }
+
+nav.navbar {
+  background-color: rgb(242,203,0);
+}
+
+p.lead {
+  color: rgb(221,52,47);
+}
+
+footer {
+  color: white; /* rgb(192, 192, 192); */
+  background-color: rgb(183, 30, 44);
+  padding: 0px;
+}
+
+a.footer {
+  color: rgb(192, 192, 192);
+}
+
+/* --- Elements identifies --------------------------------------------------- */
+
+#menu_nav li a:hover {
+  color: white;
+}
+
+#menu_nav a:hover {
+  background-color: rgb(63,177,208);
+}
+
+#mentions-legales {
+  color: black;
+}

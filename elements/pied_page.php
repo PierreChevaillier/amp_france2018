@@ -7,7 +7,7 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 05-juin-2017 pchevaillier@gmail.com
-// revision:
+// revision: 22-juin-2017 pchevaillier@gmail.com, style, copyright
 // ------------------------------------------------------------------------
 // commentaires :
 // - en chantier
@@ -54,8 +54,9 @@ class Pied_Page extends Element_Page {
   private function afficher_copyright() {
     echo '<div class="collapse" id="zone_copyright"><p class="small">';
     echo '<p>Copyright &copy; 2017 - ' . date('Y') . ' ' . Site::copyright() . '</p>';
-    echo "<p>Le présent site est la propriété exclusive de l'association loi 1901 dénomée " . Site::sigle_proprietaire() . ", " . Site::nom_proprietaire() . " dont le siège social est à </p>";
-    echo '<p class="small">';
+    echo "<p>Le présent site est la propriété exclusive de l'association loi 1901 dénomée " . Site::sigle_proprietaire() . ", " . Site::nom_proprietaire() . " dont le siège social est à ";
+    foreach (Site::adresses() as $adr) echo $adr . ', ' ;
+    echo '</p><p class="small">';
     echo "Toute représentation ou reproduction intégrale ou partielle faite sans le consentement de l’auteur ou de ses ayants droit ou ayants cause est illicite. Il en est de même pour la traduction, l’adaptation ou la transformation, l’arrangement ou la reproduction par un art ou un procédé quelconque. (article L122-4 du Code de la Propriété intellectuelle).";
     echo '</p></div>';
   }
@@ -84,9 +85,9 @@ class Pied_Page extends Element_Page {
   
   private function afficher_contenu_table() {
     echo '<table class="table"><tr>';
-    echo '<td style="text-align:center"><a data-toggle="collapse" href="#zone_copyright" aria-expanded="false" aria-controls="zone_copyright">Copyright</a></td>';
-    echo '<td style="text-align:center"><a data-toggle="collapse" href="#zone_mentions" aria-expanded="false" aria-controls="zone_mentions">Mentions légales</a></td>';
-    echo '<td style="text-align:center"><a data-toggle="collapse" href="#zone_credits" aria-expanded="false" aria-controls="zone_zone_credits">Credits</a></td>';
+    echo '<td style="text-align:center"><a class="footer" data-toggle="collapse" href="#zone_copyright" aria-expanded="false" aria-controls="zone_copyright">Copyright</a></td>';
+    echo '<td style="text-align:center"><a class="footer" data-toggle="collapse" href="#zone_mentions" aria-expanded="false" aria-controls="zone_mentions">Mentions légales</a></td>';
+    echo '<td style="text-align:center"><a class="footer" data-toggle="collapse" href="#zone_credits" aria-expanded="false" aria-controls="zone_zone_credits">Credits</a></td>';
     echo '</tr></table>';
   }
 }
