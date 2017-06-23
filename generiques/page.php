@@ -8,9 +8,10 @@
 // ------------------------------------------------------------------------
 // creation: 04-juin-2017 pchevaillier@gmail.com
 // revision: 13-juin-2017 pchevaillier@gmail.com, separation haut, bas , contenu
+// revision: 23-juin-2017 pchevaillier@gmail.com, javascripts
 // ------------------------------------------------------------------------
 // commentaires : 
-// - en chantier
+// -
 // attention :
 // - 
 // a faire :
@@ -38,7 +39,7 @@ abstract class Page extends Element {
   public $contenus = array();
   
 	public function __construct($nom_page) {
-		$this->titre = Site::$instance->nom . " - " . $nom_page;
+		$this->def_titre(Site::$instance->nom . " - " . $nom_page);
 	}
 	
   public function initialiser() {
@@ -63,19 +64,20 @@ abstract class Page extends Element {
   	echo "<head>\n      <meta charset=\"utf-8\" />
       <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
       <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
-      <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />
-      <link rel=\"stylesheet\" href=\"amp_france2018.css\" />
-    <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"
+      <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />";
+    echo "     <link rel=\"stylesheet\" href=\"amp_france2018.css\" media=\"screen\" />\n";
+    echo "     <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"
 			  integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\"
 			  crossorigin=\"anonymous\"></script>
-      <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
-      <title>" . $this->titre() . "</title>
-    </head>
-    <body>\n";
+      <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n";
+    foreach ($this->javascripts as $scripts) {
+      echo "      <script src=\"" . $scripts . "\"></script>\n";
+    }
+    echo "      <title>" . $this->titre() . "</title>\n    </head>\n    <body>\n";
   }
 
   protected function afficher_fin() {
-  	echo "    </body>\n ";
+  	echo "    </body>\n";
   }
 
   abstract protected function definir_elements();

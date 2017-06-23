@@ -9,6 +9,7 @@
 // ------------------------------------------------------------------------
 // creation: 04-juin-2017 pchevaillier@gmail.com
 // revision: 11-juin-2017 pchevaillier@gmail.com
+// revision: 23-juin-2017 pchevaillier@gmail.com script / controle menu
 // ------------------------------------------------------------------------
 // commentaires :
 // - en chantier
@@ -16,7 +17,6 @@
 // attention :
 // -
 // a faire :
-// - revoir la structuration de la classe Page
 // ------------------------------------------------------------------------
 
 // --- Classes utilisees
@@ -34,6 +34,12 @@ require_once 'elements/pied_page.php';
  * @author Pierre Chevaillier
  */
 class Page_France2018 extends Page {
+  
+  public function __construct($nom_page) {
+    parent::__construct($nom_page);
+    $this->javascripts[] = "scripts/menu_controleur.js";
+  }
+  
   /**
    * Definit les elments de la page
    */

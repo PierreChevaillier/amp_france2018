@@ -40,7 +40,7 @@ abstract class Menu_Navigation extends Element_Page {
 	
     // la barre de menu
 		echo "<div class=\"collapse navbar-collapse\" id=\"menu_nav\">\n";
-  	echo "<ul class=\"nav navbar-nav\">\n";
+  	echo "<ul class=\"nav navbar-nav\" id=\"menu_items\">\n";
 	}
 
     
