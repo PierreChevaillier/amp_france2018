@@ -7,11 +7,10 @@
 // contexte    : Site du Championnat de France d'Aviron de Mer 2018
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
-// creation: 09-juin-2017 pchevaillier@gmail.com
-// revision:
+// creation : 09-juin-2017 pchevaillier@gmail.com
+// revision : 24-juin-2017 pchevaillier@gmail.com bandeau responsive
 // ------------------------------------------------------------------------
 // commentaires :
-// - en chantier
 // attention :
 // -
 // a faire :
@@ -28,7 +27,7 @@ require_once 'generiques/element_page.php';
  */
 class Bandeau_Partenaires extends Element_Page {
 
-  public $chemin_dossier = "";
+  private $chemin_dossier = "";
   
   public function __construct($chemin_relatif_dossier_logos) {
     $this->chemin_dossier = $chemin_relatif_dossier_logos;
@@ -37,22 +36,36 @@ class Bandeau_Partenaires extends Element_Page {
   public function initialiser() {
   }
   
-  /**
-    *
-    */
   protected function afficher_debut() {
-    echo '<div><table class="table"><tr>';
+    echo '<div class="row">';
+  }
+  
+  protected function afficher_corps() {
+    //echo '<td><img src="' . $this->chemin_dossier . '/logo_ffa_maif_cnr.png" height="120" /></td>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_ffa_avironfrance.jpg" height="120" align="middle" /></div>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_maif.jpg" height="100" align="middle" /></div>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_amp.png" height="100" align="middle" /></div>';
+  }
+  
+  protected function afficher_fin() {
+    echo '</div>';
+  }
+  
+  /*
+  protected function afficher_debut() {
+    echo '<div class="table-responsive"><table class="table"><tr>';
   }
   
   protected function afficher_corps() {
     //echo '<td><img src="' . $this->chemin_dossier . '/logo_ffa_maif_cnr.png" height="120" /></td>';
     echo '<td style="text-align:center"><img src="' . $this->chemin_dossier . '/logo_ffa_avironfrance.jpg" height="120" align="middle" /></td>';
     echo '<td style="text-align:center"><img src="' . $this->chemin_dossier . '/logo_maif.jpg" height="120" align="middle" /></td>';
-    echo '<td style="text-align:center"><img src="' . $this->chemin_dossier . '/logo_amp.png" height="120" align="middle" /></td>';
+    echo '<td style="text-align:center"><img src="' . $this->chemin_dossier . '/logo_amp.png" height="100" align="middle" /></td>';
   }
   
   protected function afficher_fin() {
     echo '</tr></table></div>';
   }
+   */
 }
-// ========================================================================
+  // ========================================================================
