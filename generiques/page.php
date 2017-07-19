@@ -7,8 +7,9 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 04-juin-2017 pchevaillier@gmail.com
-// revision: 13-juin-2017 pchevaillier@gmail.com, separation haut, bas , contenu
-// revision: 23-juin-2017 pchevaillier@gmail.com, javascripts
+// revision: 13-juin-2017 pchevaillier@gmail.com separation haut, bas , contenu
+// revision: 23-juin-2017 pchevaillier@gmail.com javascripts
+// revision: 18-juil-2017 pchevaillier@gmail.com padding: 0px
 // ------------------------------------------------------------------------
 // commentaires : 
 // -
@@ -50,7 +51,7 @@ abstract class Page extends Element {
   }
   
   protected final function afficher_corps() {
-  	echo "      <div class=\"container-fluid\">\n";
+  	echo "      <div class=\"container-fluid\" style=\"padding: 0px;\" >\n";
     foreach ($this->elements_haut as $e) $e->afficher();
     foreach ($this->contenus as $e) $e->afficher();
     foreach ($this->elements_bas as $e) $e->afficher();

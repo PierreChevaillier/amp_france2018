@@ -9,10 +9,10 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 07-juillet-2017 pchevaillier@gmail.com
-// revision:
+// revision: 18-juil-2017 pchevaillier@gmail.com video plus grande
 // ------------------------------------------------------------------------
 // commentaires :
-// - en chantier
+// -
 // attention :
 // -
 // a faire :
@@ -44,14 +44,14 @@ class Contenu_Accueil extends Element_Page {
     *
     */
   protected function afficher_debut() {
-    echo '<div class="container"><div class="row">';
+    echo '<div class="container" style="padding:0px;" ><div class="row" style="padding:0px;">';
   }
   
   protected function afficher_corps() {
-    echo '<div class="col-sm-6">';
+    echo '<div class="col-sm-8" style="padding:0px;" >';
     $this->contenu_gauche->afficher();
     echo '</div>';
-    echo '<div class="col-sm-6">';
+    echo '<div class="col-sm-4">';
     $this->contenu_droite->afficher();
     echo '</div>';
   }

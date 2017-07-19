@@ -55,7 +55,7 @@ class Contenu_Hebergements extends Element_Page {
 }
   
   protected function afficher_fin() {
-    echo '</div>';
+    echo '</div></div>';
   }
 }
 // ========================================================================

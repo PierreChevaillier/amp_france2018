@@ -8,7 +8,7 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 13-juin-2017 pchevaillier@gmail.com
-// revision:
+// revision: 18-juil-2017 pchevaillier@gmail.com video plus grande  
 // ------------------------------------------------------------------------
 // commentaires :
 // - en chantier
@@ -41,11 +41,11 @@ class Cadre_Video extends Element_Page {
     *
     */
   protected function afficher_debut() {
-    echo '<div class="embed-responsive embed-responsive-16by9">';
+    echo '<div class="embed-responsive embed-responsive-16by9" style="margin:0px;">';
   }
   
   protected function afficher_corps() {
-    echo '<iframe class="embed-responsive-item" src="' . $this->chemin_video . '"></iframe>';
+    echo '<iframe class="embed-responsive-item" style="margin:0px; padding:0px;" src="' . $this->chemin_video . '"></iframe>';
   }
   
   protected function afficher_fin() {
