@@ -7,6 +7,7 @@
  Copyright (c) 2017 AMP
  --------------------------------------------------------------------------------
  creation: 22-juin-2017 pchevaillier@gmail.com
+ creation: 29-juil-2017 pchevaillier@gmail.com texte information dynamique
  ================================================================================
 */
 
@@ -39,6 +40,10 @@ a.footer {
 
 /* --- Elements identifies --------------------------------------------------- */
 
+#mentions-legales {
+  color: black;
+}
+
 #menu_nav li a:hover {
   color: white;
 }
@@ -47,6 +52,8 @@ a.footer {
   background-color: rgb(63,177,208);
 }
 
-#mentions-legales {
-  color: black;
+#menuDynamiqueInfo {
+  border: 1px;
+  font-size: 120%;
+  color: rgb(221,52,47);
 }

@@ -39,7 +39,7 @@ class Menu_Principal extends Menu_Navigation {
     echo "<li id=\"index\"><a href=\"index.php\">Accueil</a></li>";
     echo "<li id=\"actualites\"><a href=\"actualites.php\">Actualités</a></li>";
     echo "<li id=\"courses\"><a href=\"courses.php\">Courses</a></li>";
-    echo "<li id=\"transports\"><a href=\"transports.php\">Transports</a></li>";
+    echo "<li id=\"transports\"><a href=\"transports.php\">Accès</a></li>";
     echo "<li id=\"hebergements\"><a href=\"hebergements.php\">Hébergements</a></li>";
     //echo "<li><a href=\"partenaires.php\">Partenaires</a></li>";
     echo "<li id=\"contacts\"><a href=\"contacts.php\">Contacts</a></li>";

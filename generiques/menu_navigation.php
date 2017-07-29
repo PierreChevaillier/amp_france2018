@@ -5,11 +5,12 @@
 // contexte : chamionnat de France d'aviron de Mer organise par l'AMP
 // Copyright : 2017 AMP
 // ------------------------------------------------------------------------
-// creation: 04-juin-2017 pchevaillier@gmail.com
-// revision: 
+// creation: 04-jun-2017 pchevaillier@gmail.com
+// revision: 29-jul-2017 pchevaillier@gmail.com texte affichage dynamique
 // ------------------------------------------------------------------------
 // commentaires : 
 // - en chantier
+// - l'element meuDynamiqueInfo sert a afficher le compte a rebours
 // attention :
 // - 
 // a faire :
@@ -36,8 +37,12 @@ abstract class Menu_Navigation extends Element_Page {
   	echo "<div class=\"navbar-header\">\n<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" 	data-target=\"#menu_nav\" aria-expanded=\"false\">";
    	echo "<span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span><span class=\"sr-only\">Menu</span></button>";
   	/* echo "Menu</button>"; */
-		echo "<a class=\"navbar-brand\" href=\"http://avironplougonvelin.fr\" target=\"_new\">AMP</a>\n</div>";
-	
+		echo "<a class=\"navbar-brand\" href=\"http://avironplougonvelin.fr\" target=\"_new\">AMP</a>\n";
+    
+    // texte modifiable par script
+    echo " <p class=\"navbar-text\" id=\"menuDynamiqueInfo\"></p>";
+    echo "\n</div>\n";
+    
     // la barre de menu
 		echo "<div class=\"collapse navbar-collapse\" id=\"menu_nav\">\n";
   	echo "<ul class=\"nav navbar-nav\" id=\"menu_items\">\n";

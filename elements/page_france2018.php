@@ -1,34 +1,35 @@
 <?php
-// ========================================================================
-// description : definition de la classe Page_Accueil
-//               Page d'accueil du site
-// utilisation : Site web -  inclusion dans page web dynamique
-// teste avec  : PHP 5.5.3 sur Mac OS 10.11 ; PHP 7.0 sur serveur OVH
-// contexte    : Site du Championnat de France d'Aviron de Mer 2018
-// Copyright (c) 2017 AMP
-// ------------------------------------------------------------------------
-// creation: 04-juin-2017 pchevaillier@gmail.com
-// revision: 11-juin-2017 pchevaillier@gmail.com
-// revision: 23-juin-2017 pchevaillier@gmail.com script / controle menu
-// ------------------------------------------------------------------------
-// commentaires :
-// - en chantier
-// - version provisoire du site
-// attention :
-// -
-// a faire :
-// ------------------------------------------------------------------------
+  // ===========================================================================
+  // description : definition de la classe Page_France2018
+  //               Page d'accueil du site
+  // utilisation : Site web -  inclusion dans page web dynamique
+  // teste avec  : PHP 5.5.3 sur Mac OS 10.11 ; PHP 7.0 sur serveur OVH
+  // contexte    : Site du Championnat de France d'Aviron de Mer 2018
+  // Copyright (c) 2017 AMP
+  // ---------------------------------------------------------------------------
+  // creation: 04-juin-2017 pchevaillier@gmail.com
+  // revision: 11-juin-2017 pchevaillier@gmail.com
+  // revision: 23-juin-2017 pchevaillier@gmail.com script / controle menu
+  // revision: 29-juil-2017 pchevaillier@gmail.com script / compte a rebours
+  // ---------------------------------------------------------------------------
+  // commentaires :
+  // - en chantier
+  // - version provisoire du site
+  // attention :
+  // -
+  // a faire :
+  // ---------------------------------------------------------------------------
 
-// --- Classes utilisees
-require_once 'generiques/page.php';
-require_once 'elements/entete_image.php';
-require_once 'elements/menu_principal.php';
-require_once 'elements/bandeau_partenaires.php';
-require_once 'elements/bandeau_reseaux.php';
-require_once 'elements/pied_page.php';
+  // --- Classes utilisees
+  require_once 'generiques/page.php';
+  require_once 'elements/entete_image.php';
+  require_once 'elements/menu_principal.php';
+  require_once 'elements/bandeau_partenaires.php';
+  require_once 'elements/bandeau_reseaux.php';
+  require_once 'elements/pied_page.php';
   
-// ------------------------------------------------------------------------
-// --- Definition de la classe Page_Accueil
+  // ---------------------------------------------------------------------------
+  // --- Definition de la classe Page_France2018
 
 /**
  * @author Pierre Chevaillier
@@ -38,6 +39,7 @@ class Page_France2018 extends Page {
   public function __construct($nom_page) {
     parent::__construct($nom_page);
     $this->javascripts[] = "scripts/menu_controleur.js";
+    $this->javascripts[] = "scripts/compte_rebours.js";
   }
   
   /**
