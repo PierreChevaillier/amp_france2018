@@ -16,7 +16,7 @@
       require_once 'elements/contenu_accueil.php';
       
       // --- Creation dynamique de la page et affichage
-      $page = new Page_France2018("Acceuil");
+      $page = new Page_France2018("Accueil");
       
       $video_promotion = new Cadre_Video("media/videos/teaser_france2018_12mbs.mp4");
       
