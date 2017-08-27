@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------
 // commentaires : 
 // - en chantier
-// - l'element meuDynamiqueInfo sert a afficher le compte a rebours
+// - l'element menuDynamiqueInfo sert a afficher le compte a rebours
 // attention :
 // - 
 // a faire :
