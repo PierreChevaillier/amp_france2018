@@ -30,7 +30,7 @@ require_once 'generiques/element_page.php';
 class Contenu_Actualites extends Element_Page {
 
   private $journal;
-  private $contact;
+  private $contacts;
   
   public function __construct($journal, $contacts) {
     $this->journal = $journal;

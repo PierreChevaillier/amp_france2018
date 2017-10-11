@@ -7,7 +7,7 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 09-juin-2017 pchevaillier@gmail.com
-// revision:
+// revision: 27-aout-2017 pchevaillier@gmail.com, suppression affichage tel
 // ------------------------------------------------------------------------
 // commentaires :
 // - en chantier
@@ -20,7 +20,7 @@
 require_once 'generiques/element_page.php';
 
 // ------------------------------------------------------------------------
-// --- Definition de la classe Page_Accueil
+// --- Definition de la classe Vue_Contacts
 
 /**
  * @author Pierre Chevaillier
@@ -41,10 +41,12 @@ class Vue_Contacts extends Element_Page {
     foreach (Site::adresses() as $adr)
       echo $adr . '<br />';
     echo '</p>';
+    /* decide lors de la réunion du vendredi 25 aout avec Xavier et Fabienne
     echo '<h3>Télephone</h3><p>';
     foreach (Site::telephones() as $tel)
       echo $tel . '<br />';
     echo '</p>';
+     */
     echo '<h3>Courrier électronique</h3><p>';
     echo '<a href="mailto:' . Site::mail_contact() . '">' . Site::mail_contact() . '</a>';
     echo '</p>';
