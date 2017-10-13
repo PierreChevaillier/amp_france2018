@@ -43,6 +43,8 @@
       echo '<a href="' . $lien . '"><img class="media-object" src="' . $source . '" alt="alt"></a></div><div class="media-body">';
       echo '<h4 class="media-heading">' . $this->titre() . '</h4>';
       echo '<p>' . $this->contenu . '</p>';
+      echo '<p><a target="_new" href="' . $this->contenu . '">site internet</a></p>';
+
     }
     
     protected function afficher_fin() {

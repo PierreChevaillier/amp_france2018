@@ -47,7 +47,7 @@ class Page_France2018 extends Page {
    */
   protected function definir_elements() {
     $this->elements_haut[] = new Menu_Principal();
-    $this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
+    //$this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
     
     $this->elements_bas[] = new Bandeau_Partenaires("media/logos");
     

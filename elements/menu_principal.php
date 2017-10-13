@@ -38,16 +38,23 @@ class Menu_Principal extends Menu_Navigation {
   }
   
   protected function afficher_menu_competitions() {
-    echo '<li id="competitions"><a href="courses.php">Compétitions</a></li>';
+    echo '<li id="competitions"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Compétitions<span class="caret"></span></a>';
+    echo '<ul class="dropdown-menu">';
+    echo '<li><a href="courses.php">Programme</a></li>';
+    echo '<li><a href="page_vide.php">Parcours</a></li>';
+    echo '<li><a href="page_vide.php">Résultats</a></li>';
+    echo '<li><a href="page_vide.php">Réglement</a></li>';
+    echo '</ul></li>';
+    
     // Programme ; parcours ; resultats ; reglement
   }
   
   protected function afficher_menu_info_pratiques() {
     echo '<li id="info_pratiques"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Informations pratiques <span class="caret"></span></a>';
     echo '<ul class="dropdown-menu">';
-    echo '<li><a href="hebergements.php">Hébergements</a></li>';
+    echo '<li><a class="disabled" href="hebergements.php">Hébergements</a></li>';
     echo '<li><a href="page_vide.php">Restauration</a></li>';
-    echo '<li><a href="transports.php">Comment venir</a></li>';
+    echo '<li><a href="transports.php">Venir</a></li>';
     echo '<li><a href="page_vide.php">Village</a></li>';
     echo '<li><a href="page_vide.php">Tourisme</a></li>';
     echo '</ul></li>';
