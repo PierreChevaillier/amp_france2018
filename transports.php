@@ -1,9 +1,18 @@
 <!DOCTYPE html>
   <html lang="fr">
     <?php
-      // ======================================================================
-      // creation: 11-oct-2017 pchevaillier@gmail.com
-      // description : page web donnant les informations sur les moyens de transport.
+      // =======================================================================
+      // description : page web avec les moyens de transports pour venir sur
+      //               le lieu de l'evenement
+      // contexte    : Site web du chamionnat de France 2018
+      // Copyright (c) 2017 AMP
+      // ------------------------------------------------------------------------
+      // creation : 11-oct-2017 pchevaillier@gmail.com
+      // revision :
+      // -----------------------------------------------------------------------
+      // commentaires :
+      // attention :
+      // a faire :
       // ======================================================================
       
       // --- Informations relatives au site web

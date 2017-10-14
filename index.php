@@ -1,6 +1,18 @@
 <!DOCTYPE html>
   <html lang="fr">
     <?php
+      // =======================================================================
+      // description : peb d'accueil du site web de l'evenement
+      // contexte    : Site web du chamionnat de France 2018
+      // Copyright (c) 2017 AMP
+      // ------------------------------------------------------------------------
+      // creation :             pchevaillier@gmail.com
+      // revision : 11-oct-2017 pchevaillier@gmail.com
+      // -----------------------------------------------------------------------
+      // commentaires :
+      // attention :
+      // a faire :
+      // ======================================================================
       
       // --- Informations relatives au site web
       require_once 'generiques/site.php';

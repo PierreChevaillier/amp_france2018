@@ -45,9 +45,7 @@ class Menu_Principal extends Menu_Navigation {
     echo '<li><a href="page_vide.php">Résultats</a></li>';
     echo '<li><a href="page_vide.php">Réglement</a></li>';
     echo '</ul></li>';
-    
-    // Programme ; parcours ; resultats ; reglement
-  }
+}
   
   protected function afficher_menu_info_pratiques() {
     echo '<li id="info_pratiques"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Informations pratiques <span class="caret"></span></a>';
@@ -61,7 +59,7 @@ class Menu_Principal extends Menu_Navigation {
   }
   
   protected function afficher_menu_videos() {
-    echo '<li id="videos"><a href="page_vide.php">Vidéos</a></li>';
+    echo '<li id="videos"><a href="videos.php">Vidéos</a></li>';
     // webcam ; teasing ; Plougonvelin ; Courses en direct
   }
   protected function afficher_corps() {
