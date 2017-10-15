@@ -10,13 +10,11 @@
 
       // --- Classe définissant la page a afficher
       require_once 'elements/page_france2018.php';
-      require_once 'elements/contenu_hebergements.php';
+      require_once 'elements/contenu_tourisme.php';
 
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Hébergement");
-      $hebergements = new Contenu_Hebergements();
-      $hebergements->def_titre("Quelques solutions d'hebergement alentour");
-      $page->contenus[] = $hebergements;
+      $page->contenus[] = new Contenu_Tourisme();
       
       $page->initialiser();
       $page->afficher();

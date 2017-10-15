@@ -1,14 +1,15 @@
 /*
- ================================================================================
+ ===============================================================================
  description : feuille de style pour le site du Championnat de France 2018
  utilisation :
  teste avec  : Mac OS 10.11 - Firefox, Safari
  contexte    : Site du Championnat de France d'Aviron de Mer 2018
  Copyright (c) 2017 AMP
- --------------------------------------------------------------------------------
- creation: 22-juin-2017 pchevaillier@gmail.com
- creation: 29-juil-2017 pchevaillier@gmail.com texte information dynamique
- ================================================================================
+ -------------------------------------------------------------------------------
+ creation: 22-jun-2017 pchevaillier@gmail.com
+ revision: 29-jul-2017 pchevaillier@gmail.com texte information dynamique
+ revision: 15-oct-2017 pchevaillier@gmail.com entete de table
+ ===============================================================================
 */
 
 h1, h2, h3, h4 {
@@ -17,7 +18,7 @@ h1, h2, h3, h4 {
       
 th {
 	color: white;
-  background-color: rgb(242,203,0);
+  background-color: rgb(63,177,208); /*rgb(242,203,0); */
   }
 
 nav.navbar {
@@ -38,7 +39,7 @@ a.footer {
   color: rgb(192, 192, 192);
 }
 
-/* --- Elements identifies --------------------------------------------------- */
+/* --- Elements identifies -------------------------------------------------- */
 
 #mentions-legales {
   color: black;

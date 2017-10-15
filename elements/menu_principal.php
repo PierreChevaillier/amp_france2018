@@ -50,11 +50,11 @@ class Menu_Principal extends Menu_Navigation {
   protected function afficher_menu_info_pratiques() {
     echo '<li id="info_pratiques"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Informations pratiques <span class="caret"></span></a>';
     echo '<ul class="dropdown-menu">';
-    echo '<li><a class="disabled" href="hebergements.php">Hébergements</a></li>';
+    echo '<li><a href="hebergements.php">Hébergements</a></li>';
     echo '<li><a href="page_vide.php">Restauration</a></li>';
     echo '<li><a href="transports.php">Venir</a></li>';
     echo '<li><a href="page_vide.php">Village</a></li>';
-    echo '<li><a href="page_vide.php">Tourisme</a></li>';
+    echo '<li><a href="tourisme.php">Tourisme</a></li>';
     echo '</ul></li>';
   }
   
