@@ -9,6 +9,7 @@
  creation: 22-jun-2017 pchevaillier@gmail.com
  revision: 29-jul-2017 pchevaillier@gmail.com texte information dynamique
  revision: 15-oct-2017 pchevaillier@gmail.com entete de table
+ revision: 18-oct-2017 pchevaillier@gmail.com div header
  ===============================================================================
 */
 
@@ -23,6 +24,8 @@ th {
 
 nav.navbar {
   background-color: rgb(242,203,0);
+  padding: 0px;
+  border: 0px;
 }
 
 p.lead {
@@ -37,6 +40,11 @@ footer {
 
 a.footer {
   color: rgb(192, 192, 192);
+}
+
+div.header {
+  background-color: rgb(242,203,0);
+  padding: 0px;
 }
 
 /* --- Elements identifies -------------------------------------------------- */
@@ -54,7 +62,7 @@ a.footer {
 }
 
 #menuDynamiqueInfo {
-  border: 1px;
+  border: 2px;
   font-size: 120%;
   color: rgb(221,52,47);
 }

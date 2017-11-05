@@ -26,6 +26,7 @@
   require_once 'elements/menu_principal.php';
   require_once 'elements/bandeau_partenaires.php';
   require_once 'elements/bandeau_reseaux.php';
+  require_once 'elements/bandeau_entete.php';
   require_once 'elements/pied_page.php';
   
   // ---------------------------------------------------------------------------
@@ -46,6 +47,7 @@ class Page_France2018 extends Page {
    * Definit les elments de la page
    */
   protected function definir_elements() {
+    $this->elements_haut[] = new Bandeau_Entete();
     $this->elements_haut[] = new Menu_Principal();
     //$this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
     

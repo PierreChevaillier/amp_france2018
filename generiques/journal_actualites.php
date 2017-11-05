@@ -1,6 +1,6 @@
 <?php
 // ========================================================================
-// description : definition de la classe Journal_Actialites
+// description : definition de la classe Journal_Actualites
 //               affichage des actualites en tant que contenu d'une page web
 // utilisation : destine a etre affiche sur la page d'accueil
 // teste avec  : PHP 5.5.3 sur Mac OS 10.11

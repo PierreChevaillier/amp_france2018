@@ -2,7 +2,7 @@
 // description : Compte  a rebours
 // utilisation : destine a etre affiche en haut de chaque page du site web
 // teste avec  : Mac OS 10.11
-// contexte    : Site web du chamionnat de France 2018
+// contexte    : Site web du championnat de France 2018
 // Copyright (c) 2017 AMP
 // ----------------------------------------------------------------------------
 // creation: 29-jul-2017 pchevaillier@gmail.com
@@ -35,8 +35,8 @@ var x = setInterval(function() {
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     
                     // Display the result in the element with id="demo"
-                    document.getElementById("menuDynamiqueInfo").innerHTML = days + "j " + hours + "h "
-                    + minutes + "m " + seconds + "s ";
+                    document.getElementById("menuDynamiqueInfo").innerHTML = days + " jours " + hours + " heures "
+                    + minutes + " minutes "; // + seconds + "s ";
                     
                     // If the count down is finished, write some text
                     if (distance < 0) {

@@ -42,7 +42,7 @@ abstract class Menu_Navigation extends Element_Page {
 		echo "<a class=\"navbar-brand\" href=\"http://avironplougonvelin.fr\" target=\"_new\">AMP</a>\n";
     
     // texte modifiable par script
-    echo " <p class=\"navbar-text\" id=\"menuDynamiqueInfo\"></p>";
+    //echo " <p class=\"navbar-text\" id=\"menuDynamiqueInfo\"></p>";
     echo "\n</div>\n";
     
     // la barre de menu
