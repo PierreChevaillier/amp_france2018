@@ -7,7 +7,7 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation : 13-juin-2017 pchevaillier@gmail.com
-// revision :
+// revision : 06-nov-2017  pchevaillier@gmail.com lien media
 // ------------------------------------------------------------------------
 // commentaires :
 // attention :
@@ -24,15 +24,10 @@
     private $titre = "";
     public function titre() { return $this->titre; }
 
-    
     public $date = "";
-  
     public $contenu = "";
-  
-    public $nom_fichier_images = "";
+    public $lien_media = "#";
     public $nom_fichier_vignette = "";
-    
-    public $lien_media = "";
     
     public $categorie;
     

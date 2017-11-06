@@ -7,11 +7,10 @@
 // contexte    : Site du Championnat de France d'Aviron de Mer 2018
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
-// creation: 13-juin-2017 pchevaillier@gmail.com
-// revision:
+// creation: 13-jun-2017 pchevaillier@gmail.com
+// revision: 06-nov-2017 pchevaillier@gmail.com lien media
 // ------------------------------------------------------------------------
 // commentaires :
-// - en chantier
 // attention :
 // -
 // a faire :
@@ -57,8 +56,7 @@ class Journal_Actualites extends Element_Page {
   
   private function afficher_item($actu) {
     $source = $this->chemin_photos . '/' . $actu->nom_fichier_vignette;
-    $lien = "#";
-    echo '<li class="media"><div class="media-left"><a href="' . $lien . '"><img class="media-object" src="' . $source . '" alt="alt"></a></div><div class="media-body">';
+    echo '<li class="media"><div class="media-left"><a href="' . $actu->lien_media . '"><img class="media-object" src="' . $source . '" alt="alt"></a></div><div class="media-body">';
     echo '<h4 class="media-heading">' . $actu->titre() . '<small> - ' . $actu->date . '</small></h4>';
     echo '<p>' . $actu->contenu . '</p></div></li>';
   }
