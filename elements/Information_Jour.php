@@ -9,13 +9,11 @@
   // ---------------------------------------------------------------------------
   // creation: 18-nov-2017 pchevaillier@gmail.com
   // revision: 22-nov-2017 pchevaillier@gmail.com
-  // revision: 28-nov-2017 pchevaillier@gmail.com---------------------------------------------------------------------------
+  // revision: 28-nov-2017 pchevaillier@gmail.com responsive /tablette
   // commentaires :
-  // -
-  // attention :
-  // -
-  // a faire : responsive pour tablette
   // https://openclassrooms.com/courses/prenez-en-main-bootstrap/un-peu-de-pratique-15
+  // attention :
+  // a faire :
   // ---------------------------------------------------------------------------
 
   // --- Classes utilisees

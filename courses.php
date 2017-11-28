@@ -7,9 +7,10 @@
       // Copyright (c) 2017 AMP
       // -----------------------------------------------------------------------
       // creation : 12-nov-2017 pchevaillier@gmail.com
-      // revision : 22-nov-2017 pchevaillier@gmail.com, cadre / programme journalier
+      // revision : 22-nov-2017 pchevaillier@gmail.com cadre / programme journalier
+      // revision : 28-nov-2017 pchevaillier@gmail.com infos sur programme
       // -----------------------------------------------------------------------
-      // commentaires : pour faire des tests
+      // commentaires :
       // attention :
       // a faire :
       // ======================================================================
@@ -20,7 +21,6 @@
       $s = new Site("Championnat France 2018");
       $s->initialiser();
 
-      
       require_once 'temps/calendrier.php';
       require_once 'temps/maree.php';
       
