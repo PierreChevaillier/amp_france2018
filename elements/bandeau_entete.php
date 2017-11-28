@@ -8,7 +8,7 @@
   // Copyright (c) 2017 AMP
   // ---------------------------------------------------------------------------
   // creation: 18-oct-2017 pchevaillier@gmail.com
-  // revision:
+  // revision: 07-nov-2017 pchevaillier@gmail.com corps du bandeau
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -35,7 +35,7 @@
     }
   
     protected function afficher_corps() {
-      echo 'Dans <span id="menuDynamiqueInfo"></span>';
+      echo '<span id="menuDynamiqueInfo"></span>';
     }
   
     protected function afficher_fin() {

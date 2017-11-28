@@ -10,17 +10,42 @@
  revision: 29-jul-2017 pchevaillier@gmail.com texte information dynamique
  revision: 15-oct-2017 pchevaillier@gmail.com entete de table
  revision: 18-oct-2017 pchevaillier@gmail.com div header
+ revision: 23-nov-2017 pchevaillier@gmail.com utilisaiton variables / couleurs
+ -------------------------------------------------------------------------------
+ Palette :
+  couleur 0 :  rgb(16,32,80) rgb(0,32,156) bleu soutenu (couleur 1 club)
+  couleur 1 : rgb(183,30,44) rouge fonce
+  couleur 2 : rgb(63,177,208) bleu clair
+  couleur 3 : rgb(242,203,0) jaune
+  couleur 4 : rgb(248,138,34) orange
+  couleur 5 : rgb(221,52,47) rouge vif
  ===============================================================================
 */
 
+:root {
+  --main-bg-color: white;
+  
+  --coul-fond-accen: white;
+  --coul-text-accen: rgb(16,32,80);       /* bleu clair */
+  
+  --coul-fond-accen-inv: rgb(16,32,80);
+  --coul-text-accen-inv: white;
+  
+  --coul-fond-atten-inv: rgb(183, 30, 44);   /* rouge fonce */
+  --coul-text-atten-inv: rgb(192, 192, 192); /* gris */
+  
+  
+}
+
 h1, h2, h3, h4 {
-	color: rgb(63,177,208);
+  background-color: var(--coul-fond-accen);
+  color: var(--coul-text-accen);
 }
       
 th {
-	color: white;
-  background-color: rgb(63,177,208); /*rgb(242,203,0); */
-  }
+  background-color: var(--coul-fond-accen-inv);
+  color: var(--coul-text-accen-inv);
+}
 
 nav.navbar {
   background-color: rgb(242,203,0);
@@ -33,19 +58,108 @@ p.lead {
 }
 
 footer {
-  color: white; /* rgb(192, 192, 192); */
-  background-color: rgb(183, 30, 44);
+  background-color: var(--coul-fond-atten-inv);
   padding: 0px;
 }
 
 a.footer {
-  color: rgb(192, 192, 192);
+  color: var(--coul-text-atten-inv);
 }
 
 div.header {
   background-color: rgb(242,203,0);
-  padding: 0px;
+  padding: 10px;
+  min-height: 40px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
 }
+/* --- Dates  -------------------------------------------------------------- */
+
+div.jour-mois {
+  margin: 0px;
+  color: white;
+  background-color: rgb(16,32,80);
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  font-size: 400%;
+  min-height: 70px;
+
+}
+
+div.jour-sem {
+  margin: 0px;
+  color: rgb(242,203,0);
+  background-color: rgb(16,32,80);
+  padding-top: 0px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 120%;
+  min-height: 40px;
+
+}
+
+div.titre-prog-jour {
+  margin: 0px;
+  color: rgb(16,32,80);
+  background-color: rgb(220,220,220);
+  padding: 40px;
+  text-align: left;
+  font-size: 200%;
+  min-height: 130px;
+}
+
+/* --- Maree  -------------------------------------------------------------- */
+
+div.maree_haute {
+  text-align: center;
+  color: rgb(221,52,47); /* rouge vif */
+}
+
+div.maree_basse {
+  text-align:center;
+  color: rgb(248,138,34); /* orange */
+
+}
+
+div.cadre_coef_maree {
+  min-height: 60px;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+}
+
+div.coef_maree {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: var(--coul-text-accen-inv);
+  background-color: var(--coul-fond-accen-inv); /* #2a86c6; */
+  text-align:center;
+}
+
+div.marnage_maree {
+  color: var(--coul-text-accen);
+  min-height: 60px;
+  text-align:center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+}
+
 
 /* --- Elements identifies -------------------------------------------------- */
 
@@ -62,7 +176,6 @@ div.header {
 }
 
 #menuDynamiqueInfo {
-  border: 2px;
   font-size: 120%;
   color: rgb(221,52,47);
 }
