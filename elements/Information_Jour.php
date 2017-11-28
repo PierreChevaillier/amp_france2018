@@ -9,7 +9,7 @@
   // ---------------------------------------------------------------------------
   // creation: 18-nov-2017 pchevaillier@gmail.com
   // revision: 22-nov-2017 pchevaillier@gmail.com
-  // ---------------------------------------------------------------------------
+  // revision: 28-nov-2017 pchevaillier@gmail.com---------------------------------------------------------------------------
   // commentaires :
   // -
   // attention :
@@ -51,11 +51,11 @@
     }
   
     protected function afficher_corps() {
-      echo '<div class="col-sm-1 col-md-1" style="padding:0px;" >';
+      echo '<div class="col-sm-2 col-md-1" style="padding:0px;" >';
       $this->afficher_jour();
-      echo '</div><div class="col-sm-6 col-md-7" style="padding:0px;" >';
+      echo '</div><div class="col-sm-10 col-md-7" style="padding:0px;" >';
       $this->contenu_principal->afficher();
-      echo '</div><div class="col-sm-5 col-md-4">';
+      echo '</div><div class="col-sm-12 col-md-4">';
       $this->contenu_annexe->afficher();
       echo '</div>';
     }
@@ -86,7 +86,6 @@
 
     protected function afficher_debut() {
       echo "\n";
-//      echo '<div class="panel panel-default "style="padding:0px;"><div class="panel-body" style="padding:0px;">';
      }
     
     protected function afficher_corps() {

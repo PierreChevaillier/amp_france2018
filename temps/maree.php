@@ -7,12 +7,10 @@
   // Copyright (c) 2017 AMP
   // ---------------------------------------------------------------------------
   // creation: 11-nov-2017 pchevaillier@gmail.com
-  // revision:
+  // revision: 28-nov-2017 pchevaillier@gmail.com 
   // ---------------------------------------------------------------------------
   // commentaires :
-  // -
   // attention :
-  // -
   // a faire :
   // ===========================================================================
   
@@ -154,7 +152,7 @@
     private function afficher_marnages() {
       echo '<div style="height:120px; float:left; ">';
       foreach ($this->marees->marees() as $maree)
-        echo '<div class="marnage_maree hidden-sm" style="width:60px;">' . $maree->marnage() . ' m</div>';
+        echo '<div class="marnage_maree" style="width:60px;">' . $maree->marnage() . ' m</div>';
       echo '</div>';
     }
     

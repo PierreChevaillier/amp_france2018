@@ -73,7 +73,7 @@
       $programme_detaille = new Cadre_Texte($texte);
 
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
-      $programme->def_titre("Accueil des équipage - Entrainements");
+      $programme->def_titre("Accueil - Entrainements");
       
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
