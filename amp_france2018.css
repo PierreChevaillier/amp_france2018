@@ -1,8 +1,8 @@
 /*
  ===============================================================================
- description : feuille de style pour le site du Championnat de France 2018
- utilisation :
- teste avec  : Mac OS 10.11 - Firefox, Safari
+ description : feuille de style pour le site web
+ utilisation : pages web
+ teste avec  : Mac OS 10.11 - Firefox, Safari - Internet Explorere
  contexte    : Site du Championnat de France d'Aviron de Mer 2018
  Copyright (c) 2017 AMP
  -------------------------------------------------------------------------------
@@ -10,15 +10,19 @@
  revision: 29-jul-2017 pchevaillier@gmail.com texte information dynamique
  revision: 15-oct-2017 pchevaillier@gmail.com entete de table
  revision: 18-oct-2017 pchevaillier@gmail.com div header
- revision: 23-nov-2017 pchevaillier@gmail.com utilisaiton variables / couleurs
+ revision: 23-nov-2017 pchevaillier@gmail.com utilisation variables / couleurs
+ revision: 29-nov-2017 pchevaillier@gmail.com apres test avec IE : suppression variables
  -------------------------------------------------------------------------------
  Palette :
-  couleur 0 :  rgb(16,32,80) rgb(0,32,156) bleu soutenu (couleur 1 club)
+  couleur 0 : rgb(16,32,80) rgb(0,32,156) bleu soutenu (couleur 1 club)
   couleur 1 : rgb(183,30,44) rouge fonce
   couleur 2 : rgb(63,177,208) bleu clair
   couleur 3 : rgb(242,203,0) jaune
   couleur 4 : rgb(248,138,34) orange
   couleur 5 : rgb(221,52,47) rouge vif
+ attention :
+   - Internet Explorer ne reconnait pas l'utilisation des variables CSS
+     cf. https://developer.mozilla.org/fr/docs/Web/CSS/Les_variables_CSS
  ===============================================================================
 */
 
@@ -26,25 +30,24 @@
   --main-bg-color: white;
   
   --coul-fond-accen: white;
-  --coul-text-accen: rgb(16,32,80);       /* bleu clair */
+  --coul-text-accen: rgb(16,32,80);
   
   --coul-fond-accen-inv: rgb(16,32,80);
   --coul-text-accen-inv: white;
   
-  --coul-fond-atten-inv: rgb(183, 30, 44);   /* rouge fonce */
+  --coul-fond-atten-inv: rgb(183, 30, 44);
   --coul-text-atten-inv: rgb(192, 192, 192); /* gris */
-  
-  
+
 }
 
 h1, h2, h3, h4 {
-  background-color: var(--coul-fond-accen);
-  color: var(--coul-text-accen);
+  background-color: white; /* var(--coul-fond-accen); */
+  color: rgb(16,32,80); /* var(--coul-text-accen); */
 }
       
 th {
-  background-color: var(--coul-fond-accen-inv);
-  color: var(--coul-text-accen-inv);
+  background-color: rgb(16,32,80); /*var(--coul-fond-accen-inv); */
+  color: white;  /*var(--coul-text-accen-inv); */
 }
 
 nav.navbar {
@@ -58,25 +61,27 @@ p.lead {
 }
 
 footer {
-  background-color: var(--coul-fond-atten-inv);
+  background-color: rgb(183, 30, 44);  /*var(--coul-fond-atten-inv); */
   padding: 0px;
 }
 
 a.footer {
-  color: var(--coul-text-atten-inv);
+  color: rgb(192, 192, 192);  /* var(--coul-text-atten-inv); */
 }
 
 div.header {
   background-color: rgb(242,203,0);
   padding: 10px;
   min-height: 40px;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-align-content: center;
   align-content: center;
-}
+/*
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -webkit-align-content: center;
+ */
+  }
 /* --- Dates  -------------------------------------------------------------- */
 
 div.jour-mois {
@@ -130,26 +135,25 @@ div.maree_basse {
 
 div.cadre_coef_maree {
   min-height: 60px;
-  text-align: center;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-align-content: center;
   align-content: center;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -webkit-align-content: center;
 }
 
 div.coef_maree {
   width: 30px;
   height: 30px;
   line-height: 30px;
-  color: var(--coul-text-accen-inv);
-  background-color: var(--coul-fond-accen-inv); /* #2a86c6; */
+  color: white;
+  background-color: rgb(16,32,80);
   text-align:center;
 }
 
 div.marnage_maree {
-  color: var(--coul-text-accen);
+  color: rgb(16,32,80); /* var(--coul-text-accen); */
   min-height: 60px;
   text-align:center;
   display: -webkit-flex;

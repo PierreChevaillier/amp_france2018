@@ -27,6 +27,7 @@ abstract class Element {
   private $titre = "";
   public function titre() { return $this->titre; }
   public function def_titre($titre) { $this->titre = $titre; }
+  public function a_un_titre() { return strlen($this->titre) > 0; }
   
   /**
     *

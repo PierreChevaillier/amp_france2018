@@ -29,7 +29,7 @@
       // --- Classe définissant la page a afficher
       require_once 'elements/page_france2018.php';
       require_once 'generiques/cadre_texte.php';
-      require_once 'elements/Information_jour.php';
+      require_once 'elements/information_jour.php';
       
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Les Courses");
@@ -44,7 +44,7 @@
       $t = $cal->date_texte($jour);
       $h = $cal->heures_minutes_texte($heure);
       */
-      $texte = "<p class=\"lead\">Il s'agit d'un programme prévisionnel donné à titre indicatif. Le programme de chaque journée est susceptible d'évoluer.</p>";
+      $texte = "\n<div class=\"panel panel-warning\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\">Attention </div><div class=\"panel-body\"><p class=\"lead\">Il s'agit d'un programme prévisionnel donné à titre indicatif. Le programme de chaque journée est susceptible d'évoluer.</p></div></div>\n";
 
       $entete = new Cadre_Texte($texte);
       //$entete->def_titre("Programme de la compétition");
@@ -153,7 +153,7 @@
       
       $table_marees = new Table_Marees_jour($marees_jour);
       
-      $texte = '<p>En cas de report dû à la météo, les finales auront lieu le dimanche matin</p><ul class="list-group"><li class="list-group-item">Course Open Longue Distance</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié</li></ul>';
+      $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item">Course Open Longue Distance</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié</li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
