@@ -136,8 +136,9 @@ div.maree_basse {
 div.cadre_coef_maree {
   min-height: 60px;
   display: flex;
-  flex-wrap: wrap;
   align-content: center;
+  flex-wrap: wrap;
+  /* webkit pour compatibilite autres navigateurs, mais ca ne marche pas */
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
   -webkit-align-content: center;
@@ -153,15 +154,17 @@ div.coef_maree {
 }
 
 div.marnage_maree {
+  text-align:center;
   color: rgb(16,32,80); /* var(--coul-text-accen); */
   min-height: 60px;
-  text-align:center;
-  display: -webkit-flex;
+  
   display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-align-content: center;
   align-content: center;
+  flex-wrap: wrap;
+  /* webkit pour compatibilite autres navigateurs, mais ca ne marche pas */
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -webkit-align-content: center;
 }
 
 

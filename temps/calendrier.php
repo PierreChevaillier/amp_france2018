@@ -99,6 +99,13 @@
       return $this->heure($this->aujourdhui(), date("H"), date("i"), date("s"));
     }
     
+    public function lendemain($jour) {
+      $j = $jour->date();
+      $l = mktime(0, 0, 0, date("n", $j), date("d", $j) + 1, date("Y", $j));
+      $resultat = new Instant($l);
+      return $resultat;
+    }
+
     public function heures_minutes_texte($instant) {
       $h = date("H", $instant->date());
       $m = date("i", $instant->date());
