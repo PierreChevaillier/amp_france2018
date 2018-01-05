@@ -9,11 +9,14 @@
       // ------------------------------------------------------------------------
       // creation : 11-oct-2017 pchevaillier@gmail.com
       // revision : 06-nov-2017 pchevaillier@gmail.com actu du 2 nov.
+      // revision : 05-jan-2018 pchevaillier@gmail.com include_path
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
       // a faire :
       // ======================================================================
+      
+      set_include_path('./');
       
       // --- Informations relatives au site web
       require_once 'generiques/site.php';

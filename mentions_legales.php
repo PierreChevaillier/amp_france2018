@@ -14,6 +14,8 @@
     // a faire :
     // ======================================================================
     
+    set_include_path('./');
+    
     // --- Informations relatives au site web
     require_once 'generiques/site.php';
 

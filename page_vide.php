@@ -6,6 +6,8 @@
       // commentaires : pour les tests
       // ======================================================================
       
+      set_include_path('./');
+      
       // --- Informations relatives au site web
       require_once 'generiques/site.php';
       require_once 'generiques/cadre_texte.php';

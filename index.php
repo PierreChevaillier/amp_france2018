@@ -4,18 +4,21 @@
       // =======================================================================
       // description : page d'accueil du site web de l'evenement
       // utilisation : serveur web - php
-      // teste avec  : PHP 5.5.3 sur Mac OS 10.11 (et sur serveur ovh : php 7.0)
+      // teste avec  : PHP 5.5.3 sur Mac OS 10.11 (et sur serveur OVJ : PHP 7.0)
       // contexte    : Championnat de France d'Aviron de Mer 2018
-      // Copyright (c) 2017 AMP
+      // Copyright (c) 2017-2018 AMP
       // ------------------------------------------------------------------------
       // creation :             pchevaillier@gmail.com
       // revision : 11-oct-2017 pchevaillier@gmail.com
       // revision : 07-nov-2017 pchevaillier@gmail.com disposition, indirecton teaser
+      // revision : 05-jan-2018 pchevaillier@gmail.com include_path
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
       // a faire :
       // =======================================================================
+      
+      set_include_path('./');
       
       // --- Informations relatives au site web
       require_once 'generiques/site.php';

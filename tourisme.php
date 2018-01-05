@@ -1,6 +1,7 @@
 <!DOCTYPE html>
   <html lang="fr">
     <?php
+      set_include_path('./');
       
       // --- Informations relatives au site web
       require_once 'generiques/site.php';

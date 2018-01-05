@@ -13,6 +13,7 @@
     // attention :
     // a faire :
     // =========================================================================
+    set_include_path('./');
     
     echo "<head>\n      <meta charset=\"utf-8\" />
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />

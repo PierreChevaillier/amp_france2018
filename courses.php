@@ -2,31 +2,36 @@
   <html lang="fr">
     <?php
       // =======================================================================
-      // description : page web le programme des courses
+      // description : page web donnant le programme des courses
       // contexte    : Site web du championnat de France 2018
-      // Copyright (c) 2017 AMP
+      // Copyright (c) 2017-2018 AMP
       // -----------------------------------------------------------------------
       // creation : 12-nov-2017 pchevaillier@gmail.com
-      // revision : 22-nov-2017 pchevaillier@gmail.com cadre / programme journalier
-      // revision : 28-nov-2017 pchevaillier@gmail.com infos sur programme
+      // revision : 22-nov-2017 pchevaillier@gmail.com cadre programme journalier
+      // revision : 28-nov-2017 pchevaillier@gmail.com infos sur le programme
+      // revision : 05-jan-2018 pchevaillier@gmail.com path, nvelle version marees
       // -----------------------------------------------------------------------
       // commentaires :
+      // - en construction : toutes les informations ne sont pas connues
       // attention :
       // a faire :
-      // ======================================================================
+      // =======================================================================
      
+      set_include_path('./');
+      
       // --- Informations relatives au site web
       require_once 'generiques/site.php';
       
       $s = new Site("Championnat France 2018");
       $s->initialiser();
 
+      // --- Le temps des marins
       require_once 'temps/calendrier.php';
       require_once 'temps/maree.php';
       
       $cal = Calendrier::obtenir();
 
-      // --- Classe définissant la page a afficher
+      // --- Classe definissant les elements a afficher
       require_once 'elements/page_france2018.php';
       require_once 'generiques/cadre_texte.php';
       require_once 'elements/information_jour.php';
@@ -34,28 +39,23 @@
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Les Courses");
 
-      // --------------------------------------------------------------------------
+      // -----------------------------------------------------------------------
       // Entete du programme
       
-      /*
-      $jour = $cal->aujourdhui();
-      $heure = $cal->maintenant();
-      
-      $t = $cal->date_texte($jour);
-      $h = $cal->heures_minutes_texte($heure);
-      */
       $texte = "\n<div class=\"panel panel-warning\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\">Attention </div><div class=\"panel-body\"><p class=\"lead\">Il s'agit d'un programme prévisionnel donné à titre indicatif. Le programme de chaque journée est susceptible d'évoluer.</p></div></div>\n";
 
       $entete = new Cadre_Texte($texte);
       //$entete->def_titre("Programme de la compétition");
       
       $page->contenus[] = $entete;
- 
+
+      $lieu = '1'; // Trez Hir (pour les marees)
+
       // --------------------------------------------------------------------------
       // -- Programmme par jour
       
       $jour = $cal->jour(24, 5, 2018); // jeudi
-      $marees_jour = new Marees_Jour($jour);
+      $marees_jour = new Marees_Jour($lieu, $jour);
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 1, 21, 0), 5.5),
                      new Point_Maree('BM', $cal->heure($jour, 7, 42, 0), 2.0));
@@ -82,7 +82,7 @@
       
       // ----------------------------------------------------------------------
       $jour = $cal->jour(25, 5, 2018); // vendredi
-      $marees_jour = new Marees_Jour($jour);
+      $marees_jour = new Marees_Jour($lieu, $jour);
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 2, 29, 0), 5.65),
                      new Point_Maree('BM', $cal->heure($jour, 8, 46, 0), 1.85));
@@ -110,7 +110,7 @@
       
       // ----------------------------------------------------------------------
       $jour = $cal->jour(26, 5, 2018); // samedi
-      $marees_jour = new Marees_Jour($jour);
+      $marees_jour = new Marees_Jour($lieu, $jour);
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 3, 26, 0), 5.85),
                      new Point_Maree('BM', $cal->heure($jour, 9, 41, 0), 1.65));
@@ -137,9 +137,9 @@
       $page->contenus[] = $info_jour;
       
       
-      // ----------------------------------------------------------------------
+      // -----------------------------------------------------------------------
       $jour = $cal->jour(27, 5, 2018); // dimanche
-      $marees_jour = new Marees_Jour($jour);
+      $marees_jour = new Marees_Jour($lieu, $jour);
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 4, 15, 0), 6.0),
                      new Point_Maree('BM', $cal->heure($jour, 10, 29, 0), 1.5));
@@ -166,6 +166,6 @@
       
       $page->initialiser();
       $page->afficher();
-      // ======================================================================
+      // =======================================================================
     ?>
   </html>

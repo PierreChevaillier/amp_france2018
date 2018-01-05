@@ -75,10 +75,12 @@
   
   // ---------------------------------------------------------------------------
   class Marees_Jour {
+    private $lieu = '';
     private $jour = null;
     private $marees = array();
     
-    public function __construct($jour) {
+    public function __construct($lieu, $jour) {
+      $this->lieu = $lieu;
       $this->jour = $jour;
     }
     
@@ -175,86 +177,61 @@
       echo '</div>';
     }
   }
-  
-  class Vue_Test_Marees extends Element {
-    $lieu; // Le Trez Hir
-    $jour;
     
-    $donnees_reference;
-    $donnees_base; // celles de la base de donnees
-    
-    public function initialiser() {
-      $cal = Calendrier::obtenir();
-      $this->lieu = '1'; // Trez Hir dans la table
-      $this->jour = $cal->jour(24, 5, 2018); // jeudi
-      $this->def_resultat();
-    }
-    
-    
-    public function afficher_debut() {
-      echo '<div>';
-    }
-    
-    public function afficher_corps() {
-      echo '<p>Tests marees</p>';
-    }
-    
-    public function afficher_fin() {
-      echo '</div>';
-    }
-    
-    private function def_resultat() {
-      $marees_jour = new Marees_Jour($this->jour);
-      
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 1, 21, 0), 5.5),
-                     new Point_Maree('BM', $cal->heure($jour, 7, 42, 0), 2.0));
-      $m->def_coefficient(57);
-      $marees_jour->ajouter_dans_marees($m);
-      
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 14, 01, 0), 5.45),
-                     new Point_Maree('BM', $cal->heure($jour, 20, 14, 0), 2.10));
-      $m->def_coefficient(59);
-      $marees_jour->ajouter_dans_marees($m);
-      
-      $table_marees = new Table_Marees_jour($marees_jour);
-    }
-  }
-  
   // ===========================================================================
   // Enregistrement des informations sur les marees
   
   class Enregistrement_Maree {
     
-    static public function recherche_marees_jour($base_donnees, $jour, $lieu) {
+    static function source() {
+      return Base_Donnees::$prefix_table . 'heures_marees';
+    }
+    
+    static public function recherche_marees_jour($lieu, $jour) {
       $bdd = Base_Donnees::accede();
       $cal = Calendrier::obtenir();
       
       $horaires = array();
       $coefficients = array();
-      self::recherche_horaires($bdd,
+      $n = self::recherche_horaires($bdd,
+                               $lieu,
                                $jour->date(),
                                $cal->lendemain($jour)->date(),
                                $horaires,
                                $coefficients);
-      $table = new Table_Marees_Jour();
-      
-      return $table;
+      $marees = null;
+      if ($n > 0) {
+        $marees = new Marees_Jour($lieu, $jour);
+        $i = 0;
+        $j = 0;
+        while ($i < $n-1) {
+          $m = new Maree($horaires[$i],$horaires[$i+1]);
+          $m->def_coefficient($coefficients[$j]);
+          $marees->ajouter_dans_marees($m);
+          $i += 2;
+          $j++;
+        }
+      }
+      return $marees;
     }
     
-    static public function recherche_horaires($base_donnees, $debut, $fin, & $horaires, & $coefficients) {
-      $requete = "SELECT date, etat, heure, hauteur, coefficient FROM heures_marees  WHERE heure BETWEEN '" . $debut . "' AND '" . $fin . "' ORDER BY heure";
+    static public function recherche_horaires($base_donnees,
+                                              $lieu,
+                                              $debut,
+                                              $fin,
+                                              & $horaires,
+                                              & $coefficients) {
+      $requete = "SELECT etat, heure, hauteur, coefficient FROM " . self::source() . " WHERE code_lieu = '" . $lieu . "' AND heure BETWEEN '" . $debut . "' AND '" . $fin . "' ORDER BY heure";
       //echo $requete;
       try {
         $resultat = $base_donnees->query($requete);
         while ($donnee = $resultat->fetch()) {
-          $h = new Point_Maree();
-          $horaires[] = $h;
-          $h->point = $donnee['etat'];
-          $h->instant = $donnee['heure'];
-          $h->hauteur = $donnee['hauteur'];
+          $h = new Instant($donnee['heure']);
+          $m = new Point_Maree($donnee['etat'], $h, $donnee['hauteur']);
+          $horaires[] = $m;
           //          $h->date_clair = $donnee['date'];
-          if ($h->point == "PM") {
-            $coefficients[$h] = $donnee['coefficient'];
+          if ($donnee['etat'] == "PM") {
+            $coefficients[] = $donnee['coefficient'];
           }
         }
       } catch (PDOexception $e) {
