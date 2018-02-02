@@ -9,6 +9,8 @@
 // Copyright (c) 2017 AMP
 // ------------------------------------------------------------------------
 // creation: 13-juin-2017 pchevaillier@gmail.com
+  // revision: 13-jan-2018 pchevaillier@gmail.com actualites dans base donnees
+
 // revision:
 // ------------------------------------------------------------------------
 // commentaires :
@@ -20,7 +22,8 @@
 
 // --- Classes utilisees
 require_once 'generiques/element_page.php';
-
+require_once 'generiques/journal_actualites.php';
+  
 // ------------------------------------------------------------------------
 // --- Definition de la classe
 
@@ -38,6 +41,7 @@ class Contenu_Actualites extends Element_Page {
   }
   
   public function initialiser() {
+    $this->journal->initialiser();
   }
   
   /**
@@ -60,4 +64,5 @@ class Contenu_Actualites extends Element_Page {
     echo '</div></div>';
   }
 }
-// ========================================================================
+  // ========================================================================
+  ?>

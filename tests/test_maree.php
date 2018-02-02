@@ -7,7 +7,7 @@
   // Copyright (c) 2017-2018 AMP. All rights reserved.
   // ---------------------------------------------------------------------------
   // creation: 04-jan-2018 pchevaillier@gmail.com
-  // revision:
+  // revision: 08-jan-2018 pchevaillier@gmail.com test duree
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -23,6 +23,7 @@
   class Vue_Test_Maree extends Element {
     private $lieu = '';
     private $jour = null;
+    private $marees_test = array();
     private $vue_reference = null;
     private $vue_donnees_table = null;
     
@@ -39,13 +40,20 @@
     }
     
     public function afficher_corps() {
-      echo '<p>Tests marees</p>';
+      $cal = Calendrier::obtenir();
+      echo "\n<p>Tests marees</p>";
       $cal = Calendrier::obtenir();
       $this->vue_reference->afficher();
       if ($this->vue_donnees_table)
         $this->vue_donnees_table->afficher();
       else
         echo '<p>pas de marée trouvée pour le ' . $cal->date_texte($this->jour) . '</p>';
+      
+      echo "\n<p> Durees des marees : ";
+      
+      foreach ($this->marees_test as $m) {
+        echo '<p>' . $m->duree_texte() . '</p>';
+      }
     }
     
     public function afficher_fin() {
@@ -62,11 +70,13 @@
                      new Point_Maree('BM', $cal->heure($j, 7, 42, 0), 2.0));
       $m->def_coefficient(57);
       $marees_jour->ajouter_dans_marees($m);
+      $this->marees_test[] = $m;
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($j, 14, 01, 0), 5.45),
                      new Point_Maree('BM', $cal->heure($j, 20, 14, 0), 2.10));
       $m->def_coefficient(59);
       $marees_jour->ajouter_dans_marees($m);
+      $this->marees_test[] = $m;
       
       $table_marees = new Table_Marees_Jour($marees_jour);
       $this->vue_reference = new Cadre_Ephemerides($j, $table_marees);

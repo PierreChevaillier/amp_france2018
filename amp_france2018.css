@@ -2,9 +2,9 @@
  ===============================================================================
  description : feuille de style pour le site web
  utilisation : pages web
- teste avec  : Mac OS 10.11 - Firefox, Safari - Internet Explorere
+ teste avec  : Mac OS 10.11 - Firefox, Safari - Windows Internet Explorer
  contexte    : Site du Championnat de France d'Aviron de Mer 2018
- Copyright (c) 2017 AMP
+ Copyright (c) 2017-2018 AMP. Tous droits reserves.
  -------------------------------------------------------------------------------
  creation: 22-jun-2017 pchevaillier@gmail.com
  revision: 29-jul-2017 pchevaillier@gmail.com texte information dynamique
@@ -12,7 +12,9 @@
  revision: 18-oct-2017 pchevaillier@gmail.com div header
  revision: 23-nov-2017 pchevaillier@gmail.com utilisation variables / couleurs
  revision: 29-nov-2017 pchevaillier@gmail.com apres test avec IE : suppression variables
- -------------------------------------------------------------------------------
+ revision: 19-jan-2018 pchevaillier@gmail.com bouton-lien et <p>
+ revision: 19-jan-2018 pchevaillier@gmail.com bouton-lien (margin), media-object
+  -------------------------------------------------------------------------------
  Palette :
   couleur 0 : rgb(16,32,80) rgb(0,32,156) bleu soutenu (couleur 1 club)
   couleur 1 : rgb(183,30,44) rouge fonce
@@ -40,6 +42,14 @@
 
 }
 
+a.bouton-lien {
+  /* padding: 20px; */
+  margin: 10px;
+  font-size: 20px;
+  /* background-color: rgb(16,32,80);
+  color: white; */
+}
+
 h1, h2, h3, h4 {
   background-color: white; /* var(--coul-fond-accen); */
   color: rgb(16,32,80); /* var(--coul-text-accen); */
@@ -54,6 +64,10 @@ nav.navbar {
   background-color: rgb(242,203,0);
   padding: 0px;
   border: 0px;
+}
+
+p {
+  font-size: 16px;
 }
 
 p.lead {
@@ -82,6 +96,11 @@ div.header {
   -webkit-align-content: center;
  */
   }
+
+.media-object {
+  width: 128px;
+}
+
 /* --- Dates  -------------------------------------------------------------- */
 
 div.jour-mois {

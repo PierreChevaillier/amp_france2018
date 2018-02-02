@@ -41,9 +41,9 @@ class Menu_Principal extends Menu_Navigation {
     echo '<li id="competitions"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Compétitions<span class="caret"></span></a>';
     echo '<ul class="dropdown-menu">';
     echo '<li><a href="courses.php">Programme</a></li>';
-    echo '<li><a href="page_vide.php">Parcours</a></li>';
-    echo '<li><a href="page_vide.php">Résultats</a></li>';
-    echo '<li><a href="page_vide.php">Réglement</a></li>';
+    echo '<li><a href="parcours.php">Parcours</a></li>';
+    //echo '<li><a href="page_vide.php">Résultats</a></li>';
+    echo '<li><a href="reglement.php">Réglement</a></li>';
     echo '</ul></li>';
 }
   
@@ -52,7 +52,7 @@ class Menu_Principal extends Menu_Navigation {
     echo '<ul class="dropdown-menu">';
     echo '<li><a href="transports.php">Venir</a></li>';
     echo '<li><a href="hebergements.php">Hébergements</a></li>';
-    echo '<li><a href="page_vide.php">Restauration</a></li>';
+    echo '<li><a href="restauration.php">Restauration</a></li>';
     echo '<li><a href="page_vide.php">Village</a></li>';
     echo '<li><a href="tourisme.php">Tourisme</a></li>';
     echo '</ul></li>';

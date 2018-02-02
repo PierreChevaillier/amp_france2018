@@ -4,21 +4,23 @@
   // utilisation : require_once car instantiation d'une variable statique
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : Applications WEB
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP
   // ---------------------------------------------------------------------------
   // creation: 11-nov-2017 pchevaillier@gmail.com
+  // revision: 08-jan-2018 pchevaillier@gmail.com Intervalle temporel (debut)
   // revision:
   // ---------------------------------------------------------------------------
   // commentaires :
-  // -
+  // - en evolution
   // attention :
-  // -
+  // - calcul duree approximatif (pb : annees inhabituelles, heure d'ete ...
   // a faire :
+  // - finir intervalle temporel. Utiliser les fonctions php / timeDiff
   // ===========================================================================
   
   // --- Classes utilisees
   
-  // --- variables static
+  // --- variables statiques
   
   new Calendrier();
   
@@ -41,9 +43,78 @@
     public function dupliquer () {
       return new Instant($this->valeur);
     }
+   
+    public function est_egal($autre_instant) {
+      return $this->valeur == $autre_instant->valeur;
+    }
+    
+    public function est_avant($autre_instant) {
+      return $this->valeur < $autre_instant->valeur;
+    }
+    
+    public function est_apres($autre_instant) {
+      return $this->valeur > $autre_instant->valeur;
+    }
     
   }
+  
+  class Intervalle_Temporel {
+    public static function origine() {
+     return new Instant(0);
+    }
     
+    public static function fin_des_temps() {
+      return new Instant(PHP_MAX_INT);
+    }
+    
+    private $debut;
+    private $fin;
+    
+    public function __construct($debut, $fin) {
+      if ($debut == null)
+        throw new InvalidArgumentException("Le debut de l'intervalle temporel n'est pas specifiee (null)");
+      elseif ($fin == null)
+        throw new InvalidArgumentException("La fin de l'intervalle temporel n'est pas specifiee (null)");
+      elseif ($debut->est_apres($fin))
+        throw new RangeException("La date de debut de l'intervalle doit etre avant celle de sa fin");
+      else {
+        $this->debut = $debut;
+        $this->fin = $fin;
+      }
+    }
+    
+    public function duree() {
+      return $this->fin->date() - $this->debut->date();
+    }
+    
+    public function duree_texte() {
+      $duree = $this->duree();
+      // inspiree de la methode trouvee dans http://php.net/manual/en/function.time.php
+      $comp = array(
+                    //'an' => $duree / 31556926 % 12,
+                    //'sem' => $duree / 604800 % 52,
+                    'j' => $duree / 86400 % 7,
+                    'h' => $duree / 3600 % 24,
+                    'm' => $duree / 60 % 60,
+                    's' => $duree % 60
+                    );
+      foreach ($comp as $k => $v)
+      if ($v > 0)
+        $resultat[] = $v . $k;
+      return join($resultat);
+    }
+    
+    public function duree_chevauchement($autre_intervalle) {
+      $fin = min($this->fin->date(), $autre_intervalle->fin->date());
+      $debut = max($this->debut->date(), $autre_intervalle->debut->date());
+      return max(0, $fin - $debut);
+    }
+    
+    public function commence_avant($autre_intervalle) {
+      return $this->debut->est_avant($autre_intervalle->debut);
+    }
+    
+  }
   // ---------------------------------------------------------------------------
   class Calendrier {
     
@@ -65,6 +136,7 @@
     }
     
     public function __construct() {
+      date_default_timezone_set("Europe/Paris");
       self::reference($this);
     }
     

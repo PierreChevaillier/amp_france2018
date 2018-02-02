@@ -55,6 +55,9 @@
       // -- Programmme par jour
       
       $jour = $cal->jour(24, 5, 2018); // jeudi
+      
+      $marees_jour = Enregistrement_Maree::recherche_marees_jour($lieu, $jour);
+      /*
       $marees_jour = new Marees_Jour($lieu, $jour);
       
       $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 1, 21, 0), 5.5),
@@ -66,8 +69,9 @@
                      new Point_Maree('BM', $cal->heure($jour, 20, 14, 0), 2.10));
       $m->def_coefficient(59);
       $marees_jour->ajouter_dans_marees($m);
-      
+      */
       $table_marees = new Table_Marees_jour($marees_jour);
+      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
       $texte = "";
       $programme_detaille = new Cadre_Texte($texte);
@@ -75,26 +79,15 @@
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
       $programme->def_titre("Accueil - Entrainements");
       
-      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
-      
       $info_jour = new Cadre_Information_Jour($jour, $programme, $ephemeride);
       $page->contenus[] = $info_jour;
       
       // ----------------------------------------------------------------------
       $jour = $cal->jour(25, 5, 2018); // vendredi
-      $marees_jour = new Marees_Jour($lieu, $jour);
       
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 2, 29, 0), 5.65),
-                     new Point_Maree('BM', $cal->heure($jour, 8, 46, 0), 1.85));
-      $m->def_coefficient(62);
-      $marees_jour->ajouter_dans_marees($m);
-      
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 15, 02, 0), 5.7),
-                     new Point_Maree('BM', $cal->heure($jour, 21, 15, 0), 1.85));
-      $m->def_coefficient(53);
-      $marees_jour->ajouter_dans_marees($m);
-      
+      $marees_jour = Enregistrement_Maree::recherche_marees_jour($lieu, $jour);
       $table_marees = new Table_Marees_jour($marees_jour);
+      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
       $texte = '<ul class="list-group"><li class="list-group-item">Ouverture officielle de la compétition</li><li class="list-group-item">Briefing</li><li class="list-group-item">Séries qualificatives</li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
@@ -102,27 +95,15 @@
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
       $programme->def_titre("Séries qualificatives");
       
-      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
-      
       $info_jour = new Cadre_Information_Jour($jour, $programme, $ephemeride);
       $page->contenus[] = $info_jour;
       
-      
       // ----------------------------------------------------------------------
       $jour = $cal->jour(26, 5, 2018); // samedi
-      $marees_jour = new Marees_Jour($lieu, $jour);
       
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 3, 26, 0), 5.85),
-                     new Point_Maree('BM', $cal->heure($jour, 9, 41, 0), 1.65));
-      $m->def_coefficient(70);
-      $marees_jour->ajouter_dans_marees($m);
-      
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 15, 54, 0), 5.90),
-                     new Point_Maree('BM', $cal->heure($jour, 22, 07, 0), 1.65));
-      $m->def_coefficient(73);
-      $marees_jour->ajouter_dans_marees($m);
-      
+      $marees_jour = Enregistrement_Maree::recherche_marees_jour($lieu, $jour);
       $table_marees = new Table_Marees_jour($marees_jour);
+      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
       $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Repas de clôture</li></ul>';
       
@@ -130,36 +111,22 @@
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
       $programme->def_titre("Finales");
-      
-      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
-      
+    
       $info_jour = new Cadre_Information_Jour($jour, $programme, $ephemeride);
       $page->contenus[] = $info_jour;
       
-      
       // -----------------------------------------------------------------------
       $jour = $cal->jour(27, 5, 2018); // dimanche
-      $marees_jour = new Marees_Jour($lieu, $jour);
       
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 4, 15, 0), 6.0),
-                     new Point_Maree('BM', $cal->heure($jour, 10, 29, 0), 1.5));
-      $m->def_coefficient(77);
-      $marees_jour->ajouter_dans_marees($m);
-      
-      $m = new Maree(new Point_Maree('PM', $cal->heure($jour, 16, 39, 0), 6.1),
-                     new Point_Maree('BM', $cal->heure($jour, 22, 53, 0), 1.45));
-      $m->def_coefficient(79);
-      $marees_jour->ajouter_dans_marees($m);
-      
+      $marees_jour = Enregistrement_Maree::recherche_marees_jour($lieu, $jour);
       $table_marees = new Table_Marees_jour($marees_jour);
+      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
       $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item">Course Open Longue Distance</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié</li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
       $programme->def_titre("Course longue distance");
-      
-      $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
       $info_jour = new Cadre_Information_Jour($jour, $programme, $ephemeride);
       $page->contenus[] = $info_jour;

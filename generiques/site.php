@@ -24,6 +24,8 @@
 class Site {
 
   public $nom = "";
+  private $code = "f18";
+  public function code() { return $this->code; }
   
   private $sigle_proprietaire = "AMP";
   public static function sigle_proprietaire() { return Site::$instance->sigle_proprietaire; }

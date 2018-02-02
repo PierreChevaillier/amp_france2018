@@ -1,7 +1,19 @@
 <!doctype html>
   <html lang="fr">
     <?php
-
+      // =======================================================================
+      // description : page web / formualire prise de contact
+      // contexte    : site web du Championnat de France 2018
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves
+      // -----------------------------------------------------------------------
+      // creation : 02-oct-2017 pchevaillier@gmail.com
+      // revision : 21-jan-2018 pchevaillier@gmail.com mise en forme
+      // -----------------------------------------------------------------------
+      // commentaires :
+      // attention :
+      // a faire :
+      // =======================================================================
+      
       set_include_path('./');
       
       // --- Informations relatives au site web
@@ -30,6 +42,6 @@
 
       $page->initialiser();
       $page->afficher();
-
-	?>
-</html>
+      // =======================================================================
+    ?>
+  </html>

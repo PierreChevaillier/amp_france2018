@@ -7,7 +7,8 @@
   // Copyright (c) 2017-2018 AMP
   // ---------------------------------------------------------------------------
   // creation: 11-nov-2017 pchevaillier@gmail.com
-  // revision: 28-nov-2017 pchevaillier@gmail.com 
+  // revision: 28-nov-2017 pchevaillier@gmail.com
+  // revision: 08-jan-2018 pchevaillier@gmail.com calcul affichage duree
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -70,6 +71,16 @@
     
     public function marnage() {
       return abs($this->debut->hauteur() - $this->fin->hauteur());
+    }
+    
+    public function duree() {
+      $i = new Intervalle_Temporel($this->debut->heure(), $this->fin->heure());
+      return $i->duree();
+    }
+    
+    public function duree_texte() {
+      $i = new Intervalle_Temporel($this->debut->heure(), $this->fin->heure());
+      return $i->duree_texte();
     }
   }
   

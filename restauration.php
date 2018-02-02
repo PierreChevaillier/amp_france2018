@@ -2,15 +2,14 @@
   <html lang="fr">
     <?php
       // =======================================================================
-      // description : page web vide pour test (modele)
-      // contexte    : Application  web
+      // description : page web - informations sur la restauration
+      // contexte    : Site web du championnat de France 2018
       // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // -----------------------------------------------------------------------
-      // creation : 02-oct-2017 pchevaillier@gmail.com
-      // revision : 19-jan-2018 pchevaillier@gmail.com mise en forme
+      // creation : 19-jan-2018 pchevaillier@gmail.com
+      // revision :
       // -----------------------------------------------------------------------
       // commentaires :
-      //  - pour les tests et en attendant d'avoir ecrit le contenu de la page
       // attention :
       // a faire :
       // =======================================================================
@@ -19,18 +18,23 @@
       
       // --- Informations relatives au site web
       require_once 'generiques/site.php';
-      require_once 'generiques/cadre_texte.php';
-
+ 
       $s = new Site("Championnat France 2018");
       $s->initialiser();
 
       // --- Classe définissant la page a afficher
       require_once 'elements/page_france2018.php';
-      require_once 'elements/contenu_hebergements.php';
-
+ 
+      // --- Classes des elements affiches dans la page
+      require_once 'generiques/cadre_texte.php';
+      
       // --- Creation dynamique de la page et affichage
-      $page = new Page_France2018("Hébergement");
-      $page->contenus[] = new Cadre_Texte("");
+      $page = new Page_France2018("Restauration");
+      $contenu = "<p>Les jours de courses, des plateaux repas seront proposés aux compétiteurs et aux accompagnants. De plus, un stand resturation sera installé sur la plage à partir de 14 heures le jeudi 24.</p>";
+      
+      $element = new Cadre_Texte($contenu);
+      $element->def_titre("Restauration");
+      $page->contenus[] = $element;
       
       $page->initialiser();
       $page->afficher();

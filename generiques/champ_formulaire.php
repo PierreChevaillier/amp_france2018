@@ -11,7 +11,7 @@
   // ------------------------------------------------------------------------
   // commentaires :
   // attention :
-  // a faire :
+  // a faire : ajouter l'attribue value
   // ------------------------------------------------------------------------
 
   // --- Classes utilisees
@@ -121,6 +121,27 @@
       echo ' id="' . $this->identifiant . '"  name="' . $this->nom_variable . '"';
       echo ' rows= "' . $this->nombre_lignes . '" cols="' . $this->largeur . '" >';
       echo '</textarea>';
+    }
+  }
+  
+  class Champ_Binaire extends Champ_Formulaire {
+    public $texte = "";
+    protected function afficher_corps () {
+      echo '<input class="form-control"';
+      echo ' id="' . $this->identifiant . '"  name="' . $this->nom_variable . '"';
+      echo ' type="checkbox" />' . $this->texte;
+    }
+  }
+  
+  class Champ_Selection extends Champ_Formulaire {
+    public $options = array();
+    public $option_defaut = "";
+    protected function afficher_corps () {
+      echo '<select class="form-control"';
+      echo ' id="' . $this->identifiant . '"  name="' . $this->nom_variable . '" >';
+      foreach ($this->options as $code => $libelle)
+        echo '<option value="' . $code . '">' . $libelle . '</option>';
+      echo '</select>';
     }
   }
   // ===========================================================================
