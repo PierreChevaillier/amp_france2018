@@ -7,9 +7,9 @@
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
   // Copyright (c) 2017 AMP
   // ------------------------------------------------------------------------
-  // creation: 22-oct-2017 pchevaillier@gmail.com
-  // revision:
-  // ------------------------------------------------------------------------
+  // creation : 22-oct-2017 pchevaillier@gmail.com
+  // revision : 04-fev-2018 pchevaillier@gmail.com mise en forme
+  // ---------------------------------------------------------------------------
   // commentaires :
   // -
   // attention :
@@ -39,7 +39,7 @@
     }
   
     protected function afficher_debut() {
-      echo '<div class="container"><div class="row">';
+      echo '<div class="container-fluid" style="padding:10px;"><div class="row">';
     }
   
     protected function afficher_corps() {

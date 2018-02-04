@@ -34,7 +34,7 @@
       $page = new Page_France2018("Bourse aux bateaux");
       
       $formulaire = new Formulaire_Annonce_bateau($page, 'dummy.php');
-      $formulaire->def_titre("Demande d'information");
+      $formulaire->def_titre("Petite annonce prêt - location bateaux");
       
       $contenu = new Contenu_Contact($formulaire, new Vue_Contacts());
       

@@ -10,7 +10,8 @@
 // revision: 13-juin-2017 pchevaillier@gmail.com separation haut, bas , contenu
 // revision: 23-juin-2017 pchevaillier@gmail.com javascripts
 // revision: 18-juil-2017 pchevaillier@gmail.com padding: 0px
-// ------------------------------------------------------------------------
+  // revision: 04-fev-2018 pchevaillier@gmail.com padding: 10px pour corps
+  // ------------------------------------------------------------------------
 // commentaires : 
 // -
 // attention :

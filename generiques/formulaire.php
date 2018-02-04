@@ -5,10 +5,10 @@
   // utilisation : destine a etre affiche dans une page web
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP
   // ------------------------------------------------------------------------
-  // creation: 22-oct-2017 pchevaillier@gmail.com
-  // revision:
+  // creation : 22-oct-2017 pchevaillier@gmail.com
+  // revision : 04-fev-2018 pchevaillier@gmail.com mode responsive
   // ------------------------------------------------------------------------
   // commentaires :
   // - en chantier
@@ -46,20 +46,23 @@
     }
   
     protected function afficher_debut() {
-      echo '<div>';
       echo '<div class="well well-sm"><p class="lead">' . $this->titre() . '</p></div>';
-      echo '<form role="form" class="form-horizontal" name="formulaire" method="post" action="' . $this->script_traitement . '">';
+      echo '<form class="form-horizontal" role="form"  name="formulaire" method="post" action="' . $this->script_traitement . '">';
     }
   
     protected function afficher_corps() {
       foreach ($this->champs as $champ)
         $champ->afficher();
+      $this->afficher_boutton_validation();
     }
   
+    protected function afficher_boutton_validation() {
+      echo '<div class="form-group"><div class="col-sm-offset-2 col-sm-10">';
+      echo '<input class="btn btn-large btn-primary" type="submit" id="valid" value="Envoyer votre demande"></div></div>';
+      
+    }
     protected function afficher_fin() {
-      echo '<div align="center">';
-      echo '<input class="btn btn-large btn-primary" type="submit" id="valid" value="Envoyer votre demande">';
-      echo '</div></form></div>';
+      echo '</form>';
     }
   
   }

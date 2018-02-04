@@ -4,14 +4,14 @@
   // utilisation : elements d'un formulaire simple
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : classe Formulaire
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-207 AMP. Tous droits reserves.
   // ------------------------------------------------------------------------
   // creation : 21-oct-2017 pchevaillier@gmail.com
-  // revision :
+  // revision : 04-fev-2018 pchevaillier@gmail.com mise en forme, champ montant
   // ------------------------------------------------------------------------
   // commentaires :
   // attention :
-  // a faire : ajouter l'attribue value
+  // a faire : ajouter l'attribut value
   // ------------------------------------------------------------------------
 
   // --- Classes utilisees
@@ -57,11 +57,11 @@
     }
     
     protected function afficher_debut() {
-      echo '<div><label class="control-label" for="' . $this->identifiant . '">' . $this->titre() . '</label>';
+      echo '<div class="form-group"><label class="control-label col-sm-2" for="' . $this->identifiant . '">' . $this->titre() . '</label><div class="col-sm-10">';
     }
  
     protected function afficher_fin () {
-      echo '</div>';
+      echo "</div></div>\n";
     }
     
   }
@@ -124,12 +124,22 @@
     }
   }
   
-  class Champ_Binaire extends Champ_Formulaire {
-    public $texte = "";
+  class Champ_Montant extends Champ_Formulaire {
+    public $valeur_min = 0;
+    public $valeur_max = 1000;
     protected function afficher_corps () {
       echo '<input class="form-control"';
       echo ' id="' . $this->identifiant . '"  name="' . $this->nom_variable . '"';
-      echo ' type="checkbox" />' . $this->texte;
+      echo ' type="number" min="' . $this->valeur_min . '" max="' . $this->valeur_max . '" value="' . $this->valeur_min . '"/>';
+    }
+  }
+  
+  class Champ_Binaire extends Champ_Formulaire {
+    public $texte = "";
+    protected function afficher_corps () {
+      echo '<div class="checkbox"><input class="form-control"';
+      echo ' id="' . $this->identifiant . '"  name="' . $this->nom_variable . '"';
+      echo ' type="checkbox" />' . $this->texte . '<br /></div>';
     }
   }
   
