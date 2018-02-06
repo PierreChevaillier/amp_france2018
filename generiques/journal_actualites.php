@@ -40,7 +40,6 @@
   
     public function initialiser() {
       $this->actualites = Enregistrement_Actualite::recherche_actualites($this->site_web->code(), "");
-      // TODO : activier quand base de donnees renseignee.
     }
   
     protected function afficher_debut() {

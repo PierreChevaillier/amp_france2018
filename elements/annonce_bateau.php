@@ -60,11 +60,6 @@
       $item->texte = "Dimanche matin";
       $this->dates[] = $item;
       
-      $item = new Champ_Binaire("j4-am", "j4-am", "");
-      $item->texte = "Dimanche après-midi";
-      $this->dates[] = $item;
-      
-      
       foreach ($this->dates as $d)
       $d->initialiser();
     }
@@ -93,22 +88,21 @@
  
       $item = new Champ_Selection("typ", "typ", "");
       $item->def_titre("Type annonce");
-      $item->options = array(1 => "Demande", 2 => "Offre");
+      $item->options = array('dde' => "Demande", 'ofr' => "Offre");
       $this->champs[] = $item;
 
-      $item = new Champ_Montant("prx", "prix", "");
-      $item->def_titre("Prix");
-      $item->valeur_min = 0 ; $item->valeur_max = 1000 ;
+      $item = new Champ_Texte("cond", "cond", "");
+      $item->def_titre("Prix / conditions");
       $this->champs[] = $item;
       
       $item = new Champ_Selection("bat", "bat", "");
       $item->def_titre("Type bateau");
-      $item->options = array(1 => "Solo", 2 => "Double", 3 => "4 barré pointe", 4 => "4 barré couple");
+      $item->options = array('1x' => "Solo", '2x' => "Double", '4+' => "4 barré pointe", '4x' => "4 barré couple");
       $this->champs[] = $item;
 
       $item = new Champ_Selection("pel", "pel", "");
       $item->def_titre("Avirons");
-      $item->options = array(0 => "Aucun", 1 => "Pelles Mâcon", 3 => "Pelles hache", 4 => "Indifférent");
+      $item->options = array('0' => "Aucun",  'H' => "Pelles hache", 'M' => "Pelles Mâcon", '_' => "Indifférent");
       $this->champs[] = $item;
 
       $item = new Bloc_Dates();
@@ -153,24 +147,45 @@
   class Annonce_Bateau {
     public $auteur = null; // Personne (a faire plus tard)
     
-    public $code_type = "";
-    public $prix = 0.0;
+    public $code_type = ""; // dde, ofr
+    public $active = True;
+    
     public $code_type_bateau = "";
-    public $code_type_aviron = "";
-    public $date_publication = null;
-    public $date_mise_a_dispo = null;
+    public $code_type_aviron = ""; // 0 => aucun H => Hachoir ou M => Macon
+    
     
     public $civilite = "";
     public $prenom = "";
     public $nom = "";
     public $telephone = "";
-    public $adresse_mail = "";
-    public $civilite = "";
-
+    public $courriel = "";
+    public $nom_club = "";
+    
+    public $j1_ma = False;
+    public $j1_am = False;
+    public $j2_ma = False;
+    public $j2_am = False;
+    public $j3_ma = False;
+    public $j3_am = False;
+    public $j4_ma = False;
+    
+    public $condition = "";
+    public $texte = "";
+    
     public function definir_depuis_formulaire() {
       $cal = Calendrier::obtenir();
       
       $this->code_type = strip_tags(trim(utf8_decode($_POST['typ'])));
+      
+      // Caracteristiques annonce
+      $this->code_type_bateau = strip_tags(trim(utf8_decode($_POST['cod'])));
+      $this->code_type_aviron = strip_tags(trim(utf8_decode($_POST['cod'])));
+
+      // dates
+      
+      // Informations
+      $this->condition = strip_tags(trim(utf8_decode($_POST['bat'])));
+      $this->texte = strip_tags(trim(utf8_decode($_POST['pel'])));
       
       // Personne ayant poste l'annonce
       $this->civilite = strip_tags(trim(utf8_decode($_POST['civ'])));
@@ -179,7 +194,7 @@
       $this->telephone = strip_tags(trim(utf8_decode($_POST['tel'])));
       $this->adresse_mail = strip_tags(trim(utf8_decode($_POST['courriel'])));
       $this->club = strip_tags(trim(utf8_decode($_POST['clb'])));
-      $this->message = strip_tags(trim(utf8_decode($_POST['msg'])));
+      
     }
   }
 
@@ -196,9 +211,9 @@
   }
   */
   
-  class Enregistrement_Annonce_Base /* extends  Enregistrement_Annonce */ {
+  class Enregistrement_Annonce_Bateau /* extends  Enregistrement_Annonce */ {
     static function source() {
-      return Base_Donnees::$prefix_table . 'annonces';
+      return Base_Donnees::$prefix_table . 'annonces_bateau';
     }
     
     static public function enregistrer($annonce) {

@@ -8,6 +8,7 @@
       // -----------------------------------------------------------------------
       // creation : 02-oct-2017 pchevaillier@gmail.com
       // revision : 21-jan-2018 pchevaillier@gmail.com mise en forme
+      // revision : 06-fev-2018 pchevaillier@gmail.com renommer en annonce_bateau
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -33,7 +34,7 @@
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Bourse aux bateaux");
       
-      $formulaire = new Formulaire_Annonce_bateau($page, 'dummy.php');
+      $formulaire = new Formulaire_Annonce_bateau($page, 'annonce_bateau_enreg.php');
       $formulaire->def_titre("Petite annonce prêt - location bateaux");
       
       $contenu = new Contenu_Contact($formulaire, new Vue_Contacts());
