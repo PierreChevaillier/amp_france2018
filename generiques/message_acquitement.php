@@ -5,10 +5,10 @@
   // utilisation : element d'une page web
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP
   // ---------------------------------------------------------------------------
   // creation: 29-oct-2017 pchevaillier@gmail.com
-  // revision:
+  // revision: 18-fev-2018 pchevaillier@gmail.com affichage titre
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -44,7 +44,7 @@
     }
   
     protected function afficher_corps() {
-      echo '<div class="well well-sm"><p class="lead">' . $this->titre() . '</p></div>';
+      echo '<div class="well well-sm"><h2>' . $this->titre() . '</h2></div>';
       echo '<div>' . $this->texte . '</div>';
       echo '<a href="' . $this->page_suivante . '" class="btn btn-lg btn-primary" role="button">Continuer</a>';
     }

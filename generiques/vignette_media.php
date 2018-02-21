@@ -39,7 +39,7 @@
 
     protected function afficher_corps() {
       echo '<a href="' . $this->lien_page_media . '">';
-      echo '<img src="' . $this->chemin_vignette . '/' . $this->nom_fichier_vignette . '" alt="Video"></a>';
+      echo '<img src="' . $this->chemin_vignette . '/' . $this->nom_fichier_vignette . '" alt="lien-media"></a>';
       echo '<div class="caption"><h3>' . $this->titre() . '</h3>';
       echo '<p>' . $this->contenu . '</p>';
       echo '</div>';

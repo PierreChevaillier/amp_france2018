@@ -30,7 +30,7 @@
     }
   
     protected function afficher_debut() {
-      echo '<footer>';
+      echo "\n<footer>\n";
     }
   
     protected function afficher_corps() {
@@ -41,7 +41,7 @@
     }
   
     protected function afficher_fin() {
-      echo '</footer>';
+      echo "\n</footer>\n";
     }
   
     private function afficher_copyright() {

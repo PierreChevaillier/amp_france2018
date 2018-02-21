@@ -1,25 +1,25 @@
 <?php
-// ========================================================================
-// description : definition de la classe Element
-// utilisation : classe racine des elements de pages web, pages comprises
-// teste avec  : PHP 5.5.3 sur Mac OS 10.11
-// contexte    : Elements generique d'un site web
-// Copyright (c) 2017 AMP
-// ------------------------------------------------------------------------
-// creation : 04-juin-2017 pchevaillier@gmail.com
-// revision :
-// ------------------------------------------------------------------------
-// commentaires :
-// attention :
-// a faire :
-// ------------------------------------------------------------------------
+  // ========================================================================
+  // description : definition de la classe Element
+  // utilisation : classe racine des elements de pages web, pages comprises
+  // teste avec  : PHP 5.5.3 sur Mac OS 10.11
+  // contexte    : Elements generique d'un site web
+  // Copyright (c) 2017-208 AMP. Tous droits reserves.
+  // ------------------------------------------------------------------------
+  // creation : 04-jun-2017 pchevaillier@gmail.com
+  // revision : 06-fev-2018 pchevaillier@gmail.com ajout Conteneur_Elements
+  // ------------------------------------------------------------------------
+  // commentaires :
+  // attention :
+  // a faire :
+  // ------------------------------------------------------------------------
 
-// --- Classes utilisees
+  // --- Classes utilisees
 
-// ------------------------------------------------------------------------
-// --- Definition de la classe Element
+  // ------------------------------------------------------------------------
+  // --- Definition de la classe Element
 
-abstract class Element {
+  abstract class Element {
 
   /**
     * @var string
@@ -58,4 +58,29 @@ abstract class Element {
     */
   protected abstract function afficher_fin();
 }
-// ========================================================================
+  
+  // --------------------------------------------------------------------------
+  class Conteneur_Elements extends Element {
+    public $elements = array();
+    
+    public function initialiser() {
+      foreach ($this->elements as $element)
+        $element->initialiser();
+    }
+    
+    protected function afficher_debut() {
+      echo "\n";
+    }
+    
+    protected function afficher_corps() {
+      foreach ($this->elements as $element)
+        $element->afficher();
+    }
+    
+    protected function afficher_fin() {
+      echo "\n";
+    }
+  }
+  
+  
+  // ========================================================================

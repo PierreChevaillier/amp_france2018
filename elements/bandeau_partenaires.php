@@ -38,7 +38,7 @@ class Bandeau_Partenaires extends Element_Page {
   }
   
   protected function afficher_debut() {
-    echo '<div class="row">';
+    echo "\n\n<div class=\"row\">\n";
   }
   
   protected function afficher_corps() {

@@ -20,43 +20,47 @@
   require_once 'generiques/formulaire.php';
   
   // ------------------------------------------------------------------------
-  // --- Definition de la classe Contenu_Contact
+  // --- Definition de la classe Formulaire_Contact
   
   class Formulaire_Contact extends Formulaire {
   
     public function initialiser() {
       $item = null;
  
-      $item = new Champ_Civilite("civilite", "civilite", "");
-      $item->def_titre("Civilité");
-      $this->champs[] = $item;
+      try {
+        $item = new Champ_Civilite("civ");
+        $item->def_titre("Civilité");
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Nom("prenom", "prenom", "scripts/controle_saisie_nom.js");
-      $item->def_titre("Prénom");
-      $this->champs[] = $item;
-      
-      $item = new Champ_Nom("nom", "nom", "scripts/controle_saisie_nom.js");
-      $item->def_titre("Nom");
-      $this->champs[] = $item;
-  
-      $item = new Champ_Courriel("courriel", "courriel", "scripts/controle_saisie_courriel.js");
-      $item->def_titre("Adresse courriel");
-      $this->champs[] = $item;
-      
-      $item = new Champ_Telephone("tel", "tel", "scripts/controle_saisie_telephone.js");
-      $item->def_titre("Numéro de téléphone");
-      $this->champs[] = $item;
-      
-      $item = new Champ_Zone_Texte("adr", "adr", "");
-      $item->def_titre("Adresse postale");
-      $this->champs[] = $item;
-      
-      $item = new Champ_Zone_Texte("msg", "msg", "");
-      $item->def_titre("Votre message");
-      $item->nombre_lignes = 10;
-      $this->champs[] = $item;
-      
-      parent::initialiser();
+        $item = new Champ_Nom("prenom", "scripts/controle_saisie_nom.js");
+        $item->def_titre("Prénom");
+        $this->ajouter_champ($item);
+        
+        $item = new Champ_Nom("nom", "nom", "scripts/controle_saisie_nom.js");
+        $item->def_titre("Nom");
+        $this->ajouter_champ($item);
+        
+        $item = new Champ_Courriel("courriel", "scripts/controle_saisie_courriel.js");
+        $item->def_titre("Adresse courriel");
+        $this->ajouter_champ($item);
+        
+        $item = new Champ_Telephone("tel", "tel", "scripts/controle_saisie_telephone.js");
+        $item->def_titre("Numéro de téléphone");
+        $this->ajouter_champ($item);
+        
+        $item = new Champ_Zone_Texte("adr");
+        $item->def_titre("Adresse postale");
+        $this->ajouter_champ($item);
+        
+        $item = new Champ_Zone_Texte("msg");
+        $item->def_titre("Votre message");
+        $item->nombre_lignes = 10;
+        $this->ajouter_champ($item);
+        
+        parent::initialiser();
+      } catch(Exception $e) {
+        die('Exception dans la methode initialiser de la classe Formulaire_Contact : ' . $e->getMessage());
+      }
     }
   
   }
@@ -71,7 +75,7 @@
     public $message = "";
     
     public function definir_depuis_formulaire() {
-      $this->civilite = ($s == "H") ? 'Monsieur' : 'Madame';
+      $this->civilite = ($_POST['civ'] == "H") ? 'Monsieur' : 'Madame';
       $this->prenom = strip_tags(trim(utf8_decode($_POST['prenom'])));
       $this->nom = strip_tags(trim(utf8_decode($_POST['nom'])));
       $this->telephone = strip_tags(trim(utf8_decode($_POST['tel'])));
@@ -93,6 +97,7 @@
   }
   
   class Mail_demande_Information extends  Enregistrement_Demande_Information {
+    
     private $adresse_mail = "";
     public function def_adresse_mail($valeur) {
       $this->adresse_mail = $valeur;

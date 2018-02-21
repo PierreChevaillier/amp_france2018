@@ -1,6 +1,6 @@
 <?php
   // ===========================================================================
-  // description : traitement du formulaire de demande d'information
+  // description : traitement d'une action sur l'enregistrement d'une annonce
   // contexte    : action / soumission du formulaire
   // Copyright (c) 2017-2018 AMP. Tous droits reserves
   // -----------------------------------------------------------------------
@@ -24,26 +24,24 @@
       
   // --- recuperation des donnees saisies dans le formulaire
   require_once 'elements/annonce_bateau.php';
-      
-  $annonce = new Annonce_Bateau();
-  $annonce->definir_depuis_formulaire();
-      
-  // --- Enregistrement de l'annonce
-  $action = $_POST['a'];
-  
-  $table = new Enregistrement_Annonce_bateau();
-  $table->def_annonce($annonce);
-  $action = $_POST['a'];
-  if ($action == 'a') {
-    $statut = $table->enregistrer_annonce();
-  } elseif ($action == 'm') {
-    $id_annonce  = $_POST['id'];
+
+  $cloture_annonce = (isset($_GET['a']) && ($_GET['a'] == 'c'));
+  $suppression_annonce = (isset($_GET['a']) && ($_GET['a'] == 's'));
+  if ($cloture_annonce || $suppression_annonce) {
+    $id_annonce  = $_GET['id'];
+    $annonce = new Annonce_Bateau();
     $annonce->def_cle_access($id_annonce);
-    $table->def_type_id('cle_access');
-    $statut = $table->modifier_annonce();
+    $e = new Enregistrement_Annonce_bateau();
+    $e->def_annonce($annonce);
+    $e->def_type_id('cle_access');
+    
+    if ($cloture_annonce)
+      $e->desactiver_annonce();
+    elseif ($suppression_annonce)
+      $e->supprimer_annonce();
   }
-  
+    
   // --- Affichage du message de confirmation de traitement de la demande
-  header("location: annonce_bateau_confirm_enreg.php?a=" . $action . "&id=" . $annonce->cle_access());
+  header("location: annonce_bateau_confirm_enreg.php?a=" . $_GET['a'] . "&idd=" . $annonce->code());
   // ===========================================================================
 ?>

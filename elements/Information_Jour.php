@@ -119,14 +119,9 @@
     }
     
     protected function afficher_corps() {
-      /*
-      echo '<div class="date_jour"><p class="lead">Maree du ';
-      $cal = Calendrier::obtenir();
-      echo $cal->date_texte($this->jour);
-      echo '</p></div>';
-      echo '<div>'; */
+      if ($this->a_un_titre())
+        echo '<h4>' . $this->titre() . '</h4>';
       $this->info_marees->afficher();
-      //echo '</div>';
     }
     
     protected function afficher_fin() {

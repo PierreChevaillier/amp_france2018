@@ -60,13 +60,14 @@
       while ($n > 0) {
         echo "\n";
         echo '<div class="row">';
-        for ($i = 0; $i < $this->nb_colonnes; $i++) {
+        $raf = min($n,$this->nb_colonnes);
+        for ($i = 0; $i < $raf; $i++) {
           echo '<div class="col-sm-6 col-md-4">';
           $this->videos[$nb - $n]->afficher();
           echo '</div>';
           $n--;
         }
-        echo '</div></div>';
+        echo '</div>';
         echo "\n";
       }
       echo "\n";

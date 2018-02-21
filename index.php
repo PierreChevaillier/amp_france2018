@@ -34,9 +34,12 @@
       require_once 'elements/page_france2018.php';
       require_once 'elements/entete_image.php';
       require_once 'elements/contenu_accueil.php';
+      require_once 'elements/cadre_lien_formulaire_benevole.php';
       
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Accueil");
+      
+      $page->contenus[] = new Cadre_Lien_Formulaire_Benevole();
       
       $media = new vignette_Media();
       $media->chemin_vignette = "media/videos";

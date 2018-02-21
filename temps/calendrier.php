@@ -6,9 +6,9 @@
   // contexte    : Applications WEB
   // Copyright (c) 2017-2018 AMP
   // ---------------------------------------------------------------------------
-  // creation: 11-nov-2017 pchevaillier@gmail.com
-  // revision: 08-jan-2018 pchevaillier@gmail.com Intervalle temporel (debut)
-  // revision:
+  // creation : 11-nov-2017 pchevaillier@gmail.com
+  // revision : 08-jan-2018 pchevaillier@gmail.com Intervalle temporel (debut)
+  // revision : 18-fev-2018 pchevaillier@gmail.com Calendrier::date_html
   // ---------------------------------------------------------------------------
   // commentaires :
   // - en evolution
@@ -140,6 +140,21 @@
       self::reference($this);
     }
     
+    public function maintenant() {
+      return $this->heure($this->aujourdhui(), date("H"), date("i"), date("s"));
+    }
+    
+    public function aujourdhui() {
+      return $this->jour(date("d"), date("m"), date("Y"));
+    }
+    
+    public function lendemain($jour) {
+      $j = $jour->date();
+      $l = mktime(0, 0, 0, date("n", $j), date("d", $j) + 1, date("Y", $j));
+      $resultat = new Instant($l);
+      return $resultat;
+    }
+    
     public function jour_semaine($jour) {
       $j = $jour->date();
       return self::$jours[date("N", $j) - 1];
@@ -149,13 +164,20 @@
       $j = $jour->date();
       return self::$jours[date("N", $j) - 1] . " " . date("j", $j) . " " . self::$mois[date("n", $j) - 1] . " " . date("Y", $j);
     }
+  
+    public function date_html($jour) {
+      $j = $jour->date();
+      return date("Y", $j) . "-" . date("m", $j) . "-" . date("d", $j);
+    }
     
     public function date_texte_court($jour) {
       return self::$jours_courts[date("N", $jour) - 1] . " " . date("j", $jour) . " " . self::$mois_courts[date("n", $jour) - 1];
     }
     
-    public function aujourdhui() {
-      return $this->jour(date("d"), date("m"), date("Y"));
+    public function heures_minutes_texte($instant) {
+      $h = date("H", $instant->date());
+      $m = date("i", $instant->date());
+      return $h . "h" . $m;
     }
     
     public function jour($jour_mois, $mois, $annee) {
@@ -167,22 +189,9 @@
       return new Instant(mktime($heures, $minutes, $secondes, date("n", $j), date("j", $j), date("Y", $j)));
     }
 
-    public function maintenant() {
-      return $this->heure($this->aujourdhui(), date("H"), date("i"), date("s"));
-    }
-    
-    public function lendemain($jour) {
-      $j = $jour->date();
-      $l = mktime(0, 0, 0, date("n", $j), date("d", $j) + 1, date("Y", $j));
-      $resultat = new Instant($l);
-      return $resultat;
-    }
 
-    public function heures_minutes_texte($instant) {
-      $h = date("H", $instant->date());
-      $m = date("i", $instant->date());
-      return $h . "h" . $m;
-    }
+
+
   }
   
   // ===========================================================================

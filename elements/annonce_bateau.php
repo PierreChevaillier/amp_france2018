@@ -8,166 +8,233 @@
   // ------------------------------------------------------------------------
   // creation : 20-jan-2018 pchevaillier@gmail.com
   // revision : 04-fev-2018 pchevaillier@gmail.com dates, montant
+  // revision : 07-fev-2018 pchevaillier@gmail.com infos completes
+  // revision : 18-fev-2018 pchevaillier@gmail.com ajout/modif, controle actions
   // ------------------------------------------------------------------------
   // commentaires :
-  // - en chantier
+  // - en test
   // attention :
   // -
   // a faire :
+  //  - classe Personne dans un fichier a part
   // ========================================================================
   
   // --- Classes utilisees
+  require_once 'generiques/element_page.php';
   require_once 'generiques/formulaire.php';
   require_once 'temps/calendrier.php';
   require_once 'prive/connexion_bdd.php';
   
-  // ------------------------------------------------------------------------
-  // --- Definition de la classe / Bloc de dates
-  
-  class Bloc_Dates extends Element {
-    private $dates = array();
-    
-    protected $page_web = null;
-    public function def_page_web($page) {
-      $this->page_web = $page;
+  class Controle_Actions_Annonce extends Element_Page {
+    private $annonce = null;
+    public function __construct($cle_access) {
+      $this->annonce = new Annonce_Bateau();
+      $this->annonce->def_cle_access($cle_access);
     }
+    
     public function initialiser() {
-      $item = new Champ_Binaire("j1-ma", "j1-ma", "");
-      $item->texte = "Jeudi matin";
-      $this->dates[] = $item;
-      
-      $item = new Champ_Binaire("j1-am", "j1-am", "");
-      $item->texte = "Jeudi après-midi";
-      $this->dates[] = $item;
-     
-      $item = new Champ_Binaire("j2-ma", "j2-ma", "");
-      $item->texte = "Vendredi matin";
-      $this->dates[] = $item;
-      
-      $item = new Champ_Binaire("j2-am", "j2-am", "");
-      $item->texte = "Vendredi après-midi";
-      $this->dates[] = $item;
-      
-      $item = new Champ_Binaire("j3-ma", "j3-ma", "");
-      $item->texte = "Samedi matin";
-      $this->dates[] = $item;
-      
-      $item = new Champ_Binaire("j3-am", "j3-am", "");
-      $item->texte = "Samedi après-midi";
-      $this->dates[] = $item;
-      
-      $item = new Champ_Binaire("j4-ma", "j4-ma", "");
-      $item->texte = "Dimanche matin";
-      $this->dates[] = $item;
-      
-      foreach ($this->dates as $d)
-      $d->initialiser();
+      // recherche de l'annonce
     }
     
     protected function afficher_debut() {
-      //echo '<div><label class="control-label" for="dummy">' . $this->titre() . '</label>';
-    }
-   
-    protected function afficher_fin() {
-      //echo '</div>';
-    }
- 
-    protected function afficher_corps() {
-      foreach ($this->dates as $d)
-        $d->afficher();
+      echo "\n<div class=\"container\" padding=\"10px\"><div class=\"panel panel-default\">\n<div class=\"panel-heading\">";
+      echo "<h1>" . $this->titre() . "</h1></div><div class=\"panel-body\">";
+      echo "<form role=\"form\" class=\"form-horizontal\" name=\"modif_annonce\" >";
     }
     
+    protected function afficher_corps() {
+      echo "<div class=\"form-group\">";
+
+      echo "<div class=\"col-sm-4\"><a href=\"annonce_bateau.php?a=m&id=" . $this->annonce->cle_access() . "\" role=\"button\" class=\"btn btn-default form-control\" aria-describedby=\"aide_modif\">Modifier mon annonce</a><span id=\"aide_modif\" class=\"help-block\">Je souhaite ajouter des informations ou modifier mon annonce.</span></div>";
+      
+      echo "<div class=\"col-sm-4\"><a href=\"annonce_bateau_modif.php?a=c&id=" . $this->annonce->cle_access() . "\" role=\"button\" class=\"btn btn-default form-control\" aria-describedby=\"aide_cloture\">Clôre mon annonce</a><span id=\"aide_cloture\" class=\"help-block\">C'est bon, j'ai trouvé ce que je cherchais. Je souhaite que mon annonce ne soit plus visible.</span></div>";
+
+      echo "<div class=\"col-sm-4\"><a href=\"annonce_bateau_modif.php?a=s&id=" . $this->annonce->cle_access() . "\" role=\"button\" class=\"btn btn-default form-control\" aria-describedby=\"aide_modif\">Supprimer mon annonce</a><span id=\"aide_mdof\" class=\"help-block\">Je renonce... Mon annonce n'a plus lieu d'être. Je souhaite la supprimer.</span></div>";
+
+      echo "</div>\n";
+    }
+    
+    protected function afficher_fin() {
+      echo "\n</form></div></div></div>";
+    }
   }
+  
   // ------------------------------------------------------------------------
-  // --- Definition de la classe / Formualire de saisie d'une annonce
+  // --- Definition de la classe / Formulaire de saisie d'une annonce
   
   class Formulaire_Annonce_Bateau extends Formulaire {
   
-    public function initialiser() {
+    public function __construct($page, $script_traitement, $action= 'a') {
+      parent::__construct($page, $script_traitement, $action);
+      
       $item = null;
  
-      $item = new Champ_Selection("typ", "typ", "");
-      $item->def_titre("Type annonce");
-      $item->options = array('dde' => "Demande", 'ofr' => "Offre");
-      $this->champs[] = $item;
+      try {
+        $item = new Champ_Selection("typ");
+        $item->def_titre("Type annonce");
+        $item->options = Annonce_Bateau::$types_annonce;
+        $this->ajouter_champ($item);
 
-      $item = new Champ_Texte("cond", "cond", "");
-      $item->def_titre("Prix / conditions");
-      $this->champs[] = $item;
+        $item = new Champ_Selection("pret");
+        $item->def_titre("Prêt ou location");
+        $item->options = array(1 => "Prêt", 0 => "Location");
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Selection("bat", "bat", "");
-      $item->def_titre("Type bateau");
-      $item->options = array('1x' => "Solo", '2x' => "Double", '4+' => "4 barré pointe", '4x' => "4 barré couple");
-      $this->champs[] = $item;
-
-      $item = new Champ_Selection("pel", "pel", "");
-      $item->def_titre("Avirons");
-      $item->options = array('0' => "Aucun",  'H' => "Pelles hache", 'M' => "Pelles Mâcon", '_' => "Indifférent");
-      $this->champs[] = $item;
-
-      $item = new Bloc_Dates();
-      $item->def_titre("Quand ?");
-      $this->champs[] = $item;
+        $item = new Champ_Texte("cond");
+        $item->def_titre("Prix / conditions");
+        $this->ajouter_champ($item);
       
-      // --- Personne postant l'annonce
-      $item = new Champ_Civilite("civ", "civ", "");
-      $item->def_titre("Civilité");
-      $this->champs[] = $item;
+        $item = new Champ_Selection("bat");
+        $item->def_titre("Type bateau");
+        $item->options = Annonce_Bateau::$types_bateau;
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Nom("prenom", "prenom", "scripts/controle_saisie_nom.js");
-      $item->def_titre("Prénom");
-      $this->champs[] = $item;
+        $item = new Champ_Selection("pel");
+        $item->def_titre("Avirons");
+        $item->options = Annonce_Bateau::$types_aviron;
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Nom("nom", "nom", "scripts/controle_saisie_nom.js");
-      $item->def_titre("Nom");
-      $this->champs[] = $item;
-  
-      $item = new Champ_Courriel("courriel", "courriel", "scripts/controle_saisie_courriel.js");
-      $item->def_titre("Adresse courriel");
-      $this->champs[] = $item;
+        $item = new Champ_Date("deb");
+        $item->def_titre("Début mise à dispo");
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Telephone("tel", "tel", "scripts/controle_saisie_telephone.js");
-      $item->def_titre("Numéro de téléphone");
-      $this->champs[] = $item;
+        $item = new Champ_Date("fin");
+        $item->def_titre("Fin mise à dispo");
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Texte("clb", "clb", "");
-      $item->def_titre("Club");
-      $this->champs[] = $item;
+        $item = new Champ_Selection("crs");
+        $item->def_titre("Courses");
+        $item->valeurs_multiples = False;
+        $item->options = Annonce_Bateau::$courses;
+        $this->ajouter_champ($item);
       
-      $item = new Champ_Zone_Texte("msg", "msg", "");
-      $item->def_titre("Laisser un message");
-      $item->nombre_lignes = 10;
-      $this->champs[] = $item;
+        // --- Personne postant l'annonce
+        $item = new Champ_Civilite("civ");
+        $item->def_titre("Civilité");
+        $this->ajouter_champ($item);
       
-      parent::initialiser();
+        $item = new Champ_Nom("prenom", "scripts/controle_saisie_nom.js", "verif_nom");
+        $item->def_titre("Prénom");
+        $this->ajouter_champ($item);
+      
+        $item = new Champ_Nom("nom", "scripts/controle_saisie_nom.js", "verif_nom");
+        $item->def_titre("Nom");
+        $this->ajouter_champ($item);
+      
+        $item = new Champ_Courriel("courriel", "scripts/controle_saisie_courriel.js", "verif_courriel");
+        $item->def_titre("Adresse courriel");
+        $item->def_obligatoire();
+        $this->ajouter_champ($item);
+      
+        $item = new Champ_Telephone("tel", "scripts/controle_saisie_telephone.js", "verif_numero_telephone");
+        $item->def_titre("Numéro de téléphone");
+        $this->ajouter_champ($item);
+      
+        $item = new Champ_Texte("clb");
+        $item->def_titre("Club");
+        $this->ajouter_champ($item);
+      
+        $item = new Champ_Zone_Texte("txt");
+        $item->def_titre("Texte de l'annonce");
+        $item->nombre_lignes = 10;
+        $this->ajouter_champ($item);
+      } catch(Exception $e) {
+        die('Exception dans constructeur de la classe Formulaire_Annonce_Bateau : ' . $e->getMessage());
+      }
     }
+    
+    public function initialiser_champs($annonce) {
+      $this->champ('typ')->def_valeur($annonce->code_type);
+      $this->champ('pret')->def_valeur($annonce->pret);
+      $this->champ('cond')->def_valeur(utf8_encode($annonce->condition));
+      $this->champ('bat')->def_valeur($annonce->code_type_bateau);
+      $this->champ('pel')->def_valeur($annonce->code_type_aviron);
+      
+      $cal = Calendrier::obtenir();
+      $v = $cal->date_html($annonce->date_debut);
+      $this->champ('deb')->def_valeur($v);
+      $v = $cal->date_html($annonce->date_fin);
+      $this->champ('fin')->def_valeur($v);
+      
+      $this->champ('crs')->def_valeur($annonce->codes_course);
+      
+      $this->champ('civ')->def_valeur($annonce->auteur->genre);
+      $this->champ('prenom')->def_valeur(utf8_encode($annonce->auteur->prenom));
+      $this->champ('nom')->def_valeur(utf8_encode($annonce->auteur->nom));
+      $this->champ('courriel')->def_valeur($annonce->auteur->courriel);
+      $this->champ('tel')->def_valeur($annonce->auteur->telephone);
+      $this->champ('clb')->def_valeur(utf8_encode($annonce->auteur->club));
+      $this->champ('txt')->def_valeur(utf8_encode($annonce->texte));
+    }
+    
+  }
   
+  // ------------------------------------------------------------------------
+  // --- Definition de la classe Personne
+  
+  class Personne {
+    static $civilites = array('F' => "Madame", 'H' => "Monsieur");
+    
+    public $genre = "F";
+    public function civilite() { self::$civilites[$this->genre]; }
+    public $prenom = "";
+    public $nom = "";
+    public $date_naissance;
+    public $telephone = "";
+    public $courriel = "";
+    public $club;
   }
   
   class Annonce_Bateau {
-    public $auteur = null; // Personne (a faire plus tard)
+    static $types_annonce = array('dde' => "Demande", 'ofr' => "Offre");
+    static $types_bateau = array('1x' => "Solo", '2x' => "Double", '4+' => "4 barré pointe", '4x' => "4 barré couple");
+    static $types_aviron = array('0' => "Aucun",  'H' => "pelles hachoir", 'M' => "pelles Mâcon", '_' => "pelles de type indifférent");
     
-    public $code_type = ""; // dde, ofr
+    static $courses = array(0 => "Sélectionnez une course",
+                            1 => "J18H4x+",
+                            2 => "J18M4x+",
+                            3 => "J18F4x+",
+                            4 => "SF1X",
+                            5 => "SF4+",
+                            6 => "SF2X",
+                            7 => "SF4x+",
+                            8 => "SH1X",
+                            9 => "SH4+",
+                            10 => "SH2X",
+                            11 => "SH4x+");
+    
+    public $auteur = null;
+    
+    public $numero = 0;
+    public function code() { return $this->numero; }
+    public function def_code($valeur) {$this->numero = $valeur; }
+    
+    public $cle_access = 0;
+    public function cle_access() { return $this->cle_access; }
+    public function def_cle_access($valeur) {$this->cle_access = $valeur; }
+    
+    public $code_type = "";
+    public function type() { return self::$types_annonce[$this->code_type]; }
+    
     public $active = True;
     
-    public $code_type_bateau = "";
-    public $code_type_aviron = ""; // 0 => aucun H => Hachoir ou M => Macon
+    public $pret = True;
+    public function pret_location() { return ($this->pret)? "prêt": "location"; }
     
+    public $date_publication = "";
     
-    public $civilite = "";
-    public $prenom = "";
-    public $nom = "";
-    public $telephone = "";
-    public $courriel = "";
-    public $nom_club = "";
+    public $code_type_bateau = '';
+    public function type_bateau() { return self::$types_bateau[$this->code_type_bateau]; }
     
-    public $j1_ma = False;
-    public $j1_am = False;
-    public $j2_ma = False;
-    public $j2_am = False;
-    public $j3_ma = False;
-    public $j3_am = False;
-    public $j4_ma = False;
+    public $code_type_aviron = '';
+    public function type_aviron() { return self::$types_aviron[$this->code_type_aviron]; }
+    public function avec_aviron() { return (!$this->code_type_aviron == '0'); }
+    
+    public $date_debut = null;
+    public $date_fin = null;
+    
+    public $codes_course = 0;
+    public function courses() { return self::$courses[$this->codes_course]; }
     
     public $condition = "";
     public $texte = "";
@@ -178,55 +245,201 @@
       $this->code_type = strip_tags(trim(utf8_decode($_POST['typ'])));
       
       // Caracteristiques annonce
-      $this->code_type_bateau = strip_tags(trim(utf8_decode($_POST['cod'])));
-      $this->code_type_aviron = strip_tags(trim(utf8_decode($_POST['cod'])));
-
+      $this->code_type_bateau = strip_tags(trim(utf8_decode($_POST['bat'])));
+      $this->code_type_aviron = strip_tags(trim(utf8_decode($_POST['pel'])));
+      $this->pret = $_POST['pret'];
+      
       // dates
+      $d = strip_tags(trim(utf8_decode($_POST['deb'])));
+      $champs = explode("-", $d);
+      if (intval($champs[0]) > 2000)
+        $this->date_debut = $cal->jour(intval($champs[2]), intval($champs[1]), intval($champs[0]));
+      else
+        $this->date_debut = new Instant(0);
+      
+      $d = strip_tags(trim(utf8_decode($_POST['fin'])));
+      $champs = explode("-", $d);
+      if (intval($champs[0]) > 2000)
+        $this->date_fin = $cal->jour(intval($champs[2]), intval($champs[1]), intval($champs[0]));
+      else
+        $this->date_fin = new Instant(0);
+      
+      // Courses
+      $this->codes_course = $_POST['crs'];
       
       // Informations
-      $this->condition = strip_tags(trim(utf8_decode($_POST['bat'])));
-      $this->texte = strip_tags(trim(utf8_decode($_POST['pel'])));
+      $this->condition = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['cond']))));
+      $this->texte = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['txt']))));
       
       // Personne ayant poste l'annonce
-      $this->civilite = strip_tags(trim(utf8_decode($_POST['civ'])));
-      $this->prenom = strip_tags(trim(utf8_decode($_POST['prenom'])));
-      $this->nom = strip_tags(trim(utf8_decode($_POST['nom'])));
-      $this->telephone = strip_tags(trim(utf8_decode($_POST['tel'])));
-      $this->adresse_mail = strip_tags(trim(utf8_decode($_POST['courriel'])));
-      $this->club = strip_tags(trim(utf8_decode($_POST['clb'])));
+      $this->auteur = new Personne();
       
+      $this->auteur->civilite = strip_tags(trim(utf8_decode($_POST['civ'])));
+      $this->auteur->prenom = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['prenom']))));
+      $this->auteur->nom = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['nom']))));
+      $this->auteur->telephone = strip_tags(trim(utf8_decode($_POST['tel'])));
+      $this->auteur->courriel = strip_tags(trim(utf8_decode($_POST['courriel'])));
+      $this->auteur->club = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['clb']))));
     }
   }
 
-  /*
-  abstract class Enregistrement_Annonce {
-    protected $annonce = null;
-    
-    public function __construct($annonce) {
-      $this->annonce = $annonce;
-    }
-    
-    abstract public function executer();
-    
-  }
-  */
-  
   class Enregistrement_Annonce_Bateau /* extends  Enregistrement_Annonce */ {
     static function source() {
       return Base_Donnees::$prefix_table . 'annonces_bateau';
     }
     
-    static public function enregistrer($annonce) {
-      $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+    static public function champs_donnees() {
+      return "active, code_type, pret, code_type_bateau, code_type_aviron, debut, fin, courses, conditions, details, civilite, prenom, nom, courriel, telephone, club";
+    }
+    static public function champs_recherche() {
+      return "code, cle_access, date_publication, " . self::champs_donnees();
+    }
+    
+    private $annonce = null;
+    public function annonce() { return $this->annonce; }
+    public function def_annonce($annonce) { $this->annonce = $annonce; }
+    
+    
+    private $type_id = 'code';
+    public function def_type_id($nom_champ_table) {
+      $this->type_id = $nom_champ_table;
+    }
+    
+    private function critere_recherche() {
+      if ($this->type_id == 'cle_access')
+        return "cle_access = '" . $this->annonce->cle_access() . "' ";
+      else
+        return "code = '" . $this->annonce->code() . "' ";
+    }
+    
+    private function id_annonce() {
+      return ($this->type_id == 'cle_access')? $this->annonce->cle_access(): $this->annonce->code();
+    }
+    
+    private function initialiser_depuis_table($donnee) {
+      $this->annonce->def_code($donnee['code']);
+      $this->annonce->def_cle_access($donnee['cle_access']);
+      $this->annonce->date_publication = $donnee['date_publication'];
       
-      $requete = "INSERT INTO " . self::source() . "";
+      $this->annonce->code_type = $donnee['code_type'];
+      $this->annonce->pret = $donnee['pret'];
+      $this->annonce->code_type_bateau = $donnee['code_type_bateau'];
+      $this->annonce->code_type_aviron = $donnee['code_type_aviron'];
+      
+      $this->annonce->date_debut = new Instant($donnee['debut']);
+      $this->annonce->date_fin = new Instant($donnee['fin']);
+      
+      $this->annonce->codes_course = $donnee['courses'];
+      
+      $this->annonce->condition = $donnee['conditions'];
+      $this->annonce->texte = $donnee['details'];
+      
+      $this->annonce->auteur = new Personne();
+      $this->annonce->auteur->civilite = $donnee['civilite'];
+      $this->annonce->auteur->prenom = $donnee['prenom'];
+      $this->annonce->auteur->nom = $donnee['nom'];
+      $this->annonce->auteur->courriel = $donnee['courriel'];
+      $this->annonce->auteur->telephone = $donnee['telephone'];
+      $this->annonce->auteur->club = $donnee['club'];
+    }
+    
+    public function enregistrer_annonce() {
+      $ok = False;
+      if ($this->annonce == null) return;
+      $champs = "cle_access, " . self::champs_donnees();
+      
+      $cle = rand();
+      $this->annonce->def_cle_access($cle);
+      
+      $valeurs = "'" . $this->annonce->cle_access() . "', '" . $this->annonce->active . "', '" . $this->annonce->code_type . "', '" . $this->annonce->pret . "', '" . $this->annonce->code_type_bateau . "', '" . $this->annonce->code_type_aviron . "', '" . $this->annonce->date_debut->date() . "', '" . $this->annonce->date_fin->date() . "', '"  . $this->annonce->codes_course . "', '" . $this->annonce->condition . "', '" . $this->annonce->texte . "', '" . $this->annonce->auteur->civilite . "', '" .  $this->annonce->auteur->prenom . "', '" .  $this->annonce->auteur->nom . "', '" .  $this->annonce->auteur->courriel . "', '" .  $this->annonce->auteur->telephone . "', '" . $this->annonce->auteur->club . "'";
+      $requete = "INSERT INTO " . self::source() . "(" . $champs . ") VALUES(" . $valeurs . ")";
       try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+        $bdd->exec($requete);
+        $ok = True;
+      } catch(PDOException $e) {
+          echo "<p>Erreur : " . $requete . "<br />" . $e->getMessage() . "</p>";
+      }
+      return $ok;
+    }
+    
+    public function modifier_annonce() {
+      $ok = False;
+      if ($this->annonce == null) return;
+      $critere = $this->critere_recherche();
+      
+      $commande = " SET code_type='" . $this->annonce->code_type . "', pret='" . $this->annonce->pret . "', code_type_bateau='" . $this->annonce->code_type_bateau . "', code_type_aviron='" . $this->annonce->code_type_aviron  . "', debut='"  . $this->annonce->date_debut->date()  . "', fin='"  . $this->annonce->date_fin->date() . "', courses='"  . $this->annonce->codes_course . "', conditions='" . $this->annonce->condition . "', details='" . $this->annonce->texte . "', civilite='" . $this->annonce->auteur->civilite . "', prenom='" .  $this->annonce->auteur->prenom . "', nom='" .  $this->annonce->auteur->nom . "', courriel='" .  $this->annonce->auteur->courriel . "', telephone='" .  $this->annonce->auteur->telephone . "', club='" . $this->annonce->auteur->club . "'";
+      $requete = "UPDATE " . self::source() . $commande . "WHERE " . $critere;
+      try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+        $bdd->exec($requete);
+        $ok = True;
+      } catch(PDOException $e) {
+        echo "<p>Erreur : " . $requete . "<br />" . $e->getMessage() . "</p>";
+      }
+      return $ok;
+    }
+    
+    public function rechercher_annonce() {
+      $critere = $this->critere_recherche();
+      
+      $requete = "SELECT " . self::champs_recherche() . " FROM " . self::source() . " WHERE " . $critere;
+      try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+        $resultat = $bdd->query($requete);
+        $donnee = $resultat->fetch();
+        $this->initialiser_depuis_table($donnee);
+      } catch (PDOexception $e) {
+        die("Erreur recherche annonce bateau par " . $this->type_id . " : ligne " . $e->getLine() . ' :</b> '. $e->getMessage());
+      }
+      $resultat->closeCursor();
+    }
+    
+    public function rechercher_actives() {
+      //$cal = Calendrier::obtenir();
+      
+      $requete = "SELECT " . self::champs_recherche() . " FROM " . self::source() . " WHERE active  = '1' ORDER BY code DESC";
+      //echo $requete;
+      $annonces = array();
+      try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+        $resultat = $bdd->query($requete);
+        while ($donnee = $resultat->fetch()) {
+          $this->annonce = new Annonce_Bateau();
+          $this->initialiser_depuis_table($donnee);
+          $annonces[] = $this->annonce;
+        }
+      } catch (PDOexception $e) {
+        die("Erreur recherche annonces bateau actives : ligne " . $e->getLine() . ' :</b> '. $e->getMessage());
+      }
+      $resultat->closeCursor();
+      return $annonces;
+    }
+    
+    public function desactiver_annonce() {
+      $ok = False;
+      $requete = "UPDATE " . self::source() . " SET active ='0' WHERE " . $this->critere_recherche();
+      try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
         $bdd->exec($requete);
       } catch(PDOException $e) {
-          echo $sql . "<br>" . $e->getMessage();
+        echo "<p>Erreur : " . $requete . "<br />" . $e->getMessage() . "</p>";
       }
-      $resultat = False;
-      return $resultat;
+      $ok = True;
+      return $ok;
+    }
+    
+    public function supprimer_annonce() {
+      $ok = False;
+      $requete = "DELETE FROM " . self::source() . " WHERE " . $this->critere_recherche();
+      try {
+        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+        $bdd->exec($requete);
+        $ok = True;
+      } catch(PDOException $e) {
+        echo "<p>Erreur : " . $requete . "<br />" . $e->getMessage() . "</p>";
+      }
+      return $ok;
     }
   }
   

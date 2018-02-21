@@ -11,6 +11,7 @@
 // revision: 23-juin-2017 pchevaillier@gmail.com javascripts
 // revision: 18-juil-2017 pchevaillier@gmail.com padding: 0px
   // revision: 04-fev-2018 pchevaillier@gmail.com padding: 10px pour corps
+  // revision: 18-fev-2018 pchevaillier@gmail.com head en static
   // ------------------------------------------------------------------------
 // commentaires : 
 // -
@@ -30,14 +31,14 @@ require_once 'site.php';
  * @author Pierre Chevaillier
  */
 abstract class Page extends Element {
-  /**
-    * @var string[]
-    */
+  
   public $javascripts = array();
 
   protected $elements_haut = array();
   protected $elements_bas = array();
  
+  public $elements_entete = array();
+  
   public $contenus = array();
   
 	public function __construct($nom_page) {
@@ -59,10 +60,8 @@ abstract class Page extends Element {
     echo "      </div>\n";
   }
 
-	/**
-  	* TODO : les javascript
-  	*/
   protected function afficher_debut() {
+    
   	echo "<head>\n      <meta charset=\"utf-8\" />
       <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
       <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
@@ -72,9 +71,11 @@ abstract class Page extends Element {
 			  integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\"
 			  crossorigin=\"anonymous\"></script>
       <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n";
+    
     foreach ($this->javascripts as $scripts) {
       echo "      <script src=\"" . get_include_path() . $scripts . "\"></script>\n";
     }
+    foreach ($this->elements_entete as $e) echo $e;
     echo "      <title>" . $this->titre() . "</title>\n    </head>\n    <body>\n";
   }
 
@@ -85,4 +86,11 @@ abstract class Page extends Element {
   abstract protected function definir_elements();
 
 }
+  
+  class Page_Simple extends Page {
+    protected function definir_elements() {
+      //de base : rien
+    }
+  }
+  
 // ========================================================================
