@@ -2,7 +2,7 @@
   // ==========================================================================
   // description : definition des classes / gestion bourse aux bateaux
   // utilisation : element d'une page web
-  // teste avec  : PHP 5.5.3 sur Mac OS 10.11
+  // teste avec  : PHP 5.5.3 sur Mac OS 10.11 - PHP 7.0 sur serveur OVH
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
   // Copyright (c) 2018 AMP. Tous droits reserves.
   // ------------------------------------------------------------------------
@@ -10,6 +10,7 @@
   // revision : 04-fev-2018 pchevaillier@gmail.com dates, montant
   // revision : 07-fev-2018 pchevaillier@gmail.com infos completes
   // revision : 18-fev-2018 pchevaillier@gmail.com ajout/modif, controle actions
+  // revision : 23-fev-2018 pchevaillier@gmail.com mysql_real_escape_string --> PDO::quote
   // ------------------------------------------------------------------------
   // commentaires :
   // - en test
@@ -151,10 +152,14 @@
       $this->champ('pel')->def_valeur($annonce->code_type_aviron);
       
       $cal = Calendrier::obtenir();
-      $v = $cal->date_html($annonce->date_debut);
-      $this->champ('deb')->def_valeur($v);
-      $v = $cal->date_html($annonce->date_fin);
-      $this->champ('fin')->def_valeur($v);
+      if ($annonce->date_debut->date() > 0) {
+        $v = $cal->date_html($annonce->date_debut);
+        $this->champ('deb')->def_valeur($v);
+      }
+      if ($annonce->date_fin->date() > 0) {
+        $v = $cal->date_html($annonce->date_fin);
+        $this->champ('fin')->def_valeur($v);
+      }
       
       $this->champ('crs')->def_valeur($annonce->codes_course);
       
@@ -250,14 +255,16 @@
       $this->pret = $_POST['pret'];
       
       // dates
-      $d = strip_tags(trim(utf8_decode($_POST['deb'])));
+      $d = $_POST['deb'];
+      if (strlen($d) == 0) $d="1970-01-01";
       $champs = explode("-", $d);
       if (intval($champs[0]) > 2000)
         $this->date_debut = $cal->jour(intval($champs[2]), intval($champs[1]), intval($champs[0]));
       else
         $this->date_debut = new Instant(0);
       
-      $d = strip_tags(trim(utf8_decode($_POST['fin'])));
+      $d = $_POST['fin'];
+      if (strlen($d) == 0) $d="1970-01-01";
       $champs = explode("-", $d);
       if (intval($champs[0]) > 2000)
         $this->date_fin = $cal->jour(intval($champs[2]), intval($champs[1]), intval($champs[0]));
@@ -268,18 +275,21 @@
       $this->codes_course = $_POST['crs'];
       
       // Informations
-      $this->condition = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['cond']))));
-      $this->texte = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['txt']))));
+      $bdd = Base_Donnees::accede();
+     
+      $this->condition = strip_tags(trim(utf8_decode($_POST['cond'])));
+      $this->texte = strip_tags(trim(utf8_decode($_POST['txt'])));
       
       // Personne ayant poste l'annonce
       $this->auteur = new Personne();
       
-      $this->auteur->civilite = strip_tags(trim(utf8_decode($_POST['civ'])));
-      $this->auteur->prenom = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['prenom']))));
-      $this->auteur->nom = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['nom']))));
+      $this->auteur->civilite = $_POST['civ'];
+      
+      $this->auteur->prenom = strip_tags(trim(utf8_decode($_POST['prenom'])));
+      $this->auteur->nom = strip_tags(trim(utf8_decode($_POST['nom'])));
       $this->auteur->telephone = strip_tags(trim(utf8_decode($_POST['tel'])));
       $this->auteur->courriel = strip_tags(trim(utf8_decode($_POST['courriel'])));
-      $this->auteur->club = mysql_real_escape_string(strip_tags(trim(utf8_decode($_POST['clb']))));
+      $this->auteur->club = strip_tags(trim(utf8_decode($_POST['clb'])));
     }
   }
 
@@ -345,16 +355,16 @@
     
     public function enregistrer_annonce() {
       $ok = False;
-      if ($this->annonce == null) return;
+      $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+      if ($this->annonce == null) return $ok;
       $champs = "cle_access, " . self::champs_donnees();
       
       $cle = rand();
       $this->annonce->def_cle_access($cle);
       
-      $valeurs = "'" . $this->annonce->cle_access() . "', '" . $this->annonce->active . "', '" . $this->annonce->code_type . "', '" . $this->annonce->pret . "', '" . $this->annonce->code_type_bateau . "', '" . $this->annonce->code_type_aviron . "', '" . $this->annonce->date_debut->date() . "', '" . $this->annonce->date_fin->date() . "', '"  . $this->annonce->codes_course . "', '" . $this->annonce->condition . "', '" . $this->annonce->texte . "', '" . $this->annonce->auteur->civilite . "', '" .  $this->annonce->auteur->prenom . "', '" .  $this->annonce->auteur->nom . "', '" .  $this->annonce->auteur->courriel . "', '" .  $this->annonce->auteur->telephone . "', '" . $this->annonce->auteur->club . "'";
+      $valeurs = $bdd->quote($this->annonce->cle_access()) . ", " . $bdd->quote($this->annonce->active) . ", " . $bdd->quote($this->annonce->code_type) . ", " . $bdd->quote($this->annonce->pret) . ", " . $bdd->quote($this->annonce->code_type_bateau) . ", " . $bdd->quote($this->annonce->code_type_aviron) . ", " . $bdd->quote($this->annonce->date_debut->date()) . ", " . $bdd->quote($this->annonce->date_fin->date()) . ", "  . $bdd->quote($this->annonce->codes_course) . ", " . $bdd->quote($this->annonce->condition) . ", " . $bdd->quote($this->annonce->texte) . ", " . $bdd->quote($this->annonce->auteur->civilite) . ", " .  $bdd->quote($this->annonce->auteur->prenom) . ", " .  $bdd->quote($this->annonce->auteur->nom) . ", " . $bdd->quote($this->annonce->auteur->courriel) . ", " . $bdd->quote($this->annonce->auteur->telephone) . ", " . $bdd->quote($this->annonce->auteur->club);
       $requete = "INSERT INTO " . self::source() . "(" . $champs . ") VALUES(" . $valeurs . ")";
       try {
-        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
         $bdd->exec($requete);
         $ok = True;
       } catch(PDOException $e) {
@@ -365,13 +375,14 @@
     
     public function modifier_annonce() {
       $ok = False;
-      if ($this->annonce == null) return;
+      if ($this->annonce == null) return $ok;
+      $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
+      
       $critere = $this->critere_recherche();
       
-      $commande = " SET code_type='" . $this->annonce->code_type . "', pret='" . $this->annonce->pret . "', code_type_bateau='" . $this->annonce->code_type_bateau . "', code_type_aviron='" . $this->annonce->code_type_aviron  . "', debut='"  . $this->annonce->date_debut->date()  . "', fin='"  . $this->annonce->date_fin->date() . "', courses='"  . $this->annonce->codes_course . "', conditions='" . $this->annonce->condition . "', details='" . $this->annonce->texte . "', civilite='" . $this->annonce->auteur->civilite . "', prenom='" .  $this->annonce->auteur->prenom . "', nom='" .  $this->annonce->auteur->nom . "', courriel='" .  $this->annonce->auteur->courriel . "', telephone='" .  $this->annonce->auteur->telephone . "', club='" . $this->annonce->auteur->club . "'";
-      $requete = "UPDATE " . self::source() . $commande . "WHERE " . $critere;
+      $commande = " SET code_type=" . $bdd->quote($this->annonce->code_type) . ", pret=" . $bdd->quote($this->annonce->pret) . ", code_type_bateau=" . $bdd->quote($this->annonce->code_type_bateau) . ", code_type_aviron=" . $bdd->quote($this->annonce->code_type_aviron)  . ", debut=" . $bdd->quote($this->annonce->date_debut->date()) . ", fin=" . $bdd->quote($this->annonce->date_fin->date()) . ", courses=" . $bdd->quote($this->annonce->codes_course) . ", conditions=" . $bdd->quote($this->annonce->condition) . ", details=" . $bdd->quote($this->annonce->texte) . ", civilite=" . $bdd->quote($this->annonce->auteur->civilite) . ", prenom=" . $bdd->quote($this->annonce->auteur->prenom) . ", nom=" . $bdd->quote($this->annonce->auteur->nom) . ", courriel=" . $bdd->quote($this->annonce->auteur->courriel) . ", telephone=" .  $bdd->quote($this->annonce->auteur->telephone) . ", club=" . $bdd->quote($this->annonce->auteur->club);
+      $requete = "UPDATE " . self::source() . $commande . " WHERE " . $critere;
       try {
-        $bdd = Base_Donnees::accede(); // recupere l'access a la base de donnees
         $bdd->exec($requete);
         $ok = True;
       } catch(PDOException $e) {
@@ -398,7 +409,7 @@
     public function rechercher_actives() {
       //$cal = Calendrier::obtenir();
       
-      $requete = "SELECT " . self::champs_recherche() . " FROM " . self::source() . " WHERE active  = '1' ORDER BY code DESC";
+      $requete = "SELECT " . self::champs_recherche() . " FROM " . self::source() . " WHERE active = '1' ORDER BY code DESC";
       //echo $requete;
       $annonces = array();
       try {

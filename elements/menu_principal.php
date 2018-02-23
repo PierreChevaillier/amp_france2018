@@ -53,7 +53,7 @@ class Menu_Principal extends Menu_Navigation {
     echo '<li><a href="transports.php">Venir</a></li>';
     echo '<li><a href="hebergements.php">Hébergements</a></li>';
     echo '<li><a href="restauration.php">Restauration</a></li>';
-     echo '<li><a href="bourse_bateaux.php">Bourse bateaux</a></li>';
+    echo '<li><a href="bourse_bateaux.php">Bourse bateaux</a></li>';
     echo '<li><a href="page_vide.php">Village</a></li>';
     echo '<li><a href="tourisme.php">Tourisme</a></li>';
     echo '</ul></li>';

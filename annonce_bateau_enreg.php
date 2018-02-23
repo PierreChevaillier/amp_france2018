@@ -21,29 +21,36 @@
 
   $site = new Site("Championnat France 2018");
   $site->initialiser();
-      
+  
   // --- recuperation des donnees saisies dans le formulaire
   require_once 'elements/annonce_bateau.php';
-      
+  
+  $action = $_POST['a'];
+  
+ 
   $annonce = new Annonce_Bateau();
+
+  
   $annonce->definir_depuis_formulaire();
       
   // --- Enregistrement de l'annonce
-  $action = $_POST['a'];
   
   $table = new Enregistrement_Annonce_bateau();
   $table->def_annonce($annonce);
   $action = $_POST['a'];
   if ($action == 'a') {
-    $statut = $table->enregistrer_annonce();
+    $ok = $table->enregistrer_annonce();
   } elseif ($action == 'm') {
     $id_annonce  = $_POST['id'];
     $annonce->def_cle_access($id_annonce);
     $table->def_type_id('cle_access');
-    $statut = $table->modifier_annonce();
+    $ok = $table->modifier_annonce();
   }
   
   // --- Affichage du message de confirmation de traitement de la demande
-  header("location: annonce_bateau_confirm_enreg.php?a=" . $action . "&id=" . $annonce->cle_access());
+  if ($ok)
+    header("location:annonce_bateau_confirm_enreg.php?a=" . $action . "&id=" . $annonce->cle_access());
+  else
+    header("location:index.php");
   // ===========================================================================
 ?>

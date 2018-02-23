@@ -43,10 +43,10 @@
       
       $formulaire = new Formulaire_Annonce_bateau($page, 'annonce_bateau_enreg.php', $action);
       $formulaire->def_titre("Petite annonce prêt - location bateaux");
-      $valeurs_defaut = array('typ' => 'dde', 'civ' => 'H');
       if ($action == 'a') {
+        $valeurs_defaut = array('typ' => 'dde', 'civ' => 'H');
         $formulaire->definir_valeur_champs($valeurs_defaut);
-      } else {
+      } elseif($action == 'm')  {
         $identifiant_annonce = $_GET['id'];
         // recherche annonce dans base de donnees
         $annonce = new annonce_Bateau();
@@ -59,9 +59,10 @@
         // remplit le formulaire
         $formulaire->initialiser_champs($annonce);
         $formulaire->def_id_objet($identifiant_annonce);
+      } else {
+        die("annonce_bateau : action inconnue : " . $action);
       }
       $principal->elements[] = $formulaire;
-      
       
       // Contenu du cadre secondaire de la page
       $secondaire = new Conteneur_Elements();
