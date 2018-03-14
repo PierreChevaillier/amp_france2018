@@ -6,17 +6,14 @@
   // utilisation : destine a etre affiche sur la page web
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP
   // ------------------------------------------------------------------------
-  // creation: 11-oct-2017 pchevaillier@gmail.com
-  // revision:
+  // creation : 11-oct-2017 pchevaillier@gmail.com
+  // revision : 14-mar-2018 pchevaillier@gmail.com correction lien site web
   // ------------------------------------------------------------------------
   // commentaires :
-  // -
   // attention :
-  // -
   // a faire :
-  // - ajouter le lien vers le site web
   // ========================================================================
   
   // --- Classes utilisees
@@ -43,7 +40,7 @@
       echo '<a href="' . $lien . '"><img class="media-object" src="' . $source . '" alt="alt"></a></div><div class="media-body">';
       echo '<h4 class="media-heading">' . $this->titre() . '</h4>';
       echo '<p>' . $this->contenu . '</p>';
-      echo '<p><a target="_new" href="' . $this->contenu . '">site internet</a></p>';
+      echo '<p><a target="_new" href="' . $this->lien_site_web . '">site internet</a></p>';
 
     }
     

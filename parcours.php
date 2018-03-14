@@ -4,10 +4,11 @@
       // =======================================================================
       // description : page web affichant le parcours des courses
       // contexte    : Site web du Championnat de France 2018
-      // Copyright (c) 2017-2018 AMP. Tous droits reserves
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves.
       // -----------------------------------------------------------------------
       // creation : 19-jan-2018 pchevaillier@gmail.com version provisoire
       // revision : 04-fev-2018 pchevaillier@gmail.com parcours officiels
+      // revision : 14-mar-2018 pchevaillier@gmail.com ajout waypoints parcours
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -37,11 +38,11 @@
       require_once 'elements/album_videos.php';
  
       // Entete mentionnant que le parcours n'est pas encore connu
-      $texte = "<p></p>";
+      $texte = "<div class=\"page-header\" padding=\><h1>Parcours des courses</h1><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"media/parcours/f18_waypoints-parcours.pdf\" target=\"_new\">Waypoints des parcours</a></li></ul></div>";
       //$texte = "\n<div class=\"page-header\"><h1>Parcours des courses</h1><div class=\"panel panel-warning\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\"><p class=\"lead\">Information non encore disponible.</p></div><div class=\"panel-body\"><p>Les courses se déroulerons dans la baie du Trez-Hir, approximativement dans le zone ci-dessous.</p></div></div></div>\n";
       
       $entete = new Cadre_Texte($texte);
-      $entete->def_titre("Parcours des courses");
+      //$entete->def_titre("Parcours des courses");
       $page->contenus[] = $entete;
       
       $chemin_media = "media/parcours";

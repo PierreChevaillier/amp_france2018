@@ -4,10 +4,10 @@
       // =======================================================================
       // description : page web album des videos
       // contexte    : Site web du chamionnat de France 2018
-      // Copyright (c) 2017 AMP
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // ------------------------------------------------------------------------
       // creation : 13-oct-2017 pchevaillier@gmail.com
-      // revision :
+      // revision : 14-mar-2017 pchevaillier@gmail.com ajour video de fevrier
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -43,6 +43,15 @@
       $media->contenu = "Découvrez ce qui se passe en ce moment sur le site où se dérouleront les compétitions.";
 
       $liste_videos[] = $media;
+    
+      $media = new vignette_Media();
+      $media->chemin_vignette = $chemin_media;
+      $media->nom_fichier_vignette = "vignette_100-jours.jpg";
+      $media->def_titre("Moins de 100 jours..");
+      $media->lien_page_media = "video_moins-100-jours.php";
+      $media->contenu = "La dete approche... et on se prépare très séieursement à l'Aviron de Mer de Plougonbelin ! A terre, comme en mer.";
+      
+      $liste_videos[] = $media;
       
       $media = new vignette_Media();
       $media->chemin_vignette = $chemin_media;
@@ -52,7 +61,7 @@
       $media->contenu = "Cette video devrait vous motiver pour vous joindre à nous pour vivre cet événement majeur pour nous toutes et tous.";
 
       $liste_videos[] = $media;
-      
+ /*
       $media = new vignette_Media();
       $media->chemin_vignette = $chemin_media;
       $media->nom_fichier_vignette = "vignette_video_plougonvelin.png";
@@ -61,7 +70,7 @@
       $media->contenu = "Accédez à de splendides vidéos qui vous ferons découvrir Plougonvelin et qui vous donnerons sans doute l'envie de prolonger votre séjour.";
 
       $liste_videos[] = $media;
-      
+   */   
       // --- Elements de la page
       $album = new Album_Videos($liste_videos, 3);
       $page->contenus[] = $album;

@@ -2,11 +2,11 @@
   <html lang="fr">
     <?php
       // =======================================================================
-      // description : page visualisation video promo de l'evenement
+      // description : page visualisation video promo fevrier 2018
       // contexte    : Site web du chamionnat de France 2018
-      // Copyright (c) 2017 AMP
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // ------------------------------------------------------------------------
-      // creation : 14-oct-2017 pchevaillier@gmail.com
+      // creation : 14-mar-2018 pchevaillier@gmail.com
       // revision :
       // -----------------------------------------------------------------------
       // commentaires :
@@ -26,13 +26,13 @@
       require_once 'elements/page_france2018.php';
       
       // --- Autres classes
-      require_once 'elements/page_france2018.php';
+      require_once 'elements/page_france2018.php';      
       require_once 'generiques/cadre_video.php';
       
       // --- Creation dynamique de la page et affichage
-      $page = new Page_France2018("teaser");
+      $page = new Page_France2018("France 2018 : moins de 100 jours");
       
-      $page->contenus[] = new Cadre_Video("media/videos/teaser_france2018_12mbs.mp4");
+      $page->contenus[] = new Cadre_Video("media/videos/reportage_moins-100-jours.mp4");
       
       $page->initialiser();
       $page->afficher();

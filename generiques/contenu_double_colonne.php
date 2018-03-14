@@ -7,7 +7,7 @@
   // Copyright (c) 2017-2018 AMP. Tous droits reserves
   // --------------------------------------------------------------------------
   // creation : 06-fev-2018 pchevaillier@gmail.com
-  // revision :
+  // revision : 24-fev-2018 pchevaillier@gmail.com padding
   // --------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -27,8 +27,9 @@
     private $format_principal = 'col-sm-8';
     private $format_secondaire = 'col-sm-4';
     
-    
-    public function __construct($principal, $secondaire, $format_principal, $format_second) {
+    public function __construct($principal, $secondaire,
+                                $format_principal = 'col-sm-8',
+                                $format_second = 'col-sm-4') {
       $this->principal = $principal;
       $this->secondaire = $secondaire;
       $this->format_principal = $format_principal;
@@ -41,11 +42,11 @@
     }
    
     protected function afficher_debut() {
-      echo '<div class="container"><div class="row">';
+      echo '<div class="container" style="padding:10px;><div class="row">';
     }
   
     protected function afficher_corps() {
-      echo '<div class="' . $this->format_principal . '">';
+      echo '<div class="' . $this->format_principal . '" style="padding:10px;" >';
       $this->principal->afficher();
       echo '</div>';
       echo '<div class="' . $this->format_secondaire . '">';

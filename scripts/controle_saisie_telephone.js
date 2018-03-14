@@ -6,13 +6,15 @@
 // Copyright (c) 2017 AMP
 // ----------------------------------------------------------------------------
 // creation: 23-oct-2017 pchevaillier@gmail.com
-// revision:
+// revision: 01-03-2018  pchevaillier@gmail.com 2e chiffre : de 1 à 9
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
 // attention :
 // -
 // a faire :
+// voir https://stackoverflow.com/questions/2113908/what-regular-expression-will-match-valid-international-phone-numbers
+
 // ------------------------------------------------------------------------
 
 function verif_numero_telephone(element) {
@@ -21,7 +23,7 @@ function verif_numero_telephone(element) {
   if (x == null || x == "") {
     est_correct = true;
   } else {
-    var reg =/^(0[1-68])(?:[ _.-]?(\d{2})){4}$/;
+    var reg =/^(0[1-9])(?:[ _.-]?(\d{2})){4}$/;
     if (!reg.test(x)) {
       element.style.color = "red";
       element.focus(); // marche pas...

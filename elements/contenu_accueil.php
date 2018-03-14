@@ -44,11 +44,11 @@ class Contenu_Accueil extends Element_Page {
     *
     */
   protected function afficher_debut() {
-    echo '<div class="container" style="padding:0px;" ><div class="row" style="padding:0px;">';
+    echo '<div class="container" style="padding:10px;" ><div class="row" style="padding:10px;">';
   }
   
   protected function afficher_corps() {
-    echo '<div class="col-sm-8" style="padding:0px;" >';
+    echo '<div class="col-sm-8" style="padding:10px;" >';
     $this->contenu_gauche->afficher();
     echo '</div>';
     echo '<div class="col-sm-4">';
