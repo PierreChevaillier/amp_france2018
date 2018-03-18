@@ -3,13 +3,14 @@
   // description : definition de la classe Bandeau_Partenaires
   //               affichage d'un bandeau horizontal des logos des partenaires
   // utilisation : destine a etre affiche sur toutes les pages du site
-  // teste avec  : PHP 5.5.3 sur Mac OS 10.11
+  // teste avec  : PHP 5.5.3 sur Mac OS 10.11 - PHP 7.0 sur serveur OVH
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP. Tous droits reserves.
   // ---------------------------------------------------------------------------
   // creation : 09-juin-2017 pchevaillier@gmail.com
   // revision : 24-juin-2017 pchevaillier@gmail.com bandeau responsive
   // revision : 27-aout-2017 pchevaillier@gmail.com logos MAIF et FFA
+  // revision : 18-mars-2018 pchevaillier@gmail.com nouveau logo FFA + liens href
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -43,9 +44,9 @@ class Bandeau_Partenaires extends Element_Page {
   
   protected function afficher_corps() {
     //echo '<td><img src="' . $this->chemin_dossier . '/logo_ffa_maif_cnr.png" height="120" /></td>';
-    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_ffa.png" height="120" align="middle" /></div>';
-    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_maif_blanc_200x196.png" height="100" align="middle" /></div>';
-    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><img src="' . $this->chemin_dossier . '/logo_amp.png" height="100" align="middle" /></div>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><a href="http://avironfrance.fr"><img src="' . $this->chemin_dossier . '/ffaviron-logo-horizontal.jpg" height="120" align="middle" /></a></div>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><a href="https://www.maif.fr"><img src="' . $this->chemin_dossier . '/logo_maif_blanc_200x196.png" height="100" align="middle" /></a></div>';
+    echo '<div class="col-sm-4" style="text-align:center;padding:5px"><a href="https://avironplougonvelin.fr"><img src="' . $this->chemin_dossier . '/logo_amp.png" height="100" align="middle" /></a></div>';
   }
   
   protected function afficher_fin() {
@@ -70,3 +71,4 @@ class Bandeau_Partenaires extends Element_Page {
    */
 }
   // ========================================================================
+  ?>
