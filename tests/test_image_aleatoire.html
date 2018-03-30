@@ -1,0 +1,29 @@
+<!doctype html>
+  <html lang="fr">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../amp_france2018.css" media="screen" />
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+      <script type="text/javascript">
+        function choix_aleatoire_image() {
+          var images = new Array();
+          images[0]  = "../media/photos/passation_marseille_plougonvelin.jpg";
+          images[1]  = "../media/photos/rencontre_ffa_mairie.jpg";
+          images[2]  = "../media/photos/saint-mathieu_pierre.jpg";
+          var index_max = images.length - 1;
+          document.getElementById('image').src = images[Math.round(Math.random() * index_max)];
+          setTimeout("choix_aleatoire_image()", 3000);
+        }
+      </script>
+        
+        <body onload="choix_aleatoire_image()">
+          <img id="image" width="600px" />
+        </body>
+
+    </body>
+</html>

@@ -4,10 +4,11 @@
       // ======================================================================
       // description : page web presentant les petites annonces de pret/location
       //               de materiel
-      // contexte    : Site web du chamionnat de France 2018
-      // Copyright (c) 2017-208 AMP. Tous droits reserves
+      // contexte    : Site web du championnat de France 2018
+      // Copyright (c) 2017-208 AMP. Tous droits reserves.
       // ----------------------------------------------------------------------
       // creation : 06-fev-2018 pchevaillier@gmail.com
+      // creation : 21-mar-2018 pchevaillier@gmail.com message avertissement.
       // ----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -40,6 +41,10 @@
       $acces_formulaire = "<div class=\"page-header\"><h1>Bourses aux bateaux</h1><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"annonce_bateau.php?a=a\">Publier une nouvelle annonce</a></li></ul></div>";
       
       $principal->elements[] = new Cadre_Texte($acces_formulaire);
+
+      $texte_intro = "<p>Cette page a pour but de faciliter la mise en relation des équipages en recherche de bateaux avec les clubs ou fabricants qui pourraient en proposer. L'AMP décline toute responsabilité sur les accords qui pourraient être conclus ou non.</p>";
+      
+      $principal->elements[] = new Cadre_Texte($texte_intro);
 
       $journal = new Journal_Annonces_Bateau($site);
       $journal->def_titre("Petites annonces prêts-location de bateaux");

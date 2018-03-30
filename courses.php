@@ -4,12 +4,13 @@
       // =======================================================================
       // description : page web donnant le programme des courses
       // contexte    : Site web du championnat de France 2018
-      // Copyright (c) 2017-2018 AMP
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves.
       // -----------------------------------------------------------------------
       // creation : 12-nov-2017 pchevaillier@gmail.com
       // revision : 22-nov-2017 pchevaillier@gmail.com cadre programme journalier
       // revision : 28-nov-2017 pchevaillier@gmail.com infos sur le programme
       // revision : 05-jan-2018 pchevaillier@gmail.com path, nvelle version marees
+      // revision : 20-mar-2018 pchevaillier@gmail.com lien -> horaires courses
       // -----------------------------------------------------------------------
       // commentaires :
       // - en construction : toutes les informations ne sont pas connues
@@ -37,13 +38,18 @@
       require_once 'elements/information_jour.php';
       
       // --- Creation dynamique de la page et affichage
-      $page = new Page_France2018("Les Courses");
+      $page = new Page_France2018("Programme des courses");
 
+      // Lien vers le fichier des horaires des courses
+      $source = '<div class="page-header"><h1>Programme des courses</h1><ul class="pager"><li><a class="bouton-lien" href="media/documents/f18_horaires-courses-previsionnels.pdf" target="_new">Horaires prévisionnels des courses</a></li></ul></div>';
+      
+      $page->contenus[] = new Cadre_Texte($source);
       // -----------------------------------------------------------------------
       // Entete du programme
       
       $texte = "\n<div class=\"panel panel-warning\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\">Attention </div><div class=\"panel-body\"><p class=\"lead\">Il s'agit d'un programme prévisionnel donné à titre indicatif. Le programme de chaque journée est susceptible d'évoluer.</p></div></div>\n";
 
+      
       $entete = new Cadre_Texte($texte);
       //$entete->def_titre("Programme de la compétition");
       
