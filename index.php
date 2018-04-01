@@ -4,14 +4,17 @@
       // =======================================================================
       // description : page d'accueil du site web de l'evenement
       // utilisation : serveur web - php
-      // teste avec  : PHP 5.5.3 sur Mac OS 10.11 (et sur serveur OVJ : PHP 7.0)
+      // teste avec  : en local avec PHP 5.5.3 sur Mac OS 10.11
+      //               en local avec PHP 7.1.14 sur Mac OS 13.4
+      //               sur serveur OVJ : PHP 7.0
       // contexte    : Championnat de France d'Aviron de Mer 2018
-      // Copyright (c) 2017-2018 AMP
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves.
       // ------------------------------------------------------------------------
       // creation :             pchevaillier@gmail.com
       // revision : 11-oct-2017 pchevaillier@gmail.com
       // revision : 07-nov-2017 pchevaillier@gmail.com disposition, indirecton teaser
       // revision : 05-jan-2018 pchevaillier@gmail.com include_path
+      // revision : 01-avr-2018 pchevaillier@gmail.com lien 'devenez partenaire'
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -34,12 +37,14 @@
       require_once 'elements/page_france2018.php';
       require_once 'elements/entete_image.php';
       require_once 'elements/contenu_accueil.php';
-      require_once 'elements/cadre_lien_formulaire_benevole.php';
       
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Accueil");
       
-      $page->contenus[] = new Cadre_Lien_Formulaire_Benevole();
+      $code_liens = "<div class=\"page-header\" padding=\"10px\"><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li><li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li></ul></div>";
+   
+      $cadre_liens = new Cadre_Texte($code_liens);
+      $page->contenus[] = $cadre_liens;
       
       $media = new vignette_Media();
       $media->chemin_vignette = "media/videos";

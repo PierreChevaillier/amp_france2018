@@ -27,6 +27,7 @@
   require_once 'elements/bandeau_partenaires.php';
   require_once 'elements/bandeau_reseaux.php';
   require_once 'elements/bandeau_entete.php';
+  require_once 'elements/zone_partenaires.php';
   require_once 'elements/pied_page.php';
   
   // ---------------------------------------------------------------------------
@@ -41,6 +42,8 @@ class Page_France2018 extends Page {
     parent::__construct($nom_page);
     $this->javascripts[] = "scripts/menu_controleur.js";
     $this->javascripts[] = "scripts/compte_rebours.js";
+    $this->javascripts[] = "scripts/controle_affichage_logos_partenaire.js";
+    $this->javascripts[] = "scripts/chargement_page.js";
   }
   
   /**
@@ -49,6 +52,8 @@ class Page_France2018 extends Page {
   protected function definir_elements() {
     $this->elements_haut[] = new Bandeau_Entete();
     $this->elements_haut[] = new Menu_Principal();
+    $this->elements_haut[] = new Zone_Partenaires();
+    
     //$this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
     
     $this->elements_bas[] = new Bandeau_Partenaires("media/logos");

@@ -75,7 +75,8 @@ abstract class Page extends Element {
     foreach ($this->javascripts as $scripts) {
       echo "      <script src=\"" . get_include_path() . $scripts . "\"></script>\n";
     }
-    foreach ($this->elements_entete as $e) echo $e;
+    foreach ($this->elements_entete as $e)
+      echo $e;
     echo "      <title>" . $this->titre() . "</title>\n    </head>\n    <body>\n";
   }
 

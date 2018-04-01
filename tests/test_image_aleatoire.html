@@ -9,21 +9,9 @@
       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       
-      <script type="text/javascript">
-        function choix_aleatoire_image() {
-          var images = new Array();
-          images[0]  = "../media/photos/passation_marseille_plougonvelin.jpg";
-          images[1]  = "../media/photos/rencontre_ffa_mairie.jpg";
-          images[2]  = "../media/photos/saint-mathieu_pierre.jpg";
-          var index_max = images.length - 1;
-          document.getElementById('image').src = images[Math.round(Math.random() * index_max)];
-          setTimeout("choix_aleatoire_image()", 3000);
-        }
-      </script>
-        
-        <body onload="choix_aleatoire_image()">
-          <img id="image" width="600px" />
-        </body>
-
+      <script type="text/javascript" src="../scripts/controle_affichage_logos_partenaire.js"></script>
+    </head>
+    <body onload="choix_aleatoire_logo()">
+      <img id="logos_partenaires_or" style="width:600px;" />
     </body>
 </html>

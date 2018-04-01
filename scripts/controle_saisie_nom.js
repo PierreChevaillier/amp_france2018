@@ -2,19 +2,19 @@
 // description : controle de la validite de la saisie d'un nom
 //               prenom, nom de famille, nom de ville...
 // utilisation : javascript - controleur formulaire web
-// teste avec  : Mac OS 10.11
+// teste avec  : firefox, safari sur Mac OS 10.11
 // contexte    : Site web du championnat de France 2018
-// Copyright (c) 2017 AMP
+// Copyright (c) 2017 AMP. Tous droits reserves
 // ----------------------------------------------------------------------------
-// creation: 23-oct-2017 pchevaillier@gmail.com
-// revision:
+// creation : 23-oct-2017 pchevaillier@gmail.com
+// revision :
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
 // attention :
 // -
 // a faire :
-// ------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 function verif_nom(element) {
   var est_correct = false;
@@ -36,4 +36,4 @@ function verif_nom(element) {
   return est_correct;
 }
 
-// ========================================================================
+// ============================================================================
