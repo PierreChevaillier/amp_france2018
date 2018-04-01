@@ -1,0 +1,71 @@
+<!doctype html>
+  <html lang="fr">
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="../amp_france2018.css" media="screen" />
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+      <script type="text/javascript">
+        // source : http://memo-web.fr/categorie-javascript-156.php
+        // Fonction de défilement horizontal
+        // el est l'élément HTML qui contiendra le contenu défilant
+        // src est un tableau comprenant le chemin des images à faire défiler
+        // pas est le pas d'incrémentation du défilement (defaut 1px)
+        // tps est le temps entre deux incrémentations  (defaut 50ms)
+        
+        function defilImgHrz(eln,srcs,pas,tps) {
+          if (typeof eln == "string") {
+            el = document.getElementById(eln);
+          }
+          var tps = tps || 50;
+          var pas = pas || 1;
+          var imgs = [];
+          var offset = 0;
+          for (var i=0, l=srcs.length; i<l; i++) {
+            var img = new Image();
+            img.src = srcs[i];
+            imgs.push(img);
+            img.style.height = el.offsetHeight + "px";
+            img.style.position = "absolute";
+            img.style.left = offset + "px";
+            img.style.padding = "50px"; // ajout PCh
+            el.appendChild(img);
+            offset += img.offsetWidth;
+          }
+          var first = 0;
+          var last = imgs.length-1;
+          
+          (function d() {
+            for (var i=0,l=imgs.length;i<l;i++) {
+              var left = parseInt(imgs[i].style.left,10);
+              imgs[i].style.left = (left-pas)+"px";
+              if (i==first && (left-pas+imgs[i].offsetWidth)<0) {
+                imgs[i].style.left = (parseInt(imgs[last].style.left,10)+imgs[last].offsetWidth-(i==0?pas:0))+"px";
+                last = first++;
+                if (first>imgs.length-1) { first = 0; }
+              }
+            }
+           setTimeout(d,tps);
+           })();
+        }
+      
+      // Appel de la de défilement au chargement de ma page .
+      window.onload=function() {
+        defilImgHrz("bandeau_horizontal",[
+                                          "../media/logos/ffaviron-logo-horizontal.jpg",
+                                          "../media/logos/logo_amp.png",
+                                          "../media/logos/logo_maif.jpg"
+                                          ], 10, 1000);
+      };
+      </script>
+    </head>
+    <body>
+      <p>Body</p>
+      <div id="bandeau_horizontal" style="position:relative;width:600px;height:150px;border:0px solid black;overflow:hidden;">
+        &nbsp;</div>
+    </body>
+  </html>
