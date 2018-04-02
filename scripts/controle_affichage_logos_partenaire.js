@@ -14,17 +14,19 @@
 // attention :
 // -
 // a faire :
+// il faudrait faire avec choix_aleatoire_logo comme avec defilImgHrz :
+// une lambda fonction. Ceci permettrait d'avoir comme signature
+// choix_aleatoire_logo(nom_element, images)
 // ----------------------------------------------------------------------------
 
 function choix_aleatoire_logo() {
   element = document.getElementById('logos_partenaires_or');
   if (element == null) return;
   var images = new Array();
-  images[0]  = "media/photos/passation_marseille_plougonvelin.jpg";
-  images[1]  = "media/photos/rencontre_ffa_mairie.jpg";
-  images[2]  = "media/photos/saint-mathieu_pierre.jpg";
+  images[0]  = "media/logos/partenaires/or/logo_fonds-le-saint.jpg";
+  images[1]  = "media/logos/partenaires/or/logo_Intermarche_plougonvelin-1024x489.png";
+  images[2]  = "media/logos/partenaires/or/logo-le-telegramme-570x300.png";
   var index_max = images.length - 1;
-  //document.getElementById('logos_partenaires_or').src = images[Math.round(Math.random() * index_max)];
   element.src = images[Math.round(Math.random() * index_max)];
   setTimeout("choix_aleatoire_logo()", 3000);
 }

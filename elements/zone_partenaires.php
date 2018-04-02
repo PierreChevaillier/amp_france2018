@@ -30,8 +30,8 @@
     }
   
     protected function afficher_corps() {
-      echo '<img id="logos_partenaires_or" style="width:600px;" />';
-      echo '<div id="bandeau_partenaires_autres" style="align:center;position:relative;width:1024px%;height:150px;border:0px solid black;overflow:hidden;">&nbsp;</div>';
+      echo '<img id="logos_partenaires_or" style="height:300px;" />';
+      //echo '<div id="bandeau_partenaires_autres" style="align:center;position:relative;width:1024px%;height:150px;border:0px solid black;overflow:hidden;">&nbsp;</div>';
     }
   
     protected function afficher_fin() {
