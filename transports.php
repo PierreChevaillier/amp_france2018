@@ -64,7 +64,10 @@
       $liste_transports[] = $transport;
 
       // --- Elements de la page
-      $infos_transports = new Contenu_Transport($liste_transports, new Vue_Contacts());
+      $secondaire = new Conteneur_Elements();
+      $secondaire->elements[] = new Vue_Contacts();
+      
+      $infos_transports = new Contenu_Transport($liste_transports, $secondaire);
       $page->contenus[] = $infos_transports;
       $page->contenus[] = new Cadre_Carte();
       

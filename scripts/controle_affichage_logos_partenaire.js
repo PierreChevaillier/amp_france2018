@@ -7,7 +7,7 @@
 // Copyright (c) 2018 AMP. Tous droits reserves
 // ----------------------------------------------------------------------------
 // creation : 01-avr-2018 pchevaillier@gmail.com
-// revision :
+// revision : 05-acr-2018 pchevaillier@gmail.com ajout logo SOPAM
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
@@ -26,6 +26,8 @@ function choix_aleatoire_logo() {
   images[0]  = "media/logos/partenaires/or/logo_fonds-le-saint.jpg";
   images[1]  = "media/logos/partenaires/or/logo_Intermarche_plougonvelin-1024x489.png";
   images[2]  = "media/logos/partenaires/or/logo-le-telegramme-570x300.png";
+  images[3]  = "media/logos/partenaires/or/logo_Les-jardins-darcadie.png";
+  images[4]  = "media/logos/partenaires/or/logo_sopam_300x570.png";
   var index_max = images.length - 1;
   element.src = images[Math.round(Math.random() * index_max)];
   setTimeout("choix_aleatoire_logo()", 3000);

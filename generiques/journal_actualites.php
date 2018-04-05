@@ -11,6 +11,7 @@
   // revision: 06-nov-2017 pchevaillier@gmail.com lien media
   // revision: 13-jan-2018 pchevaillier@gmail.com actualites dans base donnees
   // revision: 27-jan-2018 pchevaillier@gmail.com resume, texte
+  // revision: 05-avr-2018 pchevaillier@gmail.com Titre du journal
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -47,6 +48,7 @@
     }
   
     protected function afficher_corps() {
+      echo '<h1>Actualités</h1>';
       echo '<div class="panel panel-default"><div class="panel-body"><ul class="media-list">';
       foreach ($this->actualites as $actu)
         $this->afficher_item($actu);

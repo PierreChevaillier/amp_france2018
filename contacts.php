@@ -9,6 +9,7 @@
       // creation : 02-oct-2017 pchevaillier@gmail.com
       // revision : 21-jan-2018 pchevaillier@gmail.com mise en forme
       // revision : 09-fev-2018 pchevaillier@gmail.com lien formulaire benevoles
+      // revision : 05-avr-2018 pchevaillier@gmail.com utilisation Contenu_Double_Colonne
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -44,8 +45,8 @@
       
       // Contenu du cadre secondaire de la page
       $secondaire = new Conteneur_Elements();
-      $secondaire ->elements[] = new Vue_Contacts();
-      $secondaire ->elements[] = new Cadre_Lien_Formulaire_Benevole();
+      $secondaire->elements[] = new Vue_Contacts();
+      //$secondaire->elements[] = new Cadre_Lien_Formulaire_Benevole();
       
       $page->contenus[] = new Contenu_Double_Colonne($principal,
                                                      $secondaire,

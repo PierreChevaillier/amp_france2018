@@ -18,10 +18,11 @@
 
 window.onload=function() {
   defilImgHrz("bandeau_partenaires_autres",[
-                                            "media/logos/logo_amp.png",
-                                            "media/logos/ffaviron-logo-horizontal.jpg",
-                                            "media/logos/logo_amp.png",
-                                            "media/logos/logo_maif_blanc_200x196.png"
+                                            "media/logos/partenaires/autres/logo_eleonore-cerid.jpg",
+                                            "media/logos/partenaires/autres/logo_laot.png",
+                                            "media/logos/partenaires/autres/logo_meilleurtaux.jpg",
+                                            "media/logos/partenaires/autres/logo_sotravi_binard_stpa.jpg",
+                                            "media/logos/partenaires/autres/logo_imer.jpg"
                                             ], 10, 1000);
   choix_aleatoire_logo();
   countDown();

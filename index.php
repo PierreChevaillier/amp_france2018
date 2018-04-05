@@ -15,6 +15,7 @@
       // revision : 07-nov-2017 pchevaillier@gmail.com disposition, indirecton teaser
       // revision : 05-jan-2018 pchevaillier@gmail.com include_path
       // revision : 01-avr-2018 pchevaillier@gmail.com lien 'devenez partenaire'
+      // revision : 05-avr-2018 pchevaillier@gmail.com suppression liens 'partenaire' et benevoles
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -33,19 +34,22 @@
       //require_once 'generiques/cadre_video.php';
       require_once 'generiques/cadre_texte.php';
       require_once 'generiques/vignette_media.php';
+      require_once 'generiques/element.php';
       
       require_once 'elements/page_france2018.php';
       require_once 'elements/entete_image.php';
       require_once 'elements/contenu_accueil.php';
-      
+      require_once 'elements/zone_partenaires.php';
+
       // --- Creation dynamique de la page et affichage
       $page = new Page_France2018("Accueil");
-      
+      /*
       $code_liens = "<div class=\"page-header\" padding=\"10px\"><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li><li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li></ul></div>";
    
       $cadre_liens = new Cadre_Texte($code_liens);
       $page->contenus[] = $cadre_liens;
-      
+      */
+      $secondaire = new Conteneur_Elements();
       $media = new vignette_Media();
       $media->chemin_vignette = "media/videos";
       $media->nom_fichier_vignette = "vignette_teaser_france2018.png";
@@ -62,7 +66,11 @@
       $page->contenus[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
       
       //$contenu = new Contenu_Accueil($video_promotion, $mot_president);
-      $contenu = new Contenu_Accueil($mot_president, $media);
+      $secondaire = new Conteneur_Elements();
+      $secondaire->elements[] = $media;
+      //$contenu = new Contenu_Accueil($mot_president, $media);
+      $contenu = new Contenu_Accueil($mot_president, $secondaire);
+      
       $page->contenus[] = $contenu;
       
       $page->initialiser();
