@@ -8,43 +8,47 @@
 // ----------------------------------------------------------------------------
 // creation : 01-avr-2018 pchevaillier@gmail.com
 // revision : 05-acr-2018 pchevaillier@gmail.com ajout logo SOPAM
+// revision : 10-acr-2018 pchevaillier@gmail.com logos dans ordre aleatoire
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
 // attention :
 // -
 // a faire :
-// il faudrait faire avec choix_aleatoire_logo comme avec defilImgHrz :
-// une lambda fonction. Ceci permettrait d'avoir comme signature
-// choix_aleatoire_logo(nom_element, images)
+//
 // ----------------------------------------------------------------------------
 
-function choix_aleatoire_logo() {
-  element = document.getElementById('logos_partenaires_or');
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function choix_aleatoire_logo(id_element, logos, duree) {
+  element = document.getElementById(id_element);
   if (element == null) return;
-  var images = new Array();
-  images[0]  = "media/logos/partenaires/or/logo_fonds-le-saint.jpg";
-  images[1]  = "media/logos/partenaires/or/logo_Intermarche_plougonvelin-1024x489.png";
-  images[2]  = "media/logos/partenaires/or/logo-le-telegramme-570x300.png";
-  images[3]  = "media/logos/partenaires/or/logo_Les-jardins-darcadie.png";
-  images[4]  = "media/logos/partenaires/or/logo_sopam_300x570.png";
-  var index_max = images.length - 1;
-  element.src = images[Math.round(Math.random() * index_max)];
-  setTimeout("choix_aleatoire_logo()", 3000);
+  var index_max = logos.length - 1;
+  
+  (function select_logo() {
+   element.src = logos[Math.round(Math.random() * index_max)];
+   setTimeout(select_logo, duree);
+   })();
 }
 
 // source : http://memo-web.fr/categorie-javascript-156.php
-// Fonction de défilement horizontal
-// el est l'élément HTML qui contiendra le contenu défilant
-// src est un tableau comprenant le chemin des images à faire defiler
-// pas est le pas d'incrémentation du défilement (defaut 1px)
-// tps est le temps entre deux incrémentations  (defaut 50ms)
+// Fonction de defilement horizontal
+// el est l'element HTML qui contiendra le contenu defilant
+// src est un tableau comprenant le chemin des images a faire defiler
+// pas est le pas d'incrementation de la translation (defaut 1px)
+// tps est le temps entre deux translation (defaut 50ms)
 
 function defilImgHrz(eln,srcs,pas,tps) {
   if (typeof eln == "string") {
     el = document.getElementById(eln);
   }
   if (el == null) return;
+  shuffleArray(srcs); // Ajoute le 10-avr-2018
   
   var tps = tps || 50;
   var pas = pas || 1;
@@ -57,7 +61,8 @@ function defilImgHrz(eln,srcs,pas,tps) {
     img.style.height = el.offsetHeight + "px";
     img.style.position = "absolute";
     img.style.left = offset + "px";
-    img.style.padding = "50px"; // ajout PCh
+    img.style.padding = "25px"; // ajout PCh
+    //img.style.padding.left = "25px"; // ajout PCh
     el.appendChild(img);
     offset += img.offsetWidth;
   }
@@ -65,14 +70,14 @@ function defilImgHrz(eln,srcs,pas,tps) {
   var last = imgs.length-1;
   
   (function d() {
-   for (var i=0,l=imgs.length;i<l;i++) {
-   var left = parseInt(imgs[i].style.left,10);
-   imgs[i].style.left = (left-pas) + "px";
-   if (i==first && (left-pas+imgs[i].offsetWidth)<0) {
-   imgs[i].style.left = (parseInt(imgs[last].style.left,10)+imgs[last].offsetWidth-(i==0?pas:0))+"px";
-   last = first++;
-   if (first>imgs.length-1) { first = 0; }
-   }
+    for (var i=0,l=imgs.length;i<l;i++) {
+      var left = parseInt(imgs[i].style.left,10);
+      imgs[i].style.left = (left-pas) + "px";
+    if (i==first && (left-pas+imgs[i].offsetWidth)<0) {
+      imgs[i].style.left = (parseInt(imgs[last].style.left,10)+imgs[last].offsetWidth-(i==0?pas:0))+"px";
+      last = first++;
+      if (first>imgs.length-1) { first = 0; }
+    }
    }
    setTimeout(d,tps);
    })();

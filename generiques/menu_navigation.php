@@ -33,13 +33,13 @@ abstract class Menu_Navigation extends Element_Page {
   protected function afficher_debut() {
     //echo "<nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\"><div class=\"container-fluid\">\n";
     
-  	echo "<nav class=\"navbar navbar-default\" role=\"navigation\"><div class=\"container-fluid\">\n";
+  	echo "\n<nav class=\"navbar navbar-default\" role=\"navigation\">\n<div class=\"container-fluid\">\n";
     
  		// le bouton du menu sur smartphone
   	echo "<div class=\"navbar-header\">\n<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" 	data-target=\"#menu_nav\" aria-expanded=\"false\">";
-   	echo "<span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span><span class=\"sr-only\">Menu</span></button>";
+   	echo "<span class=\"glyphicon glyphicon-menu-hamburger\" aria-hidden=\"true\"></span><span class=\"sr-only\">Menu</span></button>\n";
   	/* echo "Menu</button>"; */
-		echo "<a class=\"navbar-brand\" href=\"http://avironplougonvelin.fr\" target=\"_new\">AMP</a>\n";
+		echo "\n<a class=\"navbar-brand\" href=\"http://avironplougonvelin.fr\" target=\"_new\">AMP</a>\n";
     
     // texte modifiable par script
     //echo " <p class=\"navbar-text\" id=\"menuDynamiqueInfo\"></p>";

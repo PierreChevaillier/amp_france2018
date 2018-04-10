@@ -1,13 +1,14 @@
 <?php
   // ==========================================================================
-  // description : definition des classes / formualire de demande d'information
+  // description : definition des classes / formulaire de demande d'information
   // utilisation : element d'une page web
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP. Tous droits reserves
   // ------------------------------------------------------------------------
   // creation: 23-oct-2017 pchevaillier@gmail.com
   // revision: 30-oct-2017 pchevaillier@gmail.com formatage message
+  // revision: 06-avr-2018 pchevaillier@gmail.com correction appels constructeur
   // ------------------------------------------------------------------------
   // commentaires :
   // -
@@ -32,19 +33,19 @@
         $item->def_titre("Civilité");
         $this->ajouter_champ($item);
       
-        $item = new Champ_Nom("prenom", "scripts/controle_saisie_nom.js");
+        $item = new Champ_Nom("prenom", "scripts/controle_saisie_nom.js", "verif_nom");
         $item->def_titre("Prénom");
         $this->ajouter_champ($item);
         
-        $item = new Champ_Nom("nom", "nom", "scripts/controle_saisie_nom.js");
+        $item = new Champ_Nom("nom", "scripts/controle_saisie_nom.js", "verif_nom");
         $item->def_titre("Nom");
         $this->ajouter_champ($item);
         
-        $item = new Champ_Courriel("courriel", "scripts/controle_saisie_courriel.js");
+        $item = new Champ_Courriel("courriel", "scripts/controle_saisie_courriel.js", "verif_courriel");
         $item->def_titre("Adresse courriel");
         $this->ajouter_champ($item);
         
-        $item = new Champ_Telephone("tel", "tel", "scripts/controle_saisie_telephone.js");
+        $item = new Champ_Telephone("tel", "scripts/controle_saisie_telephone.js", "verif_numero_telephone");
         $item->def_titre("Numéro de téléphone");
         $this->ajouter_champ($item);
         

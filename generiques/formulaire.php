@@ -99,7 +99,7 @@
       $conds = array();
       foreach ($this->champs as $champ) {
         if (strlen($champ->script_controle) > 0) {
-          $appel = $appel . "  var bon_" . $champ->id() . " = " . $champ->fonction_controle_saisie . "(f. " . $champ->id() . ");\n";
+          $appel = $appel . "  var bon_" . $champ->id() . " = " . $champ->fonction_controle_saisie . "(f." . $champ->id() . ");\n";
           $conds[] = "bon_" . $champ->id();
         }
       }

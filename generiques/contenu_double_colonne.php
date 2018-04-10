@@ -42,7 +42,7 @@
     }
    
     protected function afficher_debut() {
-      echo '<div class="container" style="padding:10px;><div class="row">';
+      echo '<div class="container" style="padding:10px;"><div class="row">';
     }
   
     protected function afficher_corps() {

@@ -7,7 +7,7 @@
       // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // -----------------------------------------------------------------------
       // creation : 19-jan-2018 pchevaillier@gmail.com
-      // revision :
+      // revision : 10-avr-2018 pchevaillier@gmail.com menu - debut
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -34,6 +34,13 @@
       
       $element = new Cadre_Texte($contenu);
       $element->def_titre("Restauration");
+      $page->contenus[] = $element;
+      
+      
+      // Menu du repas des equipages
+      $menu = "<div style=\"text-align:center;\"><p>REPAS DES EQUIPAGES</p><p>Amis rameurs et accompagnateurs du monde de l’aviron de mer, nous vous proposons de partager autour d’un repas convivial, une sélection de produits bretons aux saveurs authentiques, entre terre et mer.</p><p>Entrée</p><p>Assiette de langoustines et/ou crevettes selon arrivage</p><p></p><p>Plat</p><p>Cochon grillé à la broche<br />Légumes du terroir</p></p><p></p><p>Dessert</p><p>Composition de pâtisseries bretonnes<br />Fraises de saison</p><p></p><p>Boissons</p>Eau plate<br />Vin rouge – vin blanc – vin rosé<br />Café ou thé</p></div>";
+      $element = new Cadre_Texte($menu);
+      $element->def_titre("Menu des équipages du samedi 26 mai");
       $page->contenus[] = $element;
       
       $page->initialiser();
