@@ -62,7 +62,6 @@ function defilImgHrz(eln,srcs,pas,tps) {
     img.style.position = "absolute";
     img.style.left = offset + "px";
     img.style.padding = "25px"; // ajout PCh
-    //img.style.padding.left = "25px"; // ajout PCh
     el.appendChild(img);
     offset += img.offsetWidth;
   }

@@ -9,6 +9,7 @@
 // creation : 01-avr-2018 pchevaillier@gmail.com
 // revision : 06-avr-2018 pchevaillier@gmail.com ajout logos
 // revision : 10-avr-2018 pchevaillier@gmail.com liste logos 'or' definis ici
+// revision : 22-avr-2018 pchevaillier@gmail.com ajout cartes : sans souci, 4 saisons, Grand optical
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
@@ -28,6 +29,9 @@ window.onload=function() {
                "media/logos/partenaires/autres/logo-hotel-large-plougonvelin.png",
                "media/logos/partenaires/autres/logo_restaurant-archipel-plougonvelin.png",
                "media/logos/partenaires/autres/carte_castrec.jpg",
+               "media/logos/partenaires/autres/carte_4_saisons.jpg",
+               "media/logos/partenaires/autres/carte_grand_optical.jpg",
+               "media/logos/partenaires/autres/carte_sans_souci.jpg",
                "media/logos/partenaires/autres/logo_iroise_info.jpg",
                "media/logos/partenaires/autres/logo_qalian-2017.png",
                "media/logos/partenaires/autres/logo_emerys.jpg",

@@ -111,7 +111,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Repas de clôture</li></ul>';
+      $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Repas des équipages (voir le <a href="restauration.php">menu</a>)</li></ul>';
       
       $programme_detaille = new Cadre_Texte($texte);
       

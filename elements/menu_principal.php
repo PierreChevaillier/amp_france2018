@@ -5,22 +5,23 @@
   // utilisation : destine a etre affiche sur toutes les pages web du site
   //               pour cela l'ajouter dans la liste des elements
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11
-  // contexte    : site web du chamionnat de France d'aviron de Mer 2018
+  // contexte    : site web du championnat de France d'aviron de Mer 2018
   //               organise par l'AMP, Aviron de Mer de plougonvelin
-  // Copyright (c) 2017 AMP
-  // ------------------------------------------------------------------------
- // creation : 04-jun-2017 pchevaillier@gmail.com
- // revision : 15-jun-2017 pchevaillier@gmail.com liens vers les bonnes pages
- // revision : 23-jun-2017 pchevaillier@gmail.com ajout id / li
- // revision : 04-oct-2017 pchevaillier@gmail.com menus infos pratiques et competitions
- // revision : 21-oct-2017 pchevaillier@gmail.com ordre items menu infos pratiques
-// ------------------------------------------------------------------------
-// commentaires : en chantier
-// attention :
-// - pas teste (cf. script ajouté à page_france2018.php - en chantier)
-// a faire :
-// - modifier les liens au fur et a mesure de la creation des pages
-// ------------------------------------------------------------------------
+  // Copyright (c) 2017-2018 AMP. Tous droits reserves.
+  // ---------------------------------------------------------------------------
+  // creation : 04-jun-2017 pchevaillier@gmail.com
+  // revision : 15-jun-2017 pchevaillier@gmail.com liens vers les bonnes pages
+  // revision : 23-jun-2017 pchevaillier@gmail.com ajout id / li
+  // revision : 04-oct-2017 pchevaillier@gmail.com menus infos pratiques et competitions
+  // revision : 21-oct-2017 pchevaillier@gmail.com ordre items menu infos pratiques
+  // revision : 21-avr-2018 pchevaillier@gmail.com restauration (2 pages)
+  // ---------------------------------------------------------------------------
+  // commentaires : en chantier
+  // attention :
+  // - pas teste (cf. script ajouté à page_france2018.php - en chantier)
+  // a faire :
+  // - modifier les liens au fur et a mesure de la creation des pages
+  // ---------------------------------------------------------------------------
 
 // --- Classes utilisees
 require_once 'generiques/menu_navigation.php';
@@ -52,7 +53,9 @@ class Menu_Principal extends Menu_Navigation {
     echo '<ul class="dropdown-menu">';
     echo '<li><a href="transports.php">Venir</a></li>';
     echo '<li><a href="hebergements.php">Hébergements</a></li>';
-    echo '<li><a href="restauration.php">Restauration</a></li>';
+//    echo '<li><a href="restauration.php">Restauration</a></li>';
+    echo '<li><a href="restauration_journee.php">Restauration courses</a></li>';
+    echo '<li><a href="repas_cloture.php">Repas des équipages</a></li>';
     echo '<li><a href="bourse_bateaux.php">Bourse bateaux</a></li>';
     echo '<li><a href="page_vide.php">Village</a></li>';
     echo '<li><a href="tourisme.php">Tourisme</a></li>';

@@ -9,6 +9,7 @@
   // ---------------------------------------------------------------------------
   // creation: 01-avr-2018 pchevaillier@gmail.com
   // revision: 05-avr-2018 pchevaillier@gmail.com mise en page, liens partenaire, benevoles
+  // revision: 21-avr-2018 pchevaillier@gmail.com liens commande restauration
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -35,7 +36,7 @@
       echo '<img id="logos_partenaires_or" style="height:200px;" />';
       echo '</div>'; // fin colonne gauche
       echo '<div class="col-sm-4" style="padding:0px;align:center;" >';
-      echo "\n<div class=\"page-header\" padding=\"10px\"><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li><li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li></ul></div>\n";
+      echo "\n<div class=\"page-header\"><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li><li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li><li><li><a class=\"bouton-lien\" href=\"http://avironplougonvelin.fr//France2018/restauration_journee.php\">Plateaux repas</a></li><li><a class=\"bouton-lien\" href=\"http://avironplougonvelin.fr//France2018/repas_cloture.php\">Repas des équipages</a></li></ul></div>\n";
       echo '</div>'; // fin colonne droite
       echo '</div></div>'; // fin row et fin container
       

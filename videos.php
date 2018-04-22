@@ -3,11 +3,12 @@
     <?php
       // =======================================================================
       // description : page web album des videos
-      // contexte    : Site web du chamionnat de France 2018
-      // Copyright (c) 2017-2018 AMP. Tous droits reserves
+      // contexte    : Site web du championnat de France 2018
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves.
       // ------------------------------------------------------------------------
       // creation : 13-oct-2017 pchevaillier@gmail.com
-      // revision : 14-mar-2017 pchevaillier@gmail.com ajour video de fevrier
+      // revision : 14-mar-2018 pchevaillier@gmail.com ajout video de fevrier
+      // revision : 21-avr-2018 pchevaillier@gmail.com ajout video chez Ramine
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -61,6 +62,17 @@
       $media->contenu = "Cette video devrait vous motiver pour vous joindre à nous pour vivre cet événement majeur pour nous toutes et tous.";
 
       $liste_videos[] = $media;
+      
+      $media = new vignette_Media();
+      $media->chemin_vignette = $chemin_media;
+      $media->nom_fichier_vignette = "vignette_ramine.jpg";
+      $media->def_titre("La génèse de l'affiche");
+      $media->lien_page_media = "video_ramine.php";
+      $media->contenu = "Un entretien avec Râmine, l'artiste-auteur installé à Brest qui a conçu l'oeuvre qui compose l'affiche du Championnat de France d'aviron de mer 2018.";
+      
+      $liste_videos[] = $media;
+      
+      
  /*
       $media = new vignette_Media();
       $media->chemin_vignette = $chemin_media;
@@ -72,7 +84,8 @@
       $liste_videos[] = $media;
    */   
       // --- Elements de la page
-      $album = new Album_Videos($liste_videos, 3);
+      $nb_video_par_ligne = 3;
+      $album = new Album_Videos($liste_videos, $nb_video_par_ligne);
       $page->contenus[] = $album;
       
       $page->initialiser();
