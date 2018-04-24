@@ -39,7 +39,8 @@
       // Diner de cloture
       $mail_contact = 'RepasEquipage@France2018.avironPlougonvelin.fr';
       $lien_commande_enligne = 'https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/evenements/championnat-de-france-d-aviron-de-mer-2018-diner-de-cloture';
-      $diner_cloture = new Commande_Repas_Cloture($mail_contact, $lien_commande_enligne);
+      $chemin_formulaire = 'media/documents/formulaire-inscription_repas-equipages.docx.zip';
+      $diner_cloture = new Commande_Repas_Cloture($mail_contact, $lien_commande_enligne, $chemin_formulaire);
       $diner_cloture->def_titre('Repas des équipages du samedi 26 mai');
       $page->contenus[] = $diner_cloture;
 

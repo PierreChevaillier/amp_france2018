@@ -3,12 +3,14 @@
     <?php
       // =======================================================================
       // description : page web - informations et reservation
-      //               repas de cloture de l'evenenement
+      //               restauration pendant l'evenement
+      // utilisation : serveur web - php
+      // teste avec  : PHP 7.1.14 sur Mac OS 10.13 et serveur OVH (PHP 7.x)
       // contexte    : Site web du championnat de France 2018
       // Copyright (c) 2018 AMP. Tous droits reserves.
       // -----------------------------------------------------------------------
-      // creation : 21-acr-2018 pchevaillier@gmail.com
-      // revision :
+      // creation : 21-avr-2018 pchevaillier@gmail.com
+      // revision : 21-avr-2018 pchevaillier@gmail.com - essai formulaire a telecharger
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -32,15 +34,18 @@
       require_once 'elements/contenus_restauration.php';
       
       // --- Creation dynamique de la page
-      $page = new Page_France2018("Repas des équipages");
+      $page = new Page_France2018("Restauration courses");
    
       // --- Definition des contenus
       
-      // Diner de cloture
+      // Plateaux repas : restaurations journees de l'evenement
       $mail_contact = 'PlateauRepas@France2018.avironPlougonvelin.fr';
       $lien_commande_enligne = 'https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/evenements/championnat-de-france-d-aviron-de-mer-2018-plateaux-repas';
-      $restau_courses = new Commande_Restauration_courses($mail_contact, $lien_commande_enligne);
-      $restau_courses->def_titre('Restauration courses');
+      $chemin_formulaire = ''; //media/documents/commande_plateaux_repas.pdf';
+      $restau_courses = new Commande_Restauration_courses($mail_contact,
+                                                          $lien_commande_enligne,
+                                                          $chemin_formulaire);
+      $restau_courses->def_titre('Restauration courses - plateaux repas');
       $page->contenus[] = $restau_courses;
 
       // --- Affichage de la page

@@ -4,7 +4,7 @@
 // utilisation : structure commune a toutes les pages du site
 // teste avec  : PHP 5.5.3 sur Mac OS 10.11
 // contexte    : Elements generique d'un site web
-// Copyright (c) 2017 AMP
+// Copyright (c) 2017-2018 AMP. All rights reserved.
 // ------------------------------------------------------------------------
 // creation: 04-juin-2017 pchevaillier@gmail.com
 // revision: 13-juin-2017 pchevaillier@gmail.com separation haut, bas , contenu
@@ -12,11 +12,12 @@
 // revision: 18-juil-2017 pchevaillier@gmail.com padding: 0px
   // revision: 04-fev-2018 pchevaillier@gmail.com padding: 10px pour corps
   // revision: 18-fev-2018 pchevaillier@gmail.com head en static
-  // ------------------------------------------------------------------------
+  // revision: 24-avr-2018 pchevaillier@gmail.com gestion bandeau partenaires
+  // --------------------------------------------------------------------------
 // commentaires : 
 // -
 // attention :
-// - 
+  // - pas si generique que ca : probleme de dependance (bandeau partenaires)
 // a faire :
 // ------------------------------------------------------------------------
 
@@ -60,6 +61,15 @@ abstract class Page extends Element {
     echo "      </div>\n";
   }
 
+  private function code_bandeau_partenaires() {
+    $code = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"><script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>';
+    $code = $code . "\n <script>\n $(document).ready(function(){ $('.bxslider').bxSlider(";
+    // see https://bxslider.com/options/ for all available options
+    $code = $code . "\n{ controls: false, auto: true,\n autoStart: true, randomStart: true, \n autoControls: false,\n stopAutoOnClick: true,\n pager: false,\n minSlides: 2, maxSlides: 5, slideWidth: 600}";
+    $code = $code . ");\n });\n</script>\n";
+    return $code;
+  }
+  
   protected function afficher_debut() {
     
   	echo "<head>\n      <meta charset=\"utf-8\" />
@@ -71,6 +81,8 @@ abstract class Page extends Element {
 			  integrity=\"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\"
 			  crossorigin=\"anonymous\"></script>
       <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n";
+    
+    echo $this->code_bandeau_partenaires() . "\n";
     
     foreach ($this->javascripts as $scripts) {
       echo "      <script src=\"" . get_include_path() . $scripts . "\"></script>\n";

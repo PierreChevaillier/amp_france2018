@@ -10,15 +10,20 @@
 // revision : 06-avr-2018 pchevaillier@gmail.com ajout logos
 // revision : 10-avr-2018 pchevaillier@gmail.com liste logos 'or' definis ici
 // revision : 22-avr-2018 pchevaillier@gmail.com ajout cartes : sans souci, 4 saisons, Grand optical
+// revision: 24-avr-2018 pchevaillier@gmail.com utilisation jquery bxslider pour le bandeau
 // ----------------------------------------------------------------------------
 // commentaires :
 // -
 // attention :
 // -
 // a faire :
+// - utiliser bxslider pour l'affichage des partenaires 'or'
 // ----------------------------------------------------------------------------
 
 window.onload=function() {
+  /*
+   * obsolete / utitilisation bxslider
+   
   defilImgHrz("bandeau_partenaires_autres",
               [
                "media/logos/partenaires/autres/logo_eleonore-cerid.jpg",
@@ -30,7 +35,7 @@ window.onload=function() {
                "media/logos/partenaires/autres/logo_restaurant-archipel-plougonvelin.png",
                "media/logos/partenaires/autres/carte_castrec.jpg",
                "media/logos/partenaires/autres/carte_4_saisons.jpg",
-               "media/logos/partenaires/autres/carte_grand_optical.jpg",
+               "media/logos/partenaires/autres/grand_optical_lr.png",
                "media/logos/partenaires/autres/carte_sans_souci.jpg",
                "media/logos/partenaires/autres/logo_iroise_info.jpg",
                "media/logos/partenaires/autres/logo_qalian-2017.png",
@@ -51,7 +56,7 @@ window.onload=function() {
               ],
               10,
               300);
-  
+  */
   choix_aleatoire_logo("logos_partenaires_or",
                        [
                         "media/logos/partenaires/or/logo_fonds-le-saint.jpg",

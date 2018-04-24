@@ -11,6 +11,7 @@
       // revision : 28-nov-2017 pchevaillier@gmail.com infos sur le programme
       // revision : 05-jan-2018 pchevaillier@gmail.com path, nvelle version marees
       // revision : 20-mar-2018 pchevaillier@gmail.com lien -> horaires courses
+      // revision : 23-avr-2018 pchevaillier@gmail.com lien -> repas equipage
       // -----------------------------------------------------------------------
       // commentaires :
       // - en construction : toutes les informations ne sont pas connues
@@ -111,7 +112,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Repas des équipages (voir le <a href="restauration.php">menu</a>)</li></ul>';
+      $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Soirée : repas des équipages. Voir le <a href="repas_cloture.php">menu et réserver</a></li></ul>';
       
       $programme_detaille = new Cadre_Texte($texte);
       

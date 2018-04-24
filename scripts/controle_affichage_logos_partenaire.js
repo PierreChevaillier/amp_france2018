@@ -41,7 +41,7 @@ function choix_aleatoire_logo(id_element, logos, duree) {
 // el est l'element HTML qui contiendra le contenu defilant
 // src est un tableau comprenant le chemin des images a faire defiler
 // pas est le pas d'incrementation de la translation (defaut 1px)
-// tps est le temps entre deux translation (defaut 50ms)
+// tps est le temps entre deux translations (defaut 50ms)
 
 function defilImgHrz(eln,srcs,pas,tps) {
   if (typeof eln == "string") {
@@ -72,9 +72,9 @@ function defilImgHrz(eln,srcs,pas,tps) {
     for (var i=0,l=imgs.length;i<l;i++) {
       var left = parseInt(imgs[i].style.left,10);
       imgs[i].style.left = (left-pas) + "px";
-    if (i==first && (left-pas+imgs[i].offsetWidth)<0) {
-      imgs[i].style.left = (parseInt(imgs[last].style.left,10)+imgs[last].offsetWidth-(i==0?pas:0))+"px";
-      last = first++;
+      if (i==first && (left-pas+imgs[i].offsetWidth)<0) {
+        imgs[i].style.left = (parseInt(imgs[last].style.left,10)+imgs[last].offsetWidth-(i==0?pas:0))+"px";
+        last = first++;
       if (first>imgs.length-1) { first = 0; }
     }
    }
