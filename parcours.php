@@ -88,6 +88,14 @@
       $media->contenu = "Le parcours de repli - zone Sud.";
       $liste_media[] = $media;
       
+      $media = new Vignette_Media();
+      $media->chemin_vignette = $chemin_media;
+      $media->nom_fichier_vignette = "f18_parcours-principal-dimanche_lr.png";
+      $media->def_titre("Parcours principal - Dimanche");
+      $media->lien_page_media = "parcours_principal_dimanche.php";
+      $media->contenu = "Le parcours pour la course de dimanche.";
+      $liste_media[] = $media;
+      
       // --- Elements de la page
       $album = new Album_Videos($liste_media, 3);
       $page->contenus[] = $album;

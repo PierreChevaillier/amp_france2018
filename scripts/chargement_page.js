@@ -10,7 +10,7 @@
 // revision : 06-avr-2018 pchevaillier@gmail.com ajout logos
 // revision : 10-avr-2018 pchevaillier@gmail.com liste logos 'or' definis ici
 // revision : 22-avr-2018 pchevaillier@gmail.com ajout cartes : sans souci, 4 saisons, Grand optical
-// revision: 24-avr-2018 pchevaillier@gmail.com utilisation jquery bxslider pour le bandeau
+// revision : 24-avr-2018 pchevaillier@gmail.com jquery bxslider pour le bandeau
 // ----------------------------------------------------------------------------
 // commentaires :
 // -

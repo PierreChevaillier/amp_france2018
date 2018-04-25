@@ -12,6 +12,7 @@
       // revision : 05-jan-2018 pchevaillier@gmail.com path, nvelle version marees
       // revision : 20-mar-2018 pchevaillier@gmail.com lien -> horaires courses
       // revision : 23-avr-2018 pchevaillier@gmail.com lien -> repas equipage
+      // revision : 25-avr-2018 pchevaillier@gmail.com programme dimanche
       // -----------------------------------------------------------------------
       // commentaires :
       // - en construction : toutes les informations ne sont pas connues
@@ -96,7 +97,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<ul class="list-group"><li class="list-group-item">Ouverture officielle de la compétition</li><li class="list-group-item">Briefing</li><li class="list-group-item">Séries qualificatives</li></ul>';
+      $texte = '<ul class="list-group"><li class="list-group-item">Ouverture officielle de la compétition</li><li class="list-group-item">Briefing</li><li class="list-group-item"><strong>Séries qualificatives</strong></li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
@@ -112,7 +113,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<ul class="list-group"><li class="list-group-item">Finales</li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Soirée : repas des équipages. Voir le <a href="repas_cloture.php">menu et réserver</a></li></ul>';
+      $texte = '<ul class="list-group"><li class="list-group-item"><strong>Finales</strong></li><li class="list-group-item">Remise des prix et cérémonie de clôture</li><li class="list-group-item">Pot de l’amitié</li><li class="list-group-item">Soirée : repas des équipages. Voir le <a href="repas_cloture.php">menu et réserver</a></li></ul>';
       
       $programme_detaille = new Cadre_Texte($texte);
       
@@ -129,7 +130,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item">Course Open Longue Distance</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié</li></ul>';
+      $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item"><strong>Course Open Longue Distance</strong><br />Modifiable selon les conditions météorologiques<br />réunion information à 9h30 sous le chapiteau plage<br />Départ de la régate à 10h00</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié après la course longue distance</li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
