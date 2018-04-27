@@ -36,10 +36,12 @@
   
     public function __construct($mail_contact,
                                 $lien_commande_enligne = "",
-                                $formulaire_telechargement = "") {
+                                $formulaire_telechargement = "",
+                                $date_limite_commande = "") {
       $this->mail_contact = $mail_contact;
       $this->lien_commande_enligne = $lien_commande_enligne;
       $this->formulaire_telechargement = $formulaire_telechargement;
+      $this->date_limite_commande = $date_limite_commande;
     }
     
     public function initialiser() { }
@@ -48,6 +50,11 @@
       echo "\n<div class=\"panel panel-default\">";
       echo '<div class="panel-heading"><p class="lead">' . $this->titre() . '</p></div>';
       echo '<div class="panel-body">';
+    }
+    
+    protected function afficher_date_limite_commande() {
+      if (strlen($this->date_limite_commande) > 0)
+          echo '<br /><strong>Date limite pour passer commande : ' . $this->date_limite_commande . '</strong><br />';
     }
     
     protected function afficher_commande_cheque() {
@@ -73,7 +80,9 @@
   class Commande_Restauration_Courses extends Commande_Restauration {
   
     protected function afficher_corps() {
-      echo '<div><p>Les jours de courses, des <strong>plateaux repas</strong> seront proposés aux compétiteurs et aux accompagnants. De plus, un <strong>stand restauration</strong> sera installé sur la plage à partir de 14 heures le jeudi 24.</p></div>';
+      echo '<div><p>';
+      $this->afficher_date_limite_commande();
+      echo '<br />Les jours de courses, des <strong>paniers repas</strong> seront proposés aux compétiteurs et aux accompagnants le verndredi 25 et le samedi 26 . Les paniers devront être retirés au stand "paniers repas" entre 11h30 et 13h30.<br />De plus, un <strong>stand restauration</strong> sera installé sur la plage à partir de 14 heures le jeudi 24.</p></div>';
       echo '<div><p style="font-size:18px">Tarif : 10 euros par plateau.</p></div>';
       $this->afficher_commande_cheque();
       $this->afficher_commande_enligne();
@@ -84,7 +93,9 @@
   class Commande_Repas_Cloture extends Commande_Restauration {
     
     protected function afficher_corps() {
-      echo '<div><p>Amis rameurs et accompagnateurs du monde de l’aviron de mer, nous vous proposons de partager autour d’un repas convivial, une sélection de produits bretons aux saveurs authentiques, entre terre et mer.</p></div>';
+      echo '<div><p>';
+      $this->afficher_date_limite_commande();
+      echo '<br />Amis rameurs et accompagnateurs du monde de l’aviron de mer, nous vous proposons de partager autour d’un repas convivial, une sélection de produits bretons aux saveurs authentiques, entre terre et mer.</p></div>';
       
       $this->afficher_commande_enligne();
       

@@ -7,8 +7,8 @@
       // contexte    : Site web du championnat de France 2018
       // Copyright (c) 2018 AMP. Tous droits reserves.
       // -----------------------------------------------------------------------
-      // creation : 21-acr-2018 pchevaillier@gmail.com
-      // revision :
+      // creation : 21-avr-2018 pchevaillier@gmail.com
+      // revision : 25-avr-2018 pchevaillier@gmail.com date limite de commande
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -40,7 +40,11 @@
       $mail_contact = 'RepasEquipage@France2018.avironPlougonvelin.fr';
       $lien_commande_enligne = 'https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/evenements/championnat-de-france-d-aviron-de-mer-2018-diner-de-cloture';
       $chemin_formulaire = 'media/documents/formulaire-inscription_repas-equipages.docx.zip';
-      $diner_cloture = new Commande_Repas_Cloture($mail_contact, $lien_commande_enligne, $chemin_formulaire);
+      $date_limite_commande = '15 mai 2018';
+      $diner_cloture = new Commande_Repas_Cloture($mail_contact,
+                                                   $lien_commande_enligne,
+                                                          $chemin_formulaire,
+                                                          $date_limite_commande);
       $diner_cloture->def_titre('Repas des équipages du samedi 26 mai');
       $page->contenus[] = $diner_cloture;
 

@@ -31,6 +31,7 @@
       $this->chemin = "media/logos/partenaires/autres/";
       $this->logos = ["logo_eleonore-cerid.jpg",
       "logo_laot.png",
+      "logo_fumaison_iroise.png",
       "logo_in-extenso.png",
       "logo_papillon-deco-com-2018.jpg",
       "logo_sill.jpg",
@@ -93,7 +94,9 @@
       echo '<img id="logos_partenaires_or" style="height:200px;" />';
       echo '</div>'; // fin colonne gauche
       echo '<div class="col-sm-4" style="padding:0px;align:center;" >';
-      echo "\n<div class=\"page-header\"><ul class=\"pager\"><li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li><li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li><li><li><a class=\"bouton-lien\" href=\"restauration_journee.php\">Plateaux repas</a></li><li><a class=\"bouton-lien\" href=\"repas_cloture.php\">Repas des équipages</a></li></ul></div>\n";
+      echo "\n<div class=\"page-header\"><ul class=\"pager\">";
+      //echo "<li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li>";
+      echo "<li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li><li><li><a class=\"bouton-lien\" href=\"restauration_journee.php\">Paniers repas</a></li><li><a class=\"bouton-lien\" href=\"repas_cloture.php\">Repas des équipages</a></li></ul></div>\n";
       echo '</div>'; // fin colonne droite
       echo '</div></div>'; // fin row et fin container
       

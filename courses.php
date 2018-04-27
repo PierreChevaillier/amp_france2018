@@ -13,6 +13,7 @@
       // revision : 20-mar-2018 pchevaillier@gmail.com lien -> horaires courses
       // revision : 23-avr-2018 pchevaillier@gmail.com lien -> repas equipage
       // revision : 25-avr-2018 pchevaillier@gmail.com programme dimanche
+      // revision : 27-avr-2018 pchevaillier@gmail.com ajout dates importantes
       // -----------------------------------------------------------------------
       // commentaires :
       // - en construction : toutes les informations ne sont pas connues
@@ -43,15 +44,15 @@
       $page = new Page_France2018("Programme des courses");
 
       // Lien vers le fichier des horaires des courses
-      $source = '<div class="page-header"><h1>Programme des courses</h1><ul class="pager"><li><a class="bouton-lien" href="media/documents/f18_horaires-courses-previsionnels.pdf" target="_new">Horaires prévisionnels des courses</a></li></ul></div>';
+      $source = '<div class="page-header"><h1>Programme des courses</h1><ul class="pager"><li><a class="bouton-lien" href="media/documents/programme_officiel.pdf" target="_new">Télécharger le programme officiel</a></li></ul></div>';
       
       $page->contenus[] = new Cadre_Texte($source);
       // -----------------------------------------------------------------------
       // Entete du programme
       
-      $texte = "\n<div class=\"panel panel-warning\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\">Attention </div><div class=\"panel-body\"><p class=\"lead\">Il s'agit d'un programme prévisionnel donné à titre indicatif. Le programme de chaque journée est susceptible d'évoluer.</p></div></div>\n";
+      $texte = "\n<div class=\"panel\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\"><h2>Dates importantes</h2></div><div class=\"panel-body\"><ul><li>Ouverture des inscriptions sur l'Internet fédéral : lundi 30 avril à 8h00</li><li>Clôture des inscriptions : mardi 15 mai à 14h00</li><li>Consultation des inscriptions sur avironfrance.fr : mardi 15 mai 17h00</li><li>Consultation de l'ordre des départs sur avironfrance.fr : jeudi 17 mai 17h00</li></ul></div></div>\n";
 
-      
+      //$texte = $texte . "<ul><li>Ouverture des inscriptions sur l'Internet fédéral : lundi 30 avril à 8h00</li><li>Clôture des inscriptions : mardi 15 mai à 14h00</li><li>Consultation des inscriptions sur avironfrance.fr : mardi 15 mai 17h00</li><li>Consultation de l'ordre des départs sur avironfrance.fr : jeudi 17 mai 17h00</li></ul>";
       $entete = new Cadre_Texte($texte);
       //$entete->def_titre("Programme de la compétition");
       
@@ -97,7 +98,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<ul class="list-group"><li class="list-group-item">Ouverture officielle de la compétition</li><li class="list-group-item">Briefing</li><li class="list-group-item"><strong>Séries qualificatives</strong></li></ul>';
+      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture officielle de la compétition</li><li class=\"list-group-item\">Réunion d'information obligatoire - espace Kéraudy (Plougonvelin) : 10 heures</li><li class=\"list-group-item\"><strong>Séries qualificatives</strong></li></ul>";
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
@@ -130,7 +131,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item"><strong>Course Open Longue Distance</strong><br />Modifiable selon les conditions météorologiques<br />réunion information à 9h30 sous le chapiteau plage<br />Départ de la régate à 10h00</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié après la course longue distance</li></ul>';
+      $texte = '<div class="alert alert-warning" role="alert">En cas de report dû à la météo, les finales auront lieu le dimanche matin</div><ul class="list-group"><li class="list-group-item"><strong>Course Open Longue Distance</strong><br />Modifiable selon les conditions météorologiques<br />Réunion information sous le chapiteau plage à 9h30 <br />Départ de la régate à 10h00</li><li class="list-group-item">Parcours Aviron santé</li><li class="list-group-item">Pot de l’amitié après la course longue distance</li></ul>';
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
