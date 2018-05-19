@@ -2,8 +2,8 @@
 // ------------------------------------------------------------------------
 // description : definition de la classe generique Menu navigation
 //               sorte d'interface generique
-// contexte : chamionnat de France d'aviron de Mer organise par l'AMP
-// Copyright : 2017 AMP
+// contexte : championnat de France d'aviron de Mer organise par l'AMP
+// Copyright : 2017 AMP. Tous droits reserves.
 // ------------------------------------------------------------------------
 // creation: 04-jun-2017 pchevaillier@gmail.com
 // revision: 29-jul-2017 pchevaillier@gmail.com texte affichage dynamique

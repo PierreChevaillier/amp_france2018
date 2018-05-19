@@ -3,7 +3,7 @@
     <?php
       // =======================================================================
       // description : page visualisation video promo fevrier 2018
-      // contexte    : Site web du chamionnat de France 2018
+      // contexte    : Site web du championnat de France 2018
       // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // ------------------------------------------------------------------------
       // creation : 14-mar-2018 pchevaillier@gmail.com
@@ -26,7 +26,6 @@
       require_once 'elements/page_france2018.php';
       
       // --- Autres classes
-      require_once 'elements/page_france2018.php';      
       require_once 'generiques/cadre_video.php';
       
       // --- Creation dynamique de la page et affichage

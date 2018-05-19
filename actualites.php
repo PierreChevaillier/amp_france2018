@@ -4,7 +4,7 @@
       // =======================================================================
       // description : page web presentant le journal des actualites sur
       //               le lieu de l'evenement
-      // contexte    : Site web du chamionnat de France 2018
+      // contexte    : Site web du championnat de France 2018
       // Copyright (c) 2017-2018 AMP. Tous droits reserves.
       // ------------------------------------------------------------------------
       // creation : 11-oct-2017 pchevaillier@gmail.com

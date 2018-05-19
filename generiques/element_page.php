@@ -2,8 +2,8 @@
 // ------------------------------------------------------------------------
 // description : definition de la classe generique Element_Page
 //               classe mere de tous les elements contenus dans une page
-// contexte : chamionnat de France d'aviron de Mer organise par l'AMP
-// Copyright : 2017 AMP
+// contexte : championnat de France d'aviron de Mer organise par l'AMP
+// Copyright : 2017 AMP. Tous droits reserves.
 // ------------------------------------------------------------------------
 // creation: 04-juin-2017 pchevaillier@gmail.com
 // revision: 

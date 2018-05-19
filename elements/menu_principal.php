@@ -43,6 +43,7 @@ class Menu_Principal extends Menu_Navigation {
     echo '<ul class="dropdown-menu">';
     echo '<li><a href="courses.php">Programme</a></li>';
     echo '<li><a href="parcours.php">Parcours</a></li>';
+    echo '<li><a href="video_direct.php">En direct</a></li>';
     //echo '<li><a href="page_vide.php">Résultats</a></li>';
     echo '<li><a href="reglement.php">Réglement</a></li>';
     echo '</ul></li>';

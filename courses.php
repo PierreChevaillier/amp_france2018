@@ -14,6 +14,8 @@
       // revision : 23-avr-2018 pchevaillier@gmail.com lien -> repas equipage
       // revision : 25-avr-2018 pchevaillier@gmail.com programme dimanche
       // revision : 27-avr-2018 pchevaillier@gmail.com ajout dates importantes
+      // revision : 17-mai-2018 pchevaillier@gmail.com lien -> liste engages
+      // revision : 17-mai-2018 pchevaillier@gmail.com lien -> horaires departs
       // -----------------------------------------------------------------------
       // commentaires :
       // - en construction : toutes les informations ne sont pas connues
@@ -44,15 +46,14 @@
       $page = new Page_France2018("Programme des courses");
 
       // Lien vers le fichier des horaires des courses
-      $source = '<div class="page-header"><h1>Programme des courses</h1><ul class="pager"><li><a class="bouton-lien" href="media/documents/programme_officiel.pdf" target="_new">Télécharger le programme officiel</a></li></ul></div>';
+      $source = '<div class="page-header"><h1>Programme des courses</h1><ul class="pager"><li><a class="bouton-lien" href="media/documents/programme_officiel.pdf" target="_new">Télécharger le programme officiel</a></li><li><a class="bouton-lien" href="http://ffaviron.fr/articles/engagements-championnats-de-france-d-aviron-de-mer-2018">Liste des engagés</a></li><li><a class="bouton-lien" href="http://ffaviron.fr/medias/downloads/ffaviron-programme-championnat-de-france-mer-2018--20180517213514.pdf">Heures des départs des courses</a></li></ul></div>';
       
       $page->contenus[] = new Cadre_Texte($source);
       // -----------------------------------------------------------------------
       // Entete du programme
       
-      $texte = "\n<div class=\"panel\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\"><h2>Dates importantes</h2></div><div class=\"panel-body\"><ul><li>Ouverture des inscriptions sur l'Internet fédéral : lundi 30 avril à 8h00</li><li>Clôture des inscriptions : mardi 15 mai à 14h00</li><li>Consultation des inscriptions sur avironfrance.fr : mardi 15 mai 17h00</li><li>Consultation de l'ordre des départs sur avironfrance.fr : jeudi 17 mai 17h00</li></ul></div></div>\n";
+      $texte = "\n<div class=\"panel\" style=\"margin: 10px;\"><div class=\"panel-heading\" style=\"padding: 10px;\"><h2>Dates importantes</h2></div><div class=\"panel-body\"><ul><li><s>Ouverture des inscriptions sur l'Internet fédéral : lundi 30 avril à 8h00</s></li><li>Clôture des inscriptions : mardi 15 mai à 14h00</li><li><a href=\"http://ffaviron.fr/articles/engagements-championnats-de-france-d-aviron-de-mer-2018\">Consultation des inscriptions sur avironfrance.fr</a> : mardi 15 mai 17h00.</li><li><a href=\"http://ffaviron.fr/medias/downloads/ffaviron-programme-championnat-de-france-mer-2018--20180517213514.pdf\">Consultation de l'ordre des départs sur avironfrance.fr</a> : à partir du jeudi 17 mai 17h00</li></ul></div></div>\n";
 
-      //$texte = $texte . "<ul><li>Ouverture des inscriptions sur l'Internet fédéral : lundi 30 avril à 8h00</li><li>Clôture des inscriptions : mardi 15 mai à 14h00</li><li>Consultation des inscriptions sur avironfrance.fr : mardi 15 mai 17h00</li><li>Consultation de l'ordre des départs sur avironfrance.fr : jeudi 17 mai 17h00</li></ul>";
       $entete = new Cadre_Texte($texte);
       //$entete->def_titre("Programme de la compétition");
       
@@ -82,7 +83,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = "";
+      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture du bureau d'accueil de 9h00 à 19h00</li><li class=\"list-group-item\">Ouverture du plan d'eau de 14h00 à 19h00</li></ul>";
       $programme_detaille = new Cadre_Texte($texte);
 
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
@@ -98,7 +99,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture officielle de la compétition</li><li class=\"list-group-item\">Réunion d'information obligatoire - espace Kéraudy (Plougonvelin) : 10 heures</li><li class=\"list-group-item\"><strong>Séries qualificatives</strong></li></ul>";
+      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture officielle de la compétition</li><li class=\"list-group-item\">Réunion d'information obligatoire à l'Espace Kéraudy (12 rue du stade, 29217 Plougonvelin) : 10 heures. Réservée aux chefs de bord et aux délégués de club</li><li class=\"list-group-item\"><strong>Séries qualificatives</strong></li></ul>";
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);

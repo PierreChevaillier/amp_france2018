@@ -3,8 +3,8 @@
     <?php
       // =======================================================================
       // description : page visualisation de la webcam de l'evenement
-      // contexte    : Site web du chamionnat de France 2018
-      // Copyright (c) 2017 AMP
+      // contexte    : Site web du championnat de France 2018
+      // Copyright (c) 2017 AMP. Tous droits reserves.
       // ------------------------------------------------------------------------
       // creation : 14-oct-2017 pchevaillier@gmail.com
       // revision :

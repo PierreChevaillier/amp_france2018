@@ -9,7 +9,8 @@
   // Copyright (c) 2018 AMP. Tous droits reserves.
   // ---------------------------------------------------------------------------
   // creation: 21-avr-2018 pchevaillier@gmail.com
-  // revision: 23-avr-2018  pchevaillier@gmail.com gestion formulaire
+  // revision: 23-avr-2018 pchevaillier@gmail.com gestion formulaire
+  // revision: 19-mai-2018 pchevaillier@gmail.com controle affichage
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -58,7 +59,8 @@
     }
     
     protected function afficher_commande_cheque() {
-      echo '<p>Pour tout renseignement ou commande avec <strong>paiement par chèque</strong>';
+      if ((strlen($this->mail_contact) > 0) || (strlen($this->formulaire_telechargement) > 0))
+        echo '<p>Pour tout renseignement ou commande avec <strong>paiement par chèque</strong>';
       if (strlen($this->mail_contact) > 0)
         echo '<br />Envoyez un mail à <a href="mailto: ' . $this->mail_contact . '?subject=[AMP%20-%20France 2018]%20' . $this->titre() . '">' . $this->mail_contact . '</a>';
       if (strlen($this->formulaire_telechargement) > 0)

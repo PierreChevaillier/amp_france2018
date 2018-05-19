@@ -41,8 +41,17 @@
       $media->nom_fichier_vignette = "vignette_webcam_trez-hir.png";
       $media->def_titre("Webcam du Trez Hir");
       $media->lien_page_media = "webcam.php";
-      $media->contenu = "Découvrez ce qui se passe en ce moment sur le site où se dérouleront les compétitions.";
+      $media->contenu = "Découvrez ce qui se passe en ce moment sur le site de la compétition.";
 
+      $liste_videos[] = $media;
+      
+      $media = new vignette_Media();
+      $media->chemin_vignette = $chemin_media;
+      $media->nom_fichier_vignette = "vignette_direct.jpg";
+      $media->def_titre("Le direct");
+      $media->lien_page_media = "video_direct.php";
+      $media->contenu = "Suivez le retransmission en direct des courses.";
+      
       $liste_videos[] = $media;
     
       $media = new vignette_Media();

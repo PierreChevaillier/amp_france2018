@@ -2,11 +2,12 @@
   <html lang="fr">
     <?php
       // =======================================================================
-      // description : page visualisation video promo de l'evenement
+      // description : page web pour la visualisation transmission en direct
+      //               de l'evenement
       // contexte    : Site web du championnat de France 2018
-      // Copyright (c) 2017 AMP. Tous droits reserves.
+      // Copyright (c) 2017-2018 AMP. Tous droits reserves
       // ------------------------------------------------------------------------
-      // creation : 14-oct-2017 pchevaillier@gmail.com
+      // creation : 19-mai-2018 pchevaillier@gmail.com
       // revision :
       // -----------------------------------------------------------------------
       // commentaires :
@@ -26,13 +27,12 @@
       require_once 'elements/page_france2018.php';
       
       // --- Autres classes
-      require_once 'elements/page_france2018.php';
-      require_once 'generiques/cadre_video.php';
+      require_once 'elements/flux_video_direct.php';
       
       // --- Creation dynamique de la page et affichage
-      $page = new Page_France2018("teaser");
+      $page = new Page_France2018("le direct");
       
-      $page->contenus[] = new Cadre_Video("media/videos/teaser_france2018_12mbs.mp4");
+      $page->contenus[] = new Cadre_Video_Direct();
       
       $page->initialiser();
       $page->afficher();
