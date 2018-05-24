@@ -9,6 +9,7 @@
       // creation : 13-oct-2017 pchevaillier@gmail.com
       // revision : 14-mar-2018 pchevaillier@gmail.com ajout video de fevrier
       // revision : 21-avr-2018 pchevaillier@gmail.com ajout video chez Ramine
+      // revision : 20-mai-2018 pchevaillier@gmail.com ajout retransmission direct
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :
@@ -59,7 +60,7 @@
       $media->nom_fichier_vignette = "vignette_100-jours.jpg";
       $media->def_titre("Moins de 100 jours..");
       $media->lien_page_media = "video_moins-100-jours.php";
-      $media->contenu = "La dete approche... et on se prépare très séieursement à l'Aviron de Mer de Plougonbelin ! A terre, comme en mer.";
+      $media->contenu = "La date approche... et on se prépare très sérieusement à l'Aviron de Mer de Plougonvelin ! A terre, comme en mer.";
       
       $liste_videos[] = $media;
       

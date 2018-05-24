@@ -1,20 +1,19 @@
 <?php
   // ===========================================================================
   // description : definition de la classe Page_France2018
-  //               Page d'accueil du site
-  // utilisation : Site web -  inclusion dans page web dynamique
+  //               Structure de toutes les pages du site
+  // utilisation : Site web page web dynamique
   // teste avec  : PHP 5.5.3 sur Mac OS 10.11 ; PHP 7.0 sur serveur OVH
   // contexte    : Site du Championnat de France d'Aviron de Mer 2018
-  // Copyright (c) 2017 AMP
+  // Copyright (c) 2017-2018 AMP. Tous droits reserves.
   // ---------------------------------------------------------------------------
   // creation: 04-juin-2017 pchevaillier@gmail.com
   // revision: 11-juin-2017 pchevaillier@gmail.com
   // revision: 23-juin-2017 pchevaillier@gmail.com script / controle menu
   // revision: 29-juil-2017 pchevaillier@gmail.com script / compte a rebours
+  // revision: 20-mai-2018 pchevaillier@gmail.com ajout cadre information
   // ---------------------------------------------------------------------------
   // commentaires :
-  // - en chantier
-  // - version provisoire du site
   // attention :
   // -
   // a faire :
@@ -22,6 +21,8 @@
 
   // --- Classes utilisees
   require_once 'generiques/page.php';
+  require_once 'generiques/cadre_information.php';
+  
   require_once 'elements/entete_image.php';
   require_once 'elements/menu_principal.php';
   require_once 'elements/bandeau_partenaires.php';
@@ -52,6 +53,8 @@ class Page_France2018 extends Page {
   protected function definir_elements() {
     $this->elements_haut[] = new Bandeau_Entete();
     $this->elements_haut[] = new Menu_Principal();
+    $infos = "<span class=\"label label-info\">Nouveau</span> Des <strong>courses open</strong> seront programmées le <strong>vendredi 25</strong>. Les horaires seront diffusés après la réunion d'information, suivant le nombre d'inscriptions.</br><span class=\"label label-warning\">attention</span> Pour les véhicules tractant des yoles : évitez de passer par Gouesnou car il y a des travaux.";
+    $this->elements_haut[] = new Cadre_Information($infos);
     $this->elements_haut[] = new Zone_Partenaires();
     
     //$this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");

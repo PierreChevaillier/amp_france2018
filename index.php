@@ -37,6 +37,7 @@
       require_once 'generiques/element.php';
       
       require_once 'elements/page_france2018.php';
+      require_once 'elements/flux_video_direct.php';
       require_once 'elements/entete_image.php';
       require_once 'elements/contenu_accueil.php';
       require_once 'elements/zone_partenaires.php';
@@ -63,7 +64,7 @@
       $mot_president = new Cadre_Texte($texte);
       $mot_president->def_titre("Mot du président du Comité d'Organisation");
       
-      $page->contenus[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
+      $page->contenus[] = new Cadre_Video_Direct(); //new Entete_Image("media/entetes/banniere_france2018.jpg");
       
       //$contenu = new Contenu_Accueil($video_promotion, $mot_president);
       $secondaire = new Conteneur_Elements();

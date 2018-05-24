@@ -99,7 +99,7 @@
       $table_marees = new Table_Marees_jour($marees_jour);
       $ephemeride = new Cadre_Ephemerides($jour, $table_marees);
       
-      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture officielle de la compétition</li><li class=\"list-group-item\">Réunion d'information obligatoire à l'Espace Kéraudy (12 rue du stade, 29217 Plougonvelin) : 10 heures. Réservée aux chefs de bord et aux délégués de club</li><li class=\"list-group-item\"><strong>Séries qualificatives</strong></li></ul>";
+      $texte = "<ul class=\"list-group\"><li class=\"list-group-item\">Ouverture officielle de la compétition</li><li class=\"list-group-item\">Réunion d'information obligatoire à l'Espace Kéraudy (12 rue du stade, 29217 Plougonvelin) : 10 heures. Réservée aux chefs de bord et aux délégués de club</li><li class=\"list-group-item\"><strong>Séries qualificatives</strong></li><li class=\"list-group-item\"><span class=\"label label-info\">Nouveau</span> Des <strong>courses open</strong>  seront programmées. Les horaires seront diffusés après la réunion d'information, suivant le nombre d'inscriptions.</li></ul>";
       $programme_detaille = new Cadre_Texte($texte);
       
       $programme = new Cadre_Programme_Jour($jour, $programme_detaille);
