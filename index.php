@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="fr">
+  <html prefix="og: http://ogp.me/ns#">
     <?php
       // =======================================================================
       // description : page d'accueil du site web de l'evenement
@@ -16,6 +16,7 @@
       // revision : 05-jan-2018 pchevaillier@gmail.com include_path
       // revision : 01-avr-2018 pchevaillier@gmail.com lien 'devenez partenaire'
       // revision : 05-avr-2018 pchevaillier@gmail.com suppression liens 'partenaire' et benevoles
+      // revision : 24-mai-2018 pchevaillier@gmail.com protocole OpenGraph (og) pour Facebook
       // -----------------------------------------------------------------------
       // commentaires :
       // attention :

@@ -70,10 +70,16 @@ abstract class Page extends Element {
     return $code;
   }
   
+  protected function afficher_titre() {
+     echo "      <title>" . $this->titre() . "</title>\n";
+  }
+  
+  protected function inclure_meta_donnees_open_graph() {
+  }
+  
   protected function afficher_debut() {
-    
-  	echo "<head>\n      <meta charset=\"utf-8\" />
-      <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
+    echo "<head>\n      <meta charset=\"utf-8\" />";
+    $this->inclure_meta_donnees_open_graph();   echo "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
       <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
       <link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" />";
     echo "     <link rel=\"stylesheet\" href=\"" . get_include_path() . "amp_france2018.css\" media=\"screen\" />\n";
@@ -89,7 +95,8 @@ abstract class Page extends Element {
     }
     foreach ($this->elements_entete as $e)
       echo $e;
-    echo "      <title>" . $this->titre() . "</title>\n    </head>\n    <body>\n";
+    $this->afficher_titre();
+    echo "    </head>\n    <body>\n";
   }
 
   protected function afficher_fin() {

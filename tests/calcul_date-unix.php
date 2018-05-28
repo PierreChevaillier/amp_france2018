@@ -19,7 +19,7 @@
 
   // ---------------------------------------------------------------------------
   $cal = Calendrier::obtenir();
-  $jour = $cal->jour('15', '05', '2018');
+  $jour = $cal->jour('27', '05', '2018');
   echo $cal->date_texte($jour) . ' : ' . $jour->date();
   echo "\n";
   echo "Format html : " . $cal->date_html($jour);

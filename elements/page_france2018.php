@@ -53,8 +53,10 @@ class Page_France2018 extends Page {
   protected function definir_elements() {
     $this->elements_haut[] = new Bandeau_Entete();
     $this->elements_haut[] = new Menu_Principal();
+    /*
     $infos = "<span class=\"label label-info\">Nouveau</span> Des <strong>courses open</strong> seront programmées le <strong>vendredi 25</strong>. Les horaires seront diffusés après la réunion d'information, suivant le nombre d'inscriptions.</br><span class=\"label label-warning\">attention</span> Pour les véhicules tractant des yoles : évitez de passer par Gouesnou car il y a des travaux.";
     $this->elements_haut[] = new Cadre_Information($infos);
+     */
     $this->elements_haut[] = new Zone_Partenaires();
     
     //$this->elements_haut[] = new Entete_Image("media/entetes/banniere_france2018.jpg");
@@ -69,5 +71,15 @@ class Page_France2018 extends Page {
     $this->elements_bas[] = new Pied_Page();
     
   }
+  
+  protected function inclure_meta_donnees_open_graph() {
+    echo "<meta property=\"og:type\" content=\"website\" />";
+    echo "<meta property=\"og:title\" content=\"Championnat d'Aviron de Mer 2018 - Plougonvelin\" />\n";
+    echo "<meta property=\"og:description\" content=\"France 2018 -  25-26 mai 2018 à Plougonvelin\" />\n";
+    //echo '<meta property="og:type" content="video.movie" />';
+    echo "<meta property=\"og:url\" content=\"http://avironplougonvelin.fr/France2018/france2018.html\" />\n";
+    echo "<meta property=\"og:image\" content=\"http://avironplougonvelin.fr/France2018/media/entetes/banniere_france2018_lr.png\" />\n";
+  }
+
 }
 // ========================================================================
