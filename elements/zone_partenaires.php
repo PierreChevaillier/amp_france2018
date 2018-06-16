@@ -14,6 +14,7 @@
   // revision: 24-avr-2018 pchevaillier@gmail.com utilisation jquery bxslider
   // revision: 18-mai-2018 pchevaillier@gmail.com nouveaux logos partenaires
   // revision: 20-mai-2018 pchevaillier@gmail.com nouveaux logos partenaires ; suppression lien vers restauration
+  // revision: 16-jun-2018 pchevaillier@gmail.com 2 typss de partenaires sur la meme ligne
   // ---------------------------------------------------------------------------
   // commentaires :
   // attention :
@@ -107,20 +108,24 @@
     }
     
     protected function afficher_corps() {
-      echo '<div class="container" style="padding:0px;"><div class="row">';
+      echo '<div class="container" style="padding:5px;"><div class="row">';
       echo '<div class="col-sm-8" style="padding:0px;align:center;">';
       echo '<img id="logos_partenaires_or" style="height:200px;" />';
       echo '</div>'; // fin colonne gauche
       echo '<div class="col-sm-4" style="padding:0px;align:center;" >';
-      echo "\n<div class=\"page-header\"><ul class=\"pager\">";
-      //echo "<li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li>";
+      
+       $this->afficher_autres_partenaires();
+      /*
+       echo "\n<div class=\"page-header\"><ul class=\"pager\">";
+      echo "<li><a class=\"bouton-lien\" href=\"https://docs.google.com/forms/d/e/1FAIpQLScLkB08ZfDKLDJD1lRKuX0RBNbZfUSnzOym2ptZicw3CONe_w/viewform?usp=sf_link\" target=\"_new\">Devenez bénévole</a></li>";
       echo "<li><a class=\"bouton-lien\" href=\"https://www.helloasso.com/associations/aviron-de-mer-de-plougonvelin-amp/collectes/devenez-partenaire-du-championnat-de-france-d-aviron-de-mer-2018-1\" target=\"_new\">Devenez partenaire</a></li>";
-      //echo "<li><li><a class=\"bouton-lien\" href=\"restauration_journee.php\">Paniers repas</a></li><li><a class=\"bouton-lien\" href=\"repas_cloture.php\">Repas des équipages</a></li>";
+      echo "<li><li><a class=\"bouton-lien\" href=\"restauration_journee.php\">Paniers repas</a></li><li><a class=\"bouton-lien\" href=\"repas_cloture.php\">Repas des équipages</a></li>";
       echo "</ul></div>\n";
+       */
       echo '</div>'; // fin colonne droite
       echo '</div></div>'; // fin row et fin container
       
-      $this->afficher_autres_partenaires();
+      //$this->afficher_autres_partenaires();
     }
   
     protected function afficher_fin() {
