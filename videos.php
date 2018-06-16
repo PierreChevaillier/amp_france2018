@@ -51,10 +51,19 @@
       $media->nom_fichier_vignette = "vignette_direct.jpg";
       $media->def_titre("Le direct");
       $media->lien_page_media = "video_direct.php";
-      $media->contenu = "Suivez le retransmission en direct des courses.";
+      $media->contenu = "Revivez la retransmission des courses.";
       
       $liste_videos[] = $media;
-    
+      
+      $media = new vignette_Media();
+      $media->chemin_vignette = $chemin_media;
+      $media->nom_fichier_vignette = "vignette_vue_du_ciel.jpg";
+      $media->def_titre("Le direct");
+      $media->lien_page_media = "video_vue_du_ciel.php";
+      $media->contenu = "Quelques belles séquences des courses vues du ciel.";
+      
+      $liste_videos[] = $media;
+      
       $media = new vignette_Media();
       $media->chemin_vignette = $chemin_media;
       $media->nom_fichier_vignette = "vignette_100-jours.jpg";
